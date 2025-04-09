@@ -28,12 +28,12 @@ app.set("view engine", "ejs");
 
 // Routes
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.ejs"));
+  res.render("index");
 });
 
 // Last Resort Error handling
 app.use((req, res, next) => {
-  next(error(404, "Page Not Found"));
+  res.status(404).render("page404");
 });
 
 app.use((err, req, res, next) => {
