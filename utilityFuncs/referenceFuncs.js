@@ -1,13 +1,22 @@
 const path = require("path");
 const fs = require("fs");
 
-function getReferenceData() {
-  const combinedData = {};
+function getReferenceData(type = "") {
+  const data = {};
   // REPLACE WITH CALL TO MONGODB
   const directoryPath = path.join(__dirname, "../testdata");
   console.log("Fetching Data");
 
-  try {
+  if (type) {
+    const filePath = path.join(directoryPath, `${type}.json`);
+    try {
+      const fileContent = fs.readFileSync(filePath, "utf-8").trim();
+      const data = JSON.parse(fileContent);
+      return data;
+    } catch (err) {
+      throw new Error(`Error reading ${filePath}: ${err.message}`);
+    }
+  } else {
     const files = fs.readdirSync(directoryPath);
 
     for (const filename of files) {
@@ -23,18 +32,16 @@ function getReferenceData() {
             continue;
           }
 
-          const data = JSON.parse(fileContent);
-          combinedData[dataname] = data;
+          const jsonData = JSON.parse(fileContent);
+          data[dataname] = jsonData;
         } catch (err) {
           throw new Error(`Error reading ${filePath}: ${err.message}`);
         }
       }
     }
-  } catch (err) {
-    console.error("Error reading directory:", err);
   }
 
-  return combinedData;
+  return data;
 }
 
 module.exports = getReferenceData;

@@ -10,4 +10,9 @@ router.route("/").get(async (req, res, next) => {
   referenceData ? res.json(referenceData) : next(error(404, "No Data Found"));
 });
 
+router.route("/:type").get(async (req, res, next) => {
+  const referenceData = getReferenceData(req.params.type);
+  referenceData ? res.json(referenceData) : next(error(404, "No Data Found"));
+});
+
 module.exports = router;
