@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const error = require("./utilities/error");
+const error = require("./utilityFuncs/error");
 const ejs = require("ejs");
 
 const app = express();
@@ -20,9 +20,15 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
   next();
 });
 
+// View Engine
+app.engine("ejs", ejs.renderFile);
+
+app.set("views", "./views");
+app.set("view engine", "ejs");
+
 // Routes
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.ejs"));
 });
 
 // Last Resort Error handling
