@@ -6,6 +6,8 @@ const ejs = require("ejs");
 const app = express();
 const PORT = 3000;
 
+const reference = require("./routes/reference");
+
 // Middleware
 app.use(express.static("./styles"));
 app.use(express.static("./public"));
@@ -31,12 +33,15 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.use("/api/reference", reference);
+// app.use("/api/users", users);
+
 // Last Resort Error handling
 app.use((req, res, next) => {
   const data = {
     title: "404 Error",
     imgSrc: "https://media.tenor.com/fRwU2Z3GKtgAAAAM/busy-working.gif",
-    content: "Is this you looking for a page that doesn't exist?",
+    content: "You have found a page that does not exist. Please try again.",
   };
   res.status(404).render("page404", data);
 });
