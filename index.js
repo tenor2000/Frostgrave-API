@@ -8,7 +8,7 @@ const PORT = 3000;
 
 const reference = require("./src/routes/reference");
 // const user = require("./src/routes/user");
-// const warband = require("./src/routes/warband");
+const warbands = require("./src/routes/warbands");
 
 // Middleware
 app.use(express.static("./src/styles"));
@@ -31,7 +31,7 @@ app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
 app.use("/api/reference", reference);
-//app.use("/api/warbands", warband);
+app.use("/api/warbands", warbands);
 // app.use("/api/users", users);
 
 // Routes
@@ -42,10 +42,20 @@ app.get("/", (req, res, next) => {
   res.render("index", data);
 });
 
-app.get("/about", (req, res, next) => {
+app.get("/create", (req, res, next) => {
+  const getReferenceData = require("./src/utilityFuncs/getReferenceData");
+  const referenceData = getReferenceData();
+
+  if (!referenceData) {
+    return next(error(404, "No Data Found"));
+  }
+
   const data = {
-    contentEJS: "about",
+    contentEJS: "create",
+    spells: referenceData.spells,
+    classes: referenceData.schoolsOfMagic,
   };
+
   res.render("index", data);
 });
 
@@ -59,11 +69,12 @@ app.get("/contact", (req, res, next) => {
 // Last Resort Error handling
 app.use((req, res, next) => {
   const data = {
+    contentEJS: "page404",
     title: "404 Error",
     imgSrc: "https://media.tenor.com/fRwU2Z3GKtgAAAAM/busy-working.gif",
     content: "You have found a page that does not exist. Please try again.",
   };
-  res.status(404).render("page404", data);
+  res.status(404).render("index", data);
 });
 
 app.use((err, req, res, next) => {

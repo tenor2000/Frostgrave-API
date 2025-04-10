@@ -8,12 +8,8 @@ router.route("/").get(async (req, res, next) => {
   referenceData ? res.json(referenceData) : next(error(404, "No Data Found"));
 });
 
-router.route("/create").get(async (req, res, next) => {
-  const referenceData = getReferenceData();
-
-  res.render("create", {
-    referenceData,
-  });
+router.route("/create").post(async (req, res, next) => {
+  // this should be POST
 });
 
 module.exports = router;
