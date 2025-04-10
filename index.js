@@ -10,6 +10,10 @@ const reference = require("./src/routes/reference");
 // const user = require("./src/routes/user");
 const warbands = require("./src/routes/warbands");
 
+// Data retrieval for reference in views
+const getReferenceData = require("./src/utilityFuncs/getReferenceData");
+const referenceData = getReferenceData();
+
 // Middleware
 app.use(express.static("./src/styles"));
 app.use(express.static("./public"));
@@ -43,9 +47,6 @@ app.get("/", (req, res, next) => {
 });
 
 app.get("/create", (req, res, next) => {
-  const getReferenceData = require("./src/utilityFuncs/getReferenceData");
-  const referenceData = getReferenceData();
-
   if (!referenceData) {
     return next(error(404, "No Data Found"));
   }
@@ -62,6 +63,13 @@ app.get("/create", (req, res, next) => {
 app.get("/contact", (req, res, next) => {
   const data = {
     contentEJS: "contact",
+  };
+  res.render("index", data);
+});
+
+app.get("/documentation", (req, res, next) => {
+  const data = {
+    contentEJS: "login",
   };
   res.render("index", data);
 });

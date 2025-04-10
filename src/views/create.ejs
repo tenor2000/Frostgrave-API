@@ -1,20 +1,68 @@
 <div>
   <h1>Create a new Wizard</h1>
   <p>
-    This is just a form that can temporarily add a new wizard to the database
-    to show a POST request.
+    This is just a form that can temporarily add a new wizard to the database to
+    show a POST request.
   </p>
   <form action="/api/warbands/create" method="POST">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" />
     <label for="class">Class</label>
     <select name="class" required>
-      <% for (let i = 0; i < classes.length; i++) { %>
-        <option value="<%= classes[i].id %>">
-          <%= classes[i].name %>
-        </option>
+      <% for (let i = 1; i < classes.length; i++) { %>
+      <option value="<%= classes[i].id %>"><%= classes[i].name %></option>
       <% } %>
-    <label for="weapon">Weapon</label>
-    <input type=""submit" value="Submit" />
+    </select>
+    <label for="primary-school">Primary School Spells</label>
+    <div>
+      <select name="primary-school" required>
+        <% for (let i = 1; i < spells.length; i++) { %>
+        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <% } %>
+      </select>
+      <select name="primary-school" required>
+        <% for (let i = 1; i < spells.length; i++) { %>
+        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <% } %>
+      </select>
+      <select name="primary-school" required>
+        <% for (let i = 1; i < spells.length; i++) { %>
+        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <% } %>
+      </select>
+    </div>
+    <label for="aligned-school">Aligned School Spells</label>
+    <div>
+      <select name="aligned-school" required>
+        <% for (let i = 1; i < spells.length; i++) { %>
+        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <% } %>
+      </select>
+      <select name="aligned-school" required>
+        <% for (let i = 1; i < spells.length; i++) { %>
+        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <% } %>
+      </select>
+      <select name="aligned-school" required>
+        <% for (let i = 1; i < spells.length; i++) { %>
+        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <% } %>
+      </select>
+    </div>
+    <label for="neutral-school">Neutral School Spells</label>
+    <div>
+      <select name="neutral-school" required>
+        <% for (let i = 1; i < spells.length; i++) { %>
+        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <% } %>
+      </select>
+      <select name="neutral-school" required>
+        <% for (let i = 1; i < spells.length; i++) { %>
+        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <% } %>
+      </select>
+    </div>
+
+    <input type="submit" class="button" value="Submit" />
   </form>
 </div>

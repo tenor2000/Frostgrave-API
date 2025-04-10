@@ -77,13 +77,33 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+input {
+  border: var(--primary-color) 1px solid;
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0.5rem;
+}
+
+select {
+  border: var(--primary-color) 1px solid;
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0.5rem;
 }
 
 .button-container {
@@ -110,17 +130,6 @@ form {
 .button:hover {
   background: var(--success-color);
   color: lightblue;
-}
-
-.input {
-  border: var(--primary-color) 1px solid;
-  border-radius: 5px;
-  padding: 0.5rem;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 0.5rem;
-  box-shadow: 5px 5px 5px gray;
 }
 
 .image-container {
