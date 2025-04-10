@@ -4,7 +4,7 @@ const fs = require("fs");
 function getReferenceData(type = "") {
   const data = {};
   // REPLACE WITH CALL TO MONGODB
-  const directoryPath = path.join(__dirname, "../testdata");
+  const directoryPath = path.join(__dirname, "../testRefData");
   console.log("Fetching Data");
 
   if (type) {

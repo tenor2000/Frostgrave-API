@@ -1,9 +1,7 @@
 const express = require("express");
 const router = express.Router();
-
 const error = require("../utilityFuncs/error");
-
-const getReferenceData = require("../utilityFuncs/referenceFuncs");
+const getReferenceData = require("../utilityFuncs/getReferenceData");
 
 router.route("/").get(async (req, res, next) => {
   const referenceData = getReferenceData();

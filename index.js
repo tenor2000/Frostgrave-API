@@ -7,6 +7,8 @@ const app = express();
 const PORT = 3000;
 
 const reference = require("./routes/reference");
+// const user = require("./routes/user");
+// const warband = require("./routes/warband");
 
 // Middleware
 app.use(express.static("./styles"));
