@@ -1,0 +1,148 @@
+:root {
+  --primary-color: white;
+  --dark-color: black;
+  --light-color: #f4f4f4;
+  --danger-color: red;
+  --success-color: green;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(
+    var(--dark-color),
+    var(--danger-color),
+    var(--dark-color)
+  );
+  color: var(--primary-color);
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  color: var(--primary-color);
+  background: linear-gradient(var(--dark-color), var(--danger-color));
+  border-radius: 5px;
+  width: 80%;
+  padding: 1rem 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+footer {
+  text-align: center;
+  color: var(--primary-color);
+  background: linear-gradient(var(--danger-color), var(--dark-color));
+  padding: 0;
+  border-radius: 5px;
+  width: 80%;
+}
+
+li a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+li a:hover {
+  color: blue;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  background: var(--danger-color);
+  border: var(--primary-color) 1px solid;
+  border-radius: 5px;
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  background: var(--success-color);
+  color: lightblue;
+}
+
+.input {
+  border: var(--primary-color) 1px solid;
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0.5rem;
+  box-shadow: 5px 5px 5px gray;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.image-container img {
+  border-radius: 5px;
+  border: var(--primary-color) 1px solid;
+}
+
+#error-page {
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

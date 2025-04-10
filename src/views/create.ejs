@@ -1,0 +1,20 @@
+<div>
+  <h1>Create a new Wizard</h1>
+  <p>
+    This is just a form that can tempoerarily add a new wizard to the database
+    to show a POST request.
+  </p>
+  <form action="/api/wizards/create" method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" />
+    <label for="class">Class</label>
+    <select name="class" required>
+      <% for (let i = 0; i < options.length; i++) { %>
+        <option value="<%= options[i].value %>">
+          <%= options[i].label %>
+        </option>
+      <% } %>
+    <label for="weapon">Weapon</label>
+    <input type=""submit" value="Submit" />
+  </form>
+</div>

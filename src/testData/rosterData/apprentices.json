@@ -16,12 +16,12 @@
     }
   },
   "afwSi24W9M": {
-    "name": "Jim",
+    "name": "Terry",
     "class": "Apprentice",
     "status": 1,
     "armor": 10,
     "cost": 100,
-    "itemSlots": [101, 202, 0, 0],
+    "itemSlots": [101, 0, 0, 0],
     "statMods": {
       "move": 0,
       "fight": 0,

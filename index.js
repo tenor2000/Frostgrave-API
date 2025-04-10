@@ -1,12 +1,12 @@
 const express = require("express");
 const path = require("path");
-const error = require("./utilityFuncs/error");
+const error = require("./src/utilityFuncs/error");
 const ejs = require("ejs");
 
 const app = express();
 const PORT = 3000;
 
-const reference = require("./routes/reference");
+const reference = require("./src/routes/reference");
 // const user = require("./routes/user");
 // const warband = require("./routes/warband");
 
@@ -30,13 +30,17 @@ app.engine("ejs", ejs.renderFile);
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
+app.use("/api/reference", reference);
+app.use("/api/warbands", warband);
+// app.use("/api/users", users);
+
 // Routes
 app.get("/", (req, res) => {
-  res.render("index");
+  const data = {
+    contentEJS: "home",
+  };
+  res.render("index", data);
 });
-
-app.use("/api/reference", reference);
-// app.use("/api/users", users);
 
 // Last Resort Error handling
 app.use((req, res, next) => {
