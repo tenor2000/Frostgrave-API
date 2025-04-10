@@ -1,0 +1,30 @@
+{
+  "asivbduv": {
+    "current": [
+      { "name": "Julius", "status": 1, "classId": 1, "itemSlots": [0] },
+      { "name": "Adam", "status": 0, "classId": 1, "itemSlots": [0] },
+      { "name": "Roger", "status": 1, "classId": 2, "itemSlots": [0] },
+      { "name": "Todd", "status": 2, "classId": 2, "itemSlots": [0] },
+      { "name": "Jeff", "status": 1, "classId": 4, "itemSlots": [0] },
+      { "name": "Hank", "status": 1, "classId": 7, "itemSlots": [0] },
+      { "name": "George", "status": 1, "classId": 5, "itemSlots": [0] },
+      { "name": "Clyde", "status": 1, "classId": 6, "itemSlots": [0] }
+    ],
+    "dropped": [],
+    "killed": []
+  },
+  "adgdfhge": {
+    "current": [
+      { "name": "Fred", "status": 1, "classId": 1, "itemSlots": [101] },
+      { "name": "Sally", "status": 0, "classId": 1, "itemSlots": [0] },
+      { "name": "Jimmy", "status": 1, "classId": 2, "itemSlots": [0] },
+      { "name": "Ned", "status": 2, "classId": 2, "itemSlots": [0] },
+      { "name": "Sue", "status": 1, "classId": 3, "itemSlots": [0] },
+      { "name": "Bill", "status": 1, "classId": 4, "itemSlots": [0] },
+      { "name": "Joe", "status": 1, "classId": 7, "itemSlots": [0] },
+      { "name": "Jack", "status": 1, "classId": 6, "itemSlots": [0] }
+    ],
+    "dropped": [],
+    "killed": []
+  }
+}

@@ -1,6 +1,8 @@
-[
-  {
-    "id": "Be93523XM",
+{
+  "Be93523XM": {
+    "apprenticeId": "afwSifhW9M",
+    "rosterId": "asivbduv",
+    "ownerId": 1,
     "name": "Tim",
     "classId": 4,
     "level": 0,
@@ -23,22 +25,6 @@
       "health": 0
     },
     "gold": 400,
-    "apprentice": {
-      "name": "Jim",
-      "class": "Apprentice",
-      "status": 1,
-      "armor": 10,
-      "itemSlots": [101, 202, 0, 0],
-      "statMods": {
-        "move": 0,
-        "fight": 0,
-        "shoot": 0,
-        "armor": 0,
-        "will": 0,
-        "health": 0
-      },
-      "cost": 100
-    },
     "primarySpellIds": [401, 402, 403],
     "alignedSpellIds": [601, 701, 901],
     "neutralSpellIds": [101, 301],
@@ -46,16 +32,6 @@
     "spellModifiers": {
       "401": -1
     },
-    "soldiers": [
-      { "name": "Julius", "status": 1, "classId": 1, "itemSlots": [0] },
-      { "name": "Adam", "status": 0, "classId": 1, "itemSlots": [0] },
-      { "name": "Roger", "status": 1, "classId": 2, "itemSlots": [0] },
-      { "name": "Todd", "status": 2, "classId": 2, "itemSlots": [0] },
-      { "name": "Jeff", "status": 1, "classId": 4, "itemSlots": [0] },
-      { "name": "Hank", "status": 1, "classId": 7, "itemSlots": [0] },
-      { "name": "George", "status": 1, "classId": 5, "itemSlots": [0] },
-      { "name": "Clyde", "status": 1, "classId": 6, "itemSlots": [0] }
-    ],
     "soldiersLost": 0,
     "xp": 0,
     "xpSpent": 0,
@@ -64,8 +40,10 @@
     "currentScenario": null,
     "careerHistory": []
   },
-  {
-    "id": "CR9GoS59M",
+  "CR9GoS59M": {
+    "apprenticeId": "",
+    "rosterId": "adgdfhge",
+    "ownerId": 2,
     "name": "Dave",
     "classId": 3,
     "level": 4,
@@ -88,6 +66,20 @@
       "health": 0
     },
     "gold": 400,
+    "primarySpellIds": [301, 302, 303],
+    "alignedSpellIds": [1001, 601, 201],
+    "neutralSpellIds": [501, 901],
+    "opposedSpellIds": [],
+    "spellModifiers": {
+      "301": -1
+    },
+    "soldiersLost": 0,
+    "xp": 400,
+    "xpSpent": 200,
+    "vaultItems": [],
+    "base": 1004,
+    "currentScenario": null,
+    "careerHistory": [],
     "apprentice": {
       "name": "Ted",
       "class": "Apprentice",
@@ -103,34 +95,12 @@
         "health": 0
       },
       "cost": 100
-    },
-    "primarySpellIds": [301, 302, 303],
-    "alignedSpellIds": [1001, 601, 201],
-    "neutralSpellIds": [501, 901],
-    "opposedSpellIds": [],
-    "spellModifiers": {
-      "301": -1
-    },
-    "soldiers": [
-      { "name": "Fred", "status": 1, "classId": 1, "itemSlots": [101] },
-      { "name": "Sally", "status": 0, "classId": 1, "itemSlots": [0] },
-      { "name": "Jimmy", "status": 1, "classId": 2, "itemSlots": [0] },
-      { "name": "Ned", "status": 2, "classId": 2, "itemSlots": [0] },
-      { "name": "Sue", "status": 1, "classId": 3, "itemSlots": [0] },
-      { "name": "Bill", "status": 1, "classId": 4, "itemSlots": [0] },
-      { "name": "Joe", "status": 1, "classId": 7, "itemSlots": [0] },
-      { "name": "Jack", "status": 1, "classId": 6, "itemSlots": [0] }
-    ],
-    "soldiersLost": 0,
-    "xp": 400,
-    "xpSpent": 200,
-    "vaultItems": [],
-    "base": 1004,
-    "currentScenario": null,
-    "careerHistory": []
+    }
   },
-  {
-    "id": "NJ4Go52QS",
+  "NJ4Go52QS": {
+    "apprenticeId": "",
+    "rosterId": "",
+    "ownerId": 3,
     "name": "Homer",
     "classId": 10,
     "level": 0,
@@ -153,28 +123,11 @@
       "health": 0
     },
     "gold": 400,
-    "apprentice": {
-      "name": "",
-      "class": "Apprentice",
-      "status": 9,
-      "armor": 10,
-      "itemSlots": [0, 0, 0, 0],
-      "statMods": {
-        "move": 0,
-        "fight": 0,
-        "shoot": 0,
-        "armor": 0,
-        "will": 0,
-        "health": 0
-      },
-      "cost": 100
-    },
     "primarySpellIds": [1001, 1002, 1003],
     "alignedSpellIds": [301, 501, 802],
     "neutralSpellIds": [101, 201],
     "opposedSpellIds": [],
     "spellModifiers": {},
-    "soldiers": [],
     "soldiersLost": 0,
     "xp": 0,
     "xpSpent": 0,
@@ -183,4 +136,4 @@
     "currentScenario": null,
     "careerHistory": []
   }
-]
+}

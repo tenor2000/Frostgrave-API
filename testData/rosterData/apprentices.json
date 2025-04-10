@@ -1,0 +1,34 @@
+{
+  "afwSifhW9M": {
+    "name": "Jim",
+    "class": "Apprentice",
+    "status": 1,
+    "armor": 10,
+    "itemSlots": [101, 202, 0, 0],
+    "cost": 100,
+    "statMods": {
+      "move": 0,
+      "fight": 0,
+      "shoot": 0,
+      "armor": 0,
+      "will": 0,
+      "health": 0
+    }
+  },
+  "afwSi24W9M": {
+    "name": "Jim",
+    "class": "Apprentice",
+    "status": 1,
+    "armor": 10,
+    "cost": 100,
+    "itemSlots": [101, 202, 0, 0],
+    "statMods": {
+      "move": 0,
+      "fight": 0,
+      "shoot": 0,
+      "armor": 0,
+      "will": 0,
+      "health": 0
+    }
+  }
+}
