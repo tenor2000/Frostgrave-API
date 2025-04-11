@@ -15,7 +15,13 @@
     "will": 4,
     "cost": 0,
     "status": 1,
-    "itemSlots": [101, 0, 0, 0, 0],
+    "itemSlots": {
+      "slot1": 101,
+      "slot2": 0,
+      "slot3": 0,
+      "slot4": 0,
+      "slot5": 0
+    },
     "statMods": {
       "move": 0,
       "fight": 0,
@@ -38,7 +44,8 @@
     "vaultItems": [],
     "base": 1001,
     "currentScenario": null,
-    "careerHistory": []
+    "careerHistory": [],
+    "backstory": null
   },
   "CR9GoS59M": {
     "apprenticeId": "",
@@ -80,22 +87,7 @@
     "base": 1004,
     "currentScenario": null,
     "careerHistory": [],
-    "apprentice": {
-      "name": "Ted",
-      "class": "Apprentice",
-      "status": 1,
-      "armor": 10,
-      "itemSlots": [101, 0, 0, 0],
-      "statMods": {
-        "move": 0,
-        "fight": 0,
-        "shoot": 0,
-        "armor": 0,
-        "will": 0,
-        "health": 0
-      },
-      "cost": 100
-    }
+    "backstory": null
   },
   "NJ4Go52QS": {
     "apprenticeId": "",
@@ -113,7 +105,13 @@
     "will": 4,
     "cost": 0,
     "status": 1,
-    "itemSlots": [101, 0, 0, 0, 0],
+    "itemSlots": {
+      "slot1": 103,
+      "slot2": 104,
+      "slot3": 0,
+      "slot4": 0,
+      "slot5": 0
+    },
     "statMods": {
       "move": 0,
       "fight": 0,
@@ -134,6 +132,47 @@
     "vaultItems": [],
     "base": 1003,
     "currentScenario": null,
-    "careerHistory": []
+    "careerHistory": [],
+    "backstory": null
+  },
+  "_TEMPLATE_": {
+    "apprenticeId": null,
+    "rosterId": null,
+    "ownerId": 0,
+    "name": null,
+    "classId": 0,
+    "level": 0,
+    "health": 14,
+    "currentHealth": 14,
+    "move": 6,
+    "fight": 2,
+    "shoot": 0,
+    "armor": 10,
+    "will": 4,
+    "cost": 0,
+    "status": 1,
+    "itemSlots": { "slot1": 0, "slot2": 0, "slot3": 0, "slot4": 0, "slot5": 0 },
+    "statMods": {
+      "move": 0,
+      "fight": 0,
+      "shoot": 0,
+      "armor": 0,
+      "will": 0,
+      "health": 0
+    },
+    "gold": 400,
+    "primarySpellIds": [],
+    "alignedSpellIds": [],
+    "neutralSpellIds": [],
+    "opposedSpellIds": [],
+    "spellModifiers": {},
+    "soldiersLost": 0,
+    "xp": 0,
+    "xpSpent": 0,
+    "vaultItems": [],
+    "base": null,
+    "currentScenario": null,
+    "careerHistory": [],
+    "backstory": null
   }
 }
