@@ -92,7 +92,7 @@ input {
   padding: 0.5rem;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1rem;
   margin: 0.5rem;
 }
 
@@ -102,7 +102,7 @@ select {
   padding: 0.5rem;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1rem;
   margin: 0.5rem;
 }
 

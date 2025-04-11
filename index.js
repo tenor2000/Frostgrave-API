@@ -11,7 +11,8 @@ const reference = require("./src/routes/reference");
 const warbands = require("./src/routes/warbands");
 
 // Data retrieval for reference in views
-const getReferenceData = require("./src/utilityFuncs/getReferenceData");
+const getReferenceData = require("./src/utilityFuncs/getDataFromSource");
+const getRandomBackstory = require("./src/utilityFuncs/getRandomBackstory");
 const referenceData = getReferenceData();
 
 // Middleware
@@ -20,7 +21,6 @@ app.use(express.static("./public"));
 
 app.use((req, res, next) => {
   const time = new Date();
-
   console.log(
     `-----
 ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
@@ -55,26 +55,33 @@ app.get("/create", (req, res, next) => {
     contentEJS: "create",
     spells: referenceData.spells,
     classes: referenceData.schoolsOfMagic,
+    backstory: getRandomBackstory(),
   };
 
   res.render("index", data);
 });
 
-app.get("/contact", (req, res, next) => {
-  const data = {
-    contentEJS: "contact",
-  };
-  res.render("index", data);
-});
+// app.get("/contact", (req, res, next) => {
+//   const data = {
+//     contentEJS: "contact",
+//   };
+//   res.render("index", data);
+// });
 
-app.get("/documentation", (req, res, next) => {
-  const data = {
-    contentEJS: "login",
-  };
-  res.render("index", data);
-});
+// app.get("/documentation", (req, res, next) => {
+//   const data = {
+//     contentEJS: "login",
+//   };
+//   res.render("index", data);
+// });
 
 // Last Resort Error handling
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.json({ error: err.message });
+});
+
 app.use((req, res, next) => {
   const data = {
     contentEJS: "page404",
@@ -83,11 +90,6 @@ app.use((req, res, next) => {
     content: "You have found a page that does not exist. Please try again.",
   };
   res.status(404).render("index", data);
-});
-
-app.use((err, req, res, next) => {
-  res.status(err.status || 500);
-  res.json({ error: err.message });
 });
 
 // Start server
