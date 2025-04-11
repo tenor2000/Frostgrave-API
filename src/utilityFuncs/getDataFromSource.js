@@ -1,10 +1,10 @@
 const path = require("path");
 const fs = require("fs");
 
-function getReferenceData(type = "") {
+function getDataFromSource(dir = "referenceData", type = "") {
   const data = {};
   // REPLACE WITH CALL TO MONGODB
-  const directoryPath = path.join(__dirname, "../testData/referenceData");
+  const directoryPath = path.join(__dirname, "../testData/", dir);
   console.log("Fetching Data");
 
   if (type) {
@@ -44,4 +44,4 @@ function getReferenceData(type = "") {
   return data;
 }
 
-module.exports = getReferenceData;
+module.exports = getDataFromSource;
