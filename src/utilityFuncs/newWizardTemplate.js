@@ -10,8 +10,8 @@ function newWizardTemplate(
   nspellsArray,
   backstory
 ) {
-  const wizardTemplate =
-    require("../testData/rosterData/wizards.json")._TEMPLATE_;
+  console.log(pspellsArray);
+
   wizardTemplate.name = name;
   wizardTemplate.ownerId = parseInt(ownerId);
   wizardTemplate.classId = parseInt(classId) || wizardTemplate.classId;
@@ -22,4 +22,4 @@ function newWizardTemplate(
   return wizardTemplate;
 }
 
-module.exports = wizardTemplate;
+module.exports = newWizardTemplate;

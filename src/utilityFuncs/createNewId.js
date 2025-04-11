@@ -1,11 +1,13 @@
 const { randomBytes } = require("crypto");
 
 //Data to check
-const wizardsData = require("../testData/rosterData/wizards.json");
-const scenariosData = require("../testData/rosterData/scenarios.json");
-const campaignsData = require("../testData/rosterData/campaigns.json");
-const apprenticesData = require("../testData/rosterData/apprentices.json");
-const rostersData = require("../testData/rosterData/rosters.json");
+const dataSets = {
+  wizard: require("../testData/rosterData/wizards.json"),
+  scenario: require("../testData/rosterData/scenarios.json"),
+  campaign: require("../testData/rosterData/campaigns.json"),
+  apprentice: require("../testData/rosterData/apprentices.json"),
+  roster: require("../testData/rosterData/rosters.json"),
+};
 
 function createNewId(type) {
   const newId = generateRandomString(type);
@@ -39,18 +41,8 @@ function generateRandomString(type) {
 }
 
 function validateIdString(type, id) {
-  switch (type) {
-    case "wizard":
-      return wizardsData.find((w) => w.id == id) ? false : true;
-    case "scenario":
-      return scenariosData.find((s) => s.id == id) ? false : true;
-    case "campaign":
-      return campaignsData.find((c) => c.id == id) ? false : true;
-    case "apprentice":
-      return apprenticesData.find((a) => a.id == id) ? false : true;
-    case "roster":
-      return rostersData.find((r) => r.id == id) ? false : true;
-  }
+  const dataset = dataSets[type];
+  return !dataset ? false : !dataset[id];
 }
 
 module.exports = createNewId;

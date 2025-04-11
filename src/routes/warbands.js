@@ -7,6 +7,7 @@ const createNewId = require("../utilityFuncs/createNewId");
 const error = require("../utilityFuncs/error");
 const rostersData = require("../testData/rosterData/rosters.json");
 const wizardsData = require("../testData/rosterData/wizards.json");
+const writeKeyValueToJson = require("../utilityFuncs/writeKeyValuetoJson");
 
 // api/warbands/
 
@@ -20,14 +21,16 @@ router
   .route("/wizards")
   .get(async (req, res, next) => {
     const ownerId = req.query.ownerId || null;
+    if (ownerId) {
+      res.json(Object.values(wizardsData).filter((w) => w.ownerId == ownerId));
+    }
 
-    wizardsData.filter((w) => w.ownerId == ownerId)
-      ? res.json(wizardsData)
-      : next(error(404, "No Data Found"));
+    res.json(wizardsData);
   })
   .post((req, res, next) => {
     // get form data and assign a random if
     const formData = req.body;
+    // console.log(formData);
 
     let newWizardId = createNewId("wizard");
 
@@ -40,9 +43,12 @@ router
       formData.neutralSpellIds,
       formData.backstory
     );
-    wizardObject.id = newWizardId;
-    wizardsData.push(formData);
-    res.json(formData);
+    writeKeyValueToJson(
+      "../testData/rosterData/wizards.json",
+      newWizardId,
+      wizardObject
+    );
+    res.json(wizardObject);
   });
 
 // router.route("/wizards)
