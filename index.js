@@ -21,12 +21,16 @@ app.use(express.static("./public"));
 
 app.use((req, res, next) => {
   const time = new Date();
+
   console.log(
     `-----
 ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
   );
   next();
 });
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // View Engine
 app.engine("ejs", ejs.renderFile);
@@ -76,7 +80,6 @@ app.get("/create", (req, res, next) => {
 // });
 
 // Last Resort Error handling
-
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({ error: err.message });

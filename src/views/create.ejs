@@ -4,7 +4,10 @@
     This is just a form that can temporarily add a new wizard to the database to
     show a POST request.
   </p>
-  <form action="/api/warbands/create" method="POST">
+  <form action="/api/warbands/wizards" method="POST">
+    <!-- this would be connected to user sessions but for now is temporary -->
+    <input type="hidden" name="ownerId" value="5" />
+    <!-- End of temporary code -->
     <label for="name">Name</label>
     <input type="text" id="name" name="name" />
     <label for="class">Class</label>
@@ -19,13 +22,13 @@
       <select name="primary-school" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%" ="spells[i].id" %>><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="primary-school" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%" ="spells[i].id" %>><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="primary-school" required>
