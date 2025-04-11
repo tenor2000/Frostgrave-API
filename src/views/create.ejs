@@ -9,6 +9,7 @@
     <input type="text" id="name" name="name" />
     <label for="class">Class</label>
     <select name="class" required>
+      <option value="0" disabled selected>--</option>
       <% for (let i = 1; i < classes.length; i++) { %>
       <option value="<%= classes[i].id %>"><%= classes[i].name %></option>
       <% } %>
@@ -16,16 +17,19 @@
     <label for="primary-school">Primary School Spells</label>
     <div>
       <select name="primary-school" required>
+        <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
         <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="primary-school" required>
+        <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
         <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="primary-school" required>
+        <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
         <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
         <% } %>
@@ -34,16 +38,19 @@
     <label for="aligned-school">Aligned School Spells</label>
     <div>
       <select name="aligned-school" required>
+        <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
         <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="aligned-school" required>
+        <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
         <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="aligned-school" required>
+        <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
         <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
         <% } %>
@@ -52,16 +59,23 @@
     <label for="neutral-school">Neutral School Spells</label>
     <div>
       <select name="neutral-school" required>
+        <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
         <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="neutral-school" required>
+        <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
         <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
     </div>
+
+    <label for="backstory">Write Your Backstory</label>
+    <textarea id="backstory" name="backstory" rows="5" cols="80">
+<%= backstory %>
+    </textarea>
 
     <input type="submit" class="button" value="Submit" />
   </form>
