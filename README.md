@@ -1,65 +1,58 @@
-# Project Title
+# SBA318
 
-Simple overview of use/purpose.
+This is the start of an express server that will be used in my capstone project. It is a data server for a miniature wargame called [Frostgrave 2nd Edition](https://boardgamegeek.com/boardgame/317519/frostgrave-second-edition). Players put together a small band of hapless mercenaries, lead by a wizard and his/her unlucky apprentice as they explore the ruins of an ancient frozen city.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+There are currently 3 categories of data each with multiple sub tables. Reference data is read only data and give reference rules for the game an cannot be modified. There is also a user database that has only get methds for now. Lastly there is the warband database that contains wizard, apprentice and personnel data that can be modified and deleted.
+
+I've also create a view to see a POST request in order to make a new wizard. More endpoints will be documented inside.
 
 ## Getting Started
 
 ### Dependencies
 
-- Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-- ex. Windows 10
+- Express v5.1.0
+- nodemon v3.1.9
+- EJS v3.1.10
 
 ### Installing
 
-- How/where to download your program
-- Any modifications needed to be made to files/folders
+```
+$ npm init
+$ npm install express
+$ npm install nodemon
+$ npm install ejs
+```
 
 ### Executing program
 
-- How to run the program
-- Step-by-step bullets
+- I've set up a script in the package.json to be able to run nodemon
 
 ```
-code blocks for commands
+$ npm run dev
 ```
 
-## Help
-
-Any advise for common problems or issues.
-
-```
-command to run if program contains helper info
-```
+-This will run on [localhost:3000](http://localhost:3000/)
 
 ## Authors
 
 Contributors names and contact info
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+Gregory Jung - [Portfolio](https://tenor2000.github.io/react-portfolio/)
 
 ## Version History
 
-- 0.2
-  - Various bug fixes and optimizations
-  - See [commit change]() or See [release history]()
-- 0.1
-  - Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+- v0.1 basic endpoints are working for:
+  - api/reference
+  - api/warbands/wizards
+  - api/warbands/apprentices
+  - api/warbands/personnel
+  - api/users
 
 ## Acknowledgments
 
 Inspiration, code snippets, etc.
 
 - [awesome-readme](https://github.com/matiassingers/awesome-readme)
-- [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-- [dbader](https://github.com/dbader/readme-template)
-- [zenorocha](https://gist.github.com/zenorocha/4526327)
-- [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+- [Joseph McCullough](https://www.josephamccullough.com/)
