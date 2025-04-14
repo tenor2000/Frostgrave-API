@@ -1,6 +1,3 @@
-const wizardTemplate =
-  require("../testData/warbandData/wizards.json")._TEMPLATE_;
-
 function newWizardTemplate(
   name,
   ownerId,
@@ -10,7 +7,8 @@ function newWizardTemplate(
   nspellsArray,
   backstory
 ) {
-  console.log(pspellsArray);
+  const wizardTemplate =
+    require("../testData/warbandData/wizards.json")._TEMPLATE_;
 
   wizardTemplate.name = name;
   wizardTemplate.ownerId = parseInt(ownerId);
@@ -22,4 +20,12 @@ function newWizardTemplate(
   return wizardTemplate;
 }
 
-module.exports = newWizardTemplate;
+function newApprenticeTemplate(name) {
+  const apprenticeTemplate =
+    require("../testData/warbandData/apprentices.json")._TEMPLATE_;
+  apprenticeTemplate.name = name;
+
+  return apprenticeTemplate;
+}
+
+(module.exports = newWizardTemplate), newApprenticeTemplate;

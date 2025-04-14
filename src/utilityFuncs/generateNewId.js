@@ -9,7 +9,7 @@ const dataSets = {
   roster: require("../testData/warbandData/rosters.json"),
 };
 
-function createNewId(type) {
+function generateNewId(type) {
   const newId = generateRandomString(type);
   if (!validateIdString(type, newId)) {
     return getNewId(type);
@@ -45,4 +45,4 @@ function validateIdString(type, id) {
   return !dataset ? false : !dataset[id];
 }
 
-module.exports = createNewId;
+module.exports = generateNewId;
