@@ -35,15 +35,15 @@ function newApprenticeTemplate(name, id) {
   return apprenticeTemplate;
 }
 
-function newPersonnelTemplate(name, rosterPosition, wizardId) {
+function newPersonnelTemplate(name, rosterPosition, id) {
   const personnelTemplate = structuredClone(
     require("../testData/warbandData/personnel.json").find(
-      (p) => p.wizardId == "_TEMPLATE_"
+      (p) => p.wizard_id == "_TEMPLATE_"
     )
   );
   personnelTemplate.name = name;
   personnelTemplate.rosterPosition = rosterPosition;
-  personnelTemplate.wizard_id = wizardId;
+  personnelTemplate.wizard_id = id;
   return personnelTemplate;
 }
 
