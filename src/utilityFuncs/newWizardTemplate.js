@@ -1,5 +1,5 @@
 const wizardTemplate =
-  require("../testData/rosterData/wizards.json")._TEMPLATE_;
+  require("../testData/warbandData/wizards.json")._TEMPLATE_;
 
 function newWizardTemplate(
   name,

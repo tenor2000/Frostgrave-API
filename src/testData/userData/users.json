@@ -1,10 +1,52 @@
 {
-  "myCampaigns": 
-  "myRecord": {
-    "wins": 0,
-    "losses": 0
+  "1": {
+    "fname": "Frodo",
+    "lname": "Baggins",
+    "username": "FroFro",
+    "password": "notToBeStoredHere",
+    "email": "fbaggins@theshire.com",
+    "dateJoined": "2022-01-01",
+    "lastLogin": "2022-01-01",
+    "role": "admin"
   },
-  "myPreferences": {
-    "theme": "dark"
+  "2": {
+    "fname": "Samwise",
+    "lname": "Gamgee",
+    "password": "notToBeStoredHere",
+    "username": "SammyG",
+    "email": "samwise@gamgee.com",
+    "dateJoined": "2022-01-01",
+    "lastLogin": "2022-01-01",
+    "role": "user"
+  },
+  "3": {
+    "fname": "Pippin",
+    "lname": "Took",
+    "username": "PippinTook",
+    "password": "notToBeStoredHere",
+    "email": "pippin@took.com",
+    "dateJoined": "2022-01-01",
+    "lastLogin": "2022-01-01",
+    "role": "user"
+  },
+  "4": {
+    "fname": "Merry",
+    "lname": "Brandybuck",
+    "username": "MerryBrandybuck",
+    "password": "notToBeStoredHere",
+    "email": "merry@brandybuck.com",
+    "dateJoined": "2022-01-01",
+    "lastLogin": "2022-01-01",
+    "role": "user"
+  },
+  "5": {
+    "fname": "Bilbo",
+    "lname": "Baggins",
+    "username": "BilboBaggins",
+    "password": "notToBeStoredHere",
+    "email": "bilbobaggins@theshire.com",
+    "dateJoined": "2022-01-01",
+    "lastLogin": "2022-01-01",
+    "role": "user"
   }
 }

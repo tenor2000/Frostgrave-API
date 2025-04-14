@@ -2,11 +2,11 @@ const { randomBytes } = require("crypto");
 
 //Data to check
 const dataSets = {
-  wizard: require("../testData/rosterData/wizards.json"),
-  scenario: require("../testData/rosterData/scenarios.json"),
-  campaign: require("../testData/rosterData/campaigns.json"),
-  apprentice: require("../testData/rosterData/apprentices.json"),
-  roster: require("../testData/rosterData/rosters.json"),
+  wizard: require("../testData/warbandData/wizards.json"),
+  scenario: require("../testData/warbandData/scenarios.json"),
+  campaign: require("../testData/warbandData/campaigns.json"),
+  apprentice: require("../testData/warbandData/apprentices.json"),
+  roster: require("../testData/warbandData/rosters.json"),
 };
 
 function createNewId(type) {

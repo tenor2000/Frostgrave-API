@@ -5,15 +5,15 @@ const newWizardTemplate = require("../utilityFuncs/newWizardTemplate");
 const createNewId = require("../utilityFuncs/createNewId");
 
 const error = require("../utilityFuncs/error");
-const rostersData = require("../testData/rosterData/rosters.json");
-const wizardsData = require("../testData/rosterData/wizards.json");
+const rostersData = require("../testData/warbandData/rosters.json");
+const wizardsData = require("../testData/warbandData/wizards.json");
 const writeKeyValueToJson = require("../utilityFuncs/writeKeyValuetoJson");
 
 // api/warbands/
 
 router.route("/").get(async (req, res, next) => {
   const searchtype = req.query.type || null;
-  const warbandData = await getDataFromSource("rosterData", searchtype);
+  const warbandData = await getDataFromSource("warbandData", searchtype);
   warbandData ? res.json(warbandData) : next(error(404, "No Data Found"));
 });
 
@@ -28,7 +28,7 @@ router
     res.json(wizardsData);
   })
   .post((req, res, next) => {
-    // get form data and assign a random if
+    // get form data and assign a random id
     const formData = req.body;
     // console.log(formData);
 
@@ -44,22 +44,26 @@ router
       formData.backstory
     );
     writeKeyValueToJson(
-      "../testData/rosterData/wizards.json",
+      "../testData/warbandData/wizards.json",
       newWizardId,
       wizardObject
     );
     res.json(wizardObject);
   });
 
-// router.route("/wizards)
+router.route("/wizards/:ownerId/:id").get((req, res, next) => {
+  const ownerId = req.params.ownerId;
+  const wizardId = req.params.id;
+  res.json(wizardsData[wizardId]);
+});
 
-router.route("/:type").get(async (req, res, next) => {
-  const warbandData = await getDataFromSource("rosterData", req.params.type);
+router.route("/rosters").get(async (req, res, next) => {
+  const warbandData = await getDataFromSource("warbandData", req.params.type);
   warbandData ? res.json(warbandData) : next(error(404, "No Data Found"));
 });
 
 router.route("/:type/:id").get(async (req, res, next) => {
-  const warbandData = await getDataFromSource("rosterData", req.params.type);
+  const warbandData = await getDataFromSource("warbandData", req.params.type);
   const itemId = req.params.id;
 
   const result = warbandData.find((item) => item.id == itemId);
