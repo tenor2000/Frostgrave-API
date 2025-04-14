@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 const reference = require("./src/routes/reference");
-// const user = require("./src/routes/user");
+const users = require("./src/routes/users");
 const warbands = require("./src/routes/warbands");
 
 // Data retrieval for reference in views
@@ -40,7 +40,7 @@ app.set("view engine", "ejs");
 
 app.use("/api/reference", reference);
 app.use("/api/warbands", warbands);
-// app.use("/api/users", users);
+app.use("/api/users", users);
 
 // Routes
 app.get("/", (req, res, next) => {
@@ -90,7 +90,8 @@ app.use((req, res, next) => {
     contentEJS: "page404",
     title: "404 Error",
     imgSrc: "https://media.tenor.com/fRwU2Z3GKtgAAAAM/busy-working.gif",
-    content: "You have found a page that does not exist. Please try again.",
+    content:
+      "You have found a page that does not exist or is under construction. Please try again later.",
   };
   res.status(404).render("index", data);
 });
