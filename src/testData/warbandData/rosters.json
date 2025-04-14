@@ -1,30 +1,155 @@
-{
-  "asivbduv": {
-    "current": [
-      { "name": "Julius", "status": 1, "classId": 1, "itemSlots": [0] },
-      { "name": "Adam", "status": 0, "classId": 1, "itemSlots": [0] },
-      { "name": "Roger", "status": 1, "classId": 2, "itemSlots": [0] },
-      { "name": "Todd", "status": 2, "classId": 2, "itemSlots": [0] },
-      { "name": "Jeff", "status": 1, "classId": 4, "itemSlots": [0] },
-      { "name": "Hank", "status": 1, "classId": 7, "itemSlots": [0] },
-      { "name": "George", "status": 1, "classId": 5, "itemSlots": [0] },
-      { "name": "Clyde", "status": 1, "classId": 6, "itemSlots": [0] }
-    ],
-    "dropped": [],
-    "killed": []
+[
+  {
+    "wizardId": "Be93523XM",
+    "rosterPosition": 1,
+    "name": "Julius",
+    "status": 1,
+    "classId": 1,
+    "itemSlots": [0],
+    "rosterState": 1
   },
-  "adgdfhge": {
-    "current": [
-      { "name": "Fred", "status": 1, "classId": 1, "itemSlots": [101] },
-      { "name": "Sally", "status": 0, "classId": 1, "itemSlots": [0] },
-      { "name": "Jimmy", "status": 1, "classId": 2, "itemSlots": [0] },
-      { "name": "Ned", "status": 2, "classId": 2, "itemSlots": [0] },
-      { "name": "Sue", "status": 1, "classId": 3, "itemSlots": [0] },
-      { "name": "Bill", "status": 1, "classId": 4, "itemSlots": [0] },
-      { "name": "Joe", "status": 1, "classId": 7, "itemSlots": [0] },
-      { "name": "Jack", "status": 1, "classId": 6, "itemSlots": [0] }
-    ],
-    "dropped": [],
-    "killed": []
+  {
+    "wizardId": "Be93523XM",
+    "rosterPosition": 2,
+    "name": "Adam",
+    "status": 0,
+    "classId": 1,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "Be93523XM",
+    "rosterPosition": 3,
+    "name": "Roger",
+    "status": 1,
+    "classId": 2,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "Be93523XM",
+    "rosterPosition": 4,
+    "name": "Todd",
+    "status": 2,
+    "classId": 2,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "Be93523XM",
+    "rosterPosition": 5,
+    "name": "Jeff",
+    "status": 1,
+    "classId": 4,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "Be93523XM",
+    "rosterPosition": 6,
+    "name": "Hank",
+    "status": 1,
+    "classId": 7,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "Be93523XM",
+    "rosterPosition": 7,
+    "name": "George",
+    "status": 1,
+    "classId": 5,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "Be93523XM",
+    "rosterPosition": 8,
+    "name": "Clyde",
+    "status": 1,
+    "classId": 6,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "adgdfhge",
+    "rosterPosition": 1,
+    "name": "Fred",
+    "status": 1,
+    "classId": 1,
+    "itemSlots": [101],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "adgdfhge",
+    "rosterPosition": 2,
+    "name": "Sally",
+    "status": 0,
+    "classId": 1,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "adgdfhge",
+    "rosterPosition": 3,
+    "name": "Jimmy",
+    "status": 1,
+    "classId": 2,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "adgdfhge",
+    "rosterPosition": 4,
+    "name": "Ned",
+    "status": 2,
+    "classId": 2,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "adgdfhge",
+    "rosterPosition": 5,
+    "name": "Sue",
+    "status": 1,
+    "classId": 3,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "adgdfhge",
+    "rosterPosition": 6,
+    "name": "Bill",
+    "status": 1,
+    "classId": 4,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "adgdfhge",
+    "rosterPosition": 7,
+    "name": "Joe",
+    "status": 1,
+    "classId": 7,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "adgdfhge",
+    "rosterPosition": 8,
+    "name": "Jack",
+    "status": 1,
+    "classId": 6,
+    "itemSlots": [0],
+    "rosterState": 1
+  },
+  {
+    "wizardId": "_TEMPLATE_",
+    "rosterPosition": 0,
+    "name": "",
+    "status": 1,
+    "classId": 0,
+    "itemSlots": [0],
+    "rosterState": 1
   }
-}
+]

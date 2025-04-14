@@ -1,5 +1,6 @@
-{
-  "afwSifhW9M": {
+[
+  {
+    "wizardId": "Be93523XM",
     "name": "Jim",
     "class": "Apprentice",
     "status": 1,
@@ -20,7 +21,8 @@
       "health": 0
     }
   },
-  "afwSi24W9M": {
+  {
+    "wizardId": "CR9GoS59M",
     "name": "Terry",
     "class": "Apprentice",
     "status": 1,
@@ -41,7 +43,8 @@
       "health": 0
     }
   },
-  "_TEMPLATE_": {
+  {
+    "wizardId": "_TEMPLATE_",
     "name": "",
     "class": "Apprentice",
     "status": 1,
@@ -62,4 +65,4 @@
       "health": 0
     }
   }
-}
+]

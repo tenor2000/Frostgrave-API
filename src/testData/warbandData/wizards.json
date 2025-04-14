@@ -1,7 +1,6 @@
-{
-  "Be93523XM": {
-    "apprenticeId": "afwSifhW9M",
-    "rosterId": "asivbduv",
+[
+  {
+    "_id": "Be93523XM",
     "ownerId": 1,
     "name": "Tim",
     "classId": 4,
@@ -31,20 +30,9 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [
-      401,
-      402,
-      403
-    ],
-    "alignedSpellIds": [
-      601,
-      701,
-      901
-    ],
-    "neutralSpellIds": [
-      101,
-      301
-    ],
+    "primarySpellIds": [401, 402, 403],
+    "alignedSpellIds": [601, 701, 901],
+    "neutralSpellIds": [101, 301],
     "opposedSpellIds": [],
     "spellModifiers": {
       "401": -1
@@ -58,9 +46,8 @@
     "careerHistory": [],
     "backstory": null
   },
-  "CR9GoS59M": {
-    "apprenticeId": "",
-    "rosterId": "adgdfhge",
+  {
+    "_id": "CR9GoS59M",
     "ownerId": 2,
     "name": "Dave",
     "classId": 3,
@@ -74,13 +61,7 @@
     "will": 4,
     "cost": 0,
     "status": 1,
-    "itemSlots": [
-      105,
-      0,
-      0,
-      0,
-      0
-    ],
+    "itemSlots": [105, 0, 0, 0, 0],
     "statMods": {
       "move": 0,
       "fight": 0,
@@ -90,20 +71,9 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [
-      301,
-      302,
-      303
-    ],
-    "alignedSpellIds": [
-      1001,
-      601,
-      201
-    ],
-    "neutralSpellIds": [
-      501,
-      901
-    ],
+    "primarySpellIds": [301, 302, 303],
+    "alignedSpellIds": [1001, 601, 201],
+    "neutralSpellIds": [501, 901],
     "opposedSpellIds": [],
     "spellModifiers": {
       "301": -1
@@ -117,9 +87,8 @@
     "careerHistory": [],
     "backstory": null
   },
-  "NJ4Go52QS": {
-    "apprenticeId": "",
-    "rosterId": "",
+  {
+    "_id": "NJ4Go52QS",
     "ownerId": 3,
     "name": "Homer",
     "classId": 10,
@@ -149,20 +118,9 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [
-      1001,
-      1002,
-      1003
-    ],
-    "alignedSpellIds": [
-      301,
-      501,
-      802
-    ],
-    "neutralSpellIds": [
-      101,
-      201
-    ],
+    "primarySpellIds": [1001, 1002, 1003],
+    "alignedSpellIds": [301, 501, 802],
+    "neutralSpellIds": [101, 201],
     "opposedSpellIds": [],
     "spellModifiers": {},
     "soldiersLost": 0,
@@ -174,10 +132,9 @@
     "careerHistory": [],
     "backstory": null
   },
-  "_TEMPLATE_": {
-    "apprenticeId": null,
-    "rosterId": null,
-    "ownerId": 0,
+  {
+    "_id": "_TEMPLATE_",
+    "ownerId": null,
     "name": null,
     "classId": 0,
     "level": 0,
@@ -220,9 +177,8 @@
     "careerHistory": [],
     "backstory": null
   },
-  "Miwse16g": {
-    "apprenticeId": null,
-    "rosterId": null,
+  {
+    "_id": "Miwse16g",
     "ownerId": 5,
     "name": "Timmy",
     "classId": 0,
@@ -252,20 +208,9 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [
-      106,
-      202,
-      203
-    ],
-    "alignedSpellIds": [
-      205,
-      204,
-      203
-    ],
-    "neutralSpellIds": [
-      108,
-      202
-    ],
+    "primarySpellIds": [106, 202, 203],
+    "alignedSpellIds": [205, 204, 203],
+    "neutralSpellIds": [108, 202],
     "opposedSpellIds": [],
     "spellModifiers": {},
     "soldiersLost": 0,
@@ -277,4 +222,4 @@
     "careerHistory": [],
     "backstory": "After discovering an ancient artifact, you were drawn ...\r\n    "
   }
-}
+]
