@@ -6,7 +6,7 @@ function isValidMatchingObject(inputObj, matchObject) {
     return false;
   }
 
-  return requiredKeys.every((key) => inputKeys.includes(key));
+  return matchKeys.every((key) => inputKeys.includes(key));
 }
 
 module.exports = isValidMatchingObject;

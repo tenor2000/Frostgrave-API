@@ -6,7 +6,7 @@ const dataSets = {
   scenario: require("../testData/warbandData/scenarios.json"),
   campaign: require("../testData/warbandData/campaigns.json"),
   apprentice: require("../testData/warbandData/apprentices.json"),
-  roster: require("../testData/warbandData/rosters.json"),
+  roster: require("../testData/warbandData/personnel.json"),
 };
 
 function generateNewId(type) {
@@ -28,6 +28,9 @@ function generateRandomString(type) {
       break;
     case "campaign":
       idLength = 11;
+      break;
+    case "roster":
+      idLength = 12;
       break;
     default:
       idLength = 9;

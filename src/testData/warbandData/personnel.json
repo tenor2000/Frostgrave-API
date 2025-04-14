@@ -1,6 +1,6 @@
 [
   {
-    "wizardId": "Be93523XM",
+    "wizard_id": "Be93523XM",
     "rosterPosition": 1,
     "name": "Julius",
     "status": 1,
@@ -9,7 +9,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "Be93523XM",
+    "wizard_id": "Be93523XM",
     "rosterPosition": 2,
     "name": "Adam",
     "status": 0,
@@ -18,7 +18,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "Be93523XM",
+    "wizard_id": "Be93523XM",
     "rosterPosition": 3,
     "name": "Roger",
     "status": 1,
@@ -27,7 +27,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "Be93523XM",
+    "wizard_id": "Be93523XM",
     "rosterPosition": 4,
     "name": "Todd",
     "status": 2,
@@ -36,7 +36,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "Be93523XM",
+    "wizard_id": "Be93523XM",
     "rosterPosition": 5,
     "name": "Jeff",
     "status": 1,
@@ -45,7 +45,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "Be93523XM",
+    "wizard_id": "Be93523XM",
     "rosterPosition": 6,
     "name": "Hank",
     "status": 1,
@@ -54,7 +54,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "Be93523XM",
+    "wizard_id": "Be93523XM",
     "rosterPosition": 7,
     "name": "George",
     "status": 1,
@@ -63,7 +63,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "Be93523XM",
+    "wizard_id": "Be93523XM",
     "rosterPosition": 8,
     "name": "Clyde",
     "status": 1,
@@ -72,7 +72,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "adgdfhge",
+    "wizard_id": "adgdfhge",
     "rosterPosition": 1,
     "name": "Fred",
     "status": 1,
@@ -81,7 +81,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "adgdfhge",
+    "wizard_id": "adgdfhge",
     "rosterPosition": 2,
     "name": "Sally",
     "status": 0,
@@ -90,7 +90,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "adgdfhge",
+    "wizard_id": "adgdfhge",
     "rosterPosition": 3,
     "name": "Jimmy",
     "status": 1,
@@ -99,7 +99,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "adgdfhge",
+    "wizard_id": "adgdfhge",
     "rosterPosition": 4,
     "name": "Ned",
     "status": 2,
@@ -108,7 +108,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "adgdfhge",
+    "wizard_id": "adgdfhge",
     "rosterPosition": 5,
     "name": "Sue",
     "status": 1,
@@ -117,7 +117,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "adgdfhge",
+    "wizard_id": "adgdfhge",
     "rosterPosition": 6,
     "name": "Bill",
     "status": 1,
@@ -126,7 +126,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "adgdfhge",
+    "wizard_id": "adgdfhge",
     "rosterPosition": 7,
     "name": "Joe",
     "status": 1,
@@ -135,7 +135,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "adgdfhge",
+    "wizard_id": "adgdfhge",
     "rosterPosition": 8,
     "name": "Jack",
     "status": 1,
@@ -144,7 +144,7 @@
     "rosterState": 1
   },
   {
-    "wizardId": "_TEMPLATE_",
+    "wizard_id": "_TEMPLATE_",
     "rosterPosition": 0,
     "name": "",
     "status": 1,

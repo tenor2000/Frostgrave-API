@@ -1,57 +1,10 @@
 [
   {
-    "_id": "Be93523XM",
-    "ownerId": 1,
-    "name": "Tim",
-    "classId": 4,
-    "level": 0,
-    "health": 14,
-    "currentHealth": 14,
-    "move": 6,
-    "fight": 2,
-    "shoot": 0,
-    "armor": 10,
-    "will": 4,
-    "cost": 0,
-    "status": 1,
-    "itemSlots": {
-      "slot1": 101,
-      "slot2": 0,
-      "slot3": 0,
-      "slot4": 0,
-      "slot5": 0
-    },
-    "statMods": {
-      "move": 0,
-      "fight": 0,
-      "shoot": 0,
-      "armor": 0,
-      "will": 0,
-      "health": 0
-    },
-    "gold": 400,
-    "primarySpellIds": [401, 402, 403],
-    "alignedSpellIds": [601, 701, 901],
-    "neutralSpellIds": [101, 301],
-    "opposedSpellIds": [],
-    "spellModifiers": {
-      "401": -1
-    },
-    "soldiersLost": 0,
-    "xp": 0,
-    "xpSpent": 0,
-    "vaultItems": [],
-    "base": 1001,
-    "currentScenario": null,
-    "careerHistory": [],
-    "backstory": null
-  },
-  {
-    "_id": "CR9GoS59M",
+    "wizard_id": "CR9GoS59M",
     "ownerId": 2,
     "name": "Dave",
     "classId": 3,
-    "level": 4,
+    "level": 6,
     "health": 14,
     "currentHealth": 14,
     "move": 6,
@@ -61,7 +14,13 @@
     "will": 4,
     "cost": 0,
     "status": 1,
-    "itemSlots": [105, 0, 0, 0, 0],
+    "itemSlots": [
+      105,
+      0,
+      0,
+      0,
+      0
+    ],
     "statMods": {
       "move": 0,
       "fight": 0,
@@ -71,9 +30,20 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [301, 302, 303],
-    "alignedSpellIds": [1001, 601, 201],
-    "neutralSpellIds": [501, 901],
+    "primarySpellIds": [
+      301,
+      302,
+      303
+    ],
+    "alignedSpellIds": [
+      1001,
+      601,
+      201
+    ],
+    "neutralSpellIds": [
+      501,
+      901
+    ],
     "opposedSpellIds": [],
     "spellModifiers": {
       "301": -1
@@ -88,7 +58,65 @@
     "backstory": null
   },
   {
-    "_id": "NJ4Go52QS",
+    "wizard_id": "CR9GoS59M",
+    "ownerId": 2,
+    "name": "Dave",
+    "classId": 3,
+    "level": 4,
+    "health": 14,
+    "currentHealth": 14,
+    "move": 6,
+    "fight": 2,
+    "shoot": 0,
+    "armor": 10,
+    "will": 4,
+    "cost": 0,
+    "status": 1,
+    "itemSlots": [
+      105,
+      0,
+      0,
+      0,
+      0
+    ],
+    "statMods": {
+      "move": 0,
+      "fight": 0,
+      "shoot": 0,
+      "armor": 0,
+      "will": 0,
+      "health": 0
+    },
+    "gold": 400,
+    "primarySpellIds": [
+      301,
+      302,
+      303
+    ],
+    "alignedSpellIds": [
+      1001,
+      601,
+      201
+    ],
+    "neutralSpellIds": [
+      501,
+      901
+    ],
+    "opposedSpellIds": [],
+    "spellModifiers": {
+      "301": -1
+    },
+    "soldiersLost": 0,
+    "xp": 400,
+    "xpSpent": 200,
+    "vaultItems": [],
+    "base": 1004,
+    "currentScenario": null,
+    "careerHistory": [],
+    "backstory": null
+  },
+  {
+    "wizard_id": "NJ4Go52QS",
     "ownerId": 3,
     "name": "Homer",
     "classId": 10,
@@ -118,9 +146,20 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [1001, 1002, 1003],
-    "alignedSpellIds": [301, 501, 802],
-    "neutralSpellIds": [101, 201],
+    "primarySpellIds": [
+      1001,
+      1002,
+      1003
+    ],
+    "alignedSpellIds": [
+      301,
+      501,
+      802
+    ],
+    "neutralSpellIds": [
+      101,
+      201
+    ],
     "opposedSpellIds": [],
     "spellModifiers": {},
     "soldiersLost": 0,
@@ -133,9 +172,9 @@
     "backstory": null
   },
   {
-    "_id": "_TEMPLATE_",
-    "ownerId": null,
-    "name": null,
+    "wizard_id": "_TEMPLATE_",
+    "ownerId": "",
+    "name": "",
     "classId": 0,
     "level": 0,
     "health": 14,
@@ -178,7 +217,7 @@
     "backstory": null
   },
   {
-    "_id": "Miwse16g",
+    "wizard_id": "Miwse16g",
     "ownerId": 5,
     "name": "Timmy",
     "classId": 0,
@@ -208,9 +247,20 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [106, 202, 203],
-    "alignedSpellIds": [205, 204, 203],
-    "neutralSpellIds": [108, 202],
+    "primarySpellIds": [
+      106,
+      202,
+      203
+    ],
+    "alignedSpellIds": [
+      205,
+      204,
+      203
+    ],
+    "neutralSpellIds": [
+      108,
+      202
+    ],
     "opposedSpellIds": [],
     "spellModifiers": {},
     "soldiersLost": 0,

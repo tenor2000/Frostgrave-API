@@ -8,7 +8,9 @@ function newWizardTemplate(
   backstory
 ) {
   const wizardTemplate = structuredClone(
-    require("../testData/warbandData/wizards.json")._TEMPLATE_
+    require("../testData/warbandData/wizards.json").find(
+      (w) => w._id == "_TEMPLATE_"
+    )
   );
 
   wizardTemplate.name = name;
@@ -21,21 +23,40 @@ function newWizardTemplate(
   return wizardTemplate;
 }
 
-function newApprenticeTemplate(name) {
+function newApprenticeTemplate(name, wizardId) {
   const apprenticeTemplate = structuredClone(
-    require("../testData/warbandData/apprentices.json")._TEMPLATE_
+    require("../testData/warbandData/apprentices.json").find(
+      (a) => a.wizardId == "_TEMPLATE_"
+    )
   );
   apprenticeTemplate.name = name;
+  apprenticeTemplate.wizardId = wizardId;
 
   return apprenticeTemplate;
 }
 
+function newPersonnelTemplate(name, wizardId) {
+  const personnelTemplate = structuredClone(
+    require("../testData/warbandData/personnel.json").find(
+      (p) => p.wizardId == "_TEMPLATE_"
+    )
+  );
+  personnelTemplate.name = name;
+  personnelTemplate.wizardId = wizardId;
+  return personnelTemplate;
+}
+
 function newUserTemplate(name) {
   const userTemplate = structuredClone(
-    require("../testData/userData/users.json")._TEMPLATE_
+    require("../testData/userData/users.json").find((u) => u.id == "_TEMPLATE_")
   );
   userTemplate.name = name;
   return userTemplate;
 }
 
-module.exports = { newWizardTemplate, newApprenticeTemplate, newUserTemplate };
+module.exports = {
+  newWizardTemplate,
+  newApprenticeTemplate,
+  newPersonnelTemplate,
+  newUserTemplate,
+};

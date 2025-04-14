@@ -1,6 +1,6 @@
 [
   {
-    "wizardId": "Be93523XM",
+    "wizard_id": "Be93523XM",
     "name": "Jim",
     "class": "Apprentice",
     "status": 1,
@@ -22,7 +22,7 @@
     }
   },
   {
-    "wizardId": "CR9GoS59M",
+    "wizard_id": "CR9GoS59M",
     "name": "Terry",
     "class": "Apprentice",
     "status": 1,
@@ -44,7 +44,7 @@
     }
   },
   {
-    "wizardId": "_TEMPLATE_",
+    "wizard_id": "_TEMPLATE_",
     "name": "",
     "class": "Apprentice",
     "status": 1,
