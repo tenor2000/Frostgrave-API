@@ -23,26 +23,27 @@ function newWizardTemplate(
   return wizardTemplate;
 }
 
-function newApprenticeTemplate(name, wizardId) {
+function newApprenticeTemplate(name, id) {
   const apprenticeTemplate = structuredClone(
     require("../testData/warbandData/apprentices.json").find(
-      (a) => a.wizardId == "_TEMPLATE_"
+      (a) => a.wizard_id == "_TEMPLATE_"
     )
   );
   apprenticeTemplate.name = name;
-  apprenticeTemplate.wizardId = wizardId;
+  apprenticeTemplate.wizard_id = id;
 
   return apprenticeTemplate;
 }
 
-function newPersonnelTemplate(name, wizardId) {
+function newPersonnelTemplate(name, rosterPosition, wizardId) {
   const personnelTemplate = structuredClone(
     require("../testData/warbandData/personnel.json").find(
       (p) => p.wizardId == "_TEMPLATE_"
     )
   );
   personnelTemplate.name = name;
-  personnelTemplate.wizardId = wizardId;
+  personnelTemplate.rosterPosition = rosterPosition;
+  personnelTemplate.wizard_id = wizardId;
   return personnelTemplate;
 }
 
