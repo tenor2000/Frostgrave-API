@@ -7,8 +7,9 @@ function newWizardTemplate(
   nspellsArray,
   backstory
 ) {
-  const wizardTemplate =
-    require("../testData/warbandData/wizards.json")._TEMPLATE_;
+  const wizardTemplate = structuredClone(
+    require("../testData/warbandData/wizards.json")._TEMPLATE_
+  );
 
   wizardTemplate.name = name;
   wizardTemplate.ownerId = parseInt(ownerId);
@@ -21,11 +22,20 @@ function newWizardTemplate(
 }
 
 function newApprenticeTemplate(name) {
-  const apprenticeTemplate =
-    require("../testData/warbandData/apprentices.json")._TEMPLATE_;
+  const apprenticeTemplate = structuredClone(
+    require("../testData/warbandData/apprentices.json")._TEMPLATE_
+  );
   apprenticeTemplate.name = name;
 
   return apprenticeTemplate;
 }
 
-(module.exports = newWizardTemplate), newApprenticeTemplate;
+function newUserTemplate(name) {
+  const userTemplate = structuredClone(
+    require("../testData/userData/users.json")._TEMPLATE_
+  );
+  userTemplate.name = name;
+  return userTemplate;
+}
+
+module.exports = { newWizardTemplate, newApprenticeTemplate, newUserTemplate };
