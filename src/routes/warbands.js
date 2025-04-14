@@ -14,6 +14,7 @@ const replaceObjectInJson = require("../utilityFuncs/replaceObjectInJson");
 const isValidMatchingObject = require("../utilityFuncs/isValidMatchingObject");
 const error = require("../utilityFuncs/error");
 
+// Data to be replaced by MongoDB
 const apprenticesData = require("../testData/warbandData/apprentices.json");
 const wizardsData = require("../testData/warbandData/wizards.json");
 const personnelData = require("../testData/warbandData/personnel.json");
@@ -128,7 +129,7 @@ router
       formData.backstory
     );
 
-    wizardObject._id = newWizardId;
+    wizardObject.wizard_id = newWizardId;
     writeObjectToJson("../testData/warbandData/wizards.json", wizardObject);
     res.status(201).json(wizardObject);
   });

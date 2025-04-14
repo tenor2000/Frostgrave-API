@@ -9,7 +9,7 @@ function newWizardTemplate(
 ) {
   const wizardTemplate = structuredClone(
     require("../testData/warbandData/wizards.json").find(
-      (w) => w._id == "_TEMPLATE_"
+      (w) => w.wizard_id == "_TEMPLATE_"
     )
   );
 
