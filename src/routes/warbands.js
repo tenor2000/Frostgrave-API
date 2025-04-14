@@ -56,9 +56,9 @@ router
 router
   .route("/apprentices/:id")
   .get((req, res, next) => {
-    const wizardId = req.params.id;
+    const wizard_id = req.params.id;
 
-    const apprentice = apprenticesData.find((a) => a.wizardId == wizardId);
+    const apprentice = apprenticesData.find((a) => a.wizard_id == wizard_id);
 
     apprentice
       ? res.json(apprentice)
@@ -69,14 +69,14 @@ router
     const formData = req.body;
 
     const apprenticeObject = apprenticesData.find(
-      (a) => a.wizardId == req.params.id
+      (a) => a.wizard_id == req.params.id
     );
 
-    if (isValidMatchingObject(apprenticeObject, formData)) {
-      apprenticeObject[wizardId] = req.params.id;
-      writeObjectToJson(
+    if (apprenticeObject && isValidMatchingObject(formData, apprenticeObject)) {
+      apprenticeObject.wizard_id = req.params.id;
+      replaceObjectInJson(
         "../testData/warbandData/apprentices.json",
-        req.params.id,
+        apprenticeObject,
         formData
       );
       res.status(201).json(formData);
@@ -85,8 +85,21 @@ router
     }
   })
   .delete((req, res, next) => {
-    const wizardId = req.params.id;
-    // WIP
+    const wizard_id = req.params.id;
+
+    const apprenticeObject = apprenticesData.find(
+      (a) => a.wizard_id == wizard_id
+    );
+
+    if (apprenticeObject) {
+      deleteObjectFromJson(
+        "../testData/warbandData/apprentices.json",
+        wizard_id
+      );
+      res.status(201).json(apprenticeObject);
+    } else {
+      next(error(404, "Apprentice not found"));
+    }
   });
 
 router
@@ -114,7 +127,6 @@ router
       formData.neutralSpellIds,
       formData.backstory
     );
-    console.log(wizardObject);
 
     wizardObject._id = newWizardId;
     writeObjectToJson("../testData/warbandData/wizards.json", wizardObject);
@@ -150,7 +162,6 @@ router
     }
   })
   .delete((req, res, next) => {
-    //WIP
     const wizard_id = req.params.id;
 
     const wizardObject = wizardsData.find((w) => w.wizard_id == wizard_id);
