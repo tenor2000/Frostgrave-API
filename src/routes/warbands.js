@@ -4,11 +4,13 @@ const getDataFromSource = require("../utilityFuncs/getDataFromSource");
 const newWizardTemplate = require("../utilityFuncs/newTemplates");
 const newApprenticeTemplate = require("../utilityFuncs/newTemplates");
 const generateNewId = require("../utilityFuncs/generateNewId");
+const writeKeyValueToJson = require("../utilityFuncs/writeKeyValuetoJson");
+const deleteKeyFromJson = require("../utilityFuncs/deleteKeyFromJson");
+const isValidMatchingObject = require("../utilityFuncs/isValidMatchingObject");
 
 const error = require("../utilityFuncs/error");
 const apprenticesData = require("../testData/warbandData/apprentices.json");
 const wizardsData = require("../testData/warbandData/wizards.json");
-const writeKeyValueToJson = require("../utilityFuncs/writeKeyValuetoJson");
 
 // api/warbands/
 
@@ -63,8 +65,20 @@ router
       : next(error(404, "No Data Found"));
   })
   .put((req, res, next) => {
-    const apprenticeId = req.params.id;
-    // WIP
+    // formData should be an entire apprentice object, when changes are made
+    const formData = req.body;
+
+    if (isValidMatchingObject(apprenticesData["_TEMPLATE_"], formData)) {
+      apprenticesData[req.params.id] = formData;
+      writeKeyValueToJson(
+        "../testData/warbandData/apprentices.json",
+        req.params.id,
+        formData
+      );
+      res.status(201).json(formData);
+    } else {
+      next(error(400, "Invalid Data"));
+    }
   })
   .delete((req, res, next) => {
     const apprenticeId = req.params.id;
@@ -114,10 +128,31 @@ router
       : next(error(404, "No Data Found"));
   })
   .put((req, res, next) => {
+    // formData should be an entire wizard object, when changes are made
     const formData = req.body;
+
+    if (isValidMatchingObject(wizardsData["_TEMPLATE_"], formData)) {
+      wizardsData[req.params.id] = formData;
+      writeKeyValueToJson(
+        "../testData/warbandData/wizards.json",
+        req.params.id,
+        formData
+      );
+      res.status(201).json(formData);
+    } else {
+      next(error(400, "Invalid Data"));
+    }
   })
   .delete((req, res, next) => {
     //WIP
+    const wizardId = req.params.id;
+
+    if (wizardsData[wizardId]) {
+      deleteKeyFromJson("../testData/warbandData/wizards.json", wizardId);
+      res.status(201).json(wizardsData[wizardId]);
+    } else {
+      return next(error(404, "Wizard not found"));
+    }
   });
 
 router
