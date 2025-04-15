@@ -36,16 +36,17 @@ router
   .post((req, res, next) => {
     // get form data and assign a object to wizardId
     const formData = req.body;
-    // console.log(formData);
+    console.log(formData);
 
-    const wizardId = formData.id;
+    const wizard_id = formData.wizard_id;
+    console.log(wizardsData);
 
-    if (!wizardsData.find((w) => w.wizardId == wizardId)) {
+    if (!wizardsData.find((w) => w.wizard_id == wizard_id)) {
       return next(error(404, "Wizard not found"));
     }
 
     const apprenticeObject = newApprenticeTemplate(formData.name);
-    apprenticeObject.wizardId = wizardId;
+    apprenticeObject.wizard_id = wizard_id;
 
     writeObjectToJson(
       "../testData/warbandData/apprentices.json",
