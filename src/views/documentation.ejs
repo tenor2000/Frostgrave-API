@@ -1,0 +1,54 @@
+<div id="documentation">
+  <h1>Documentation</h1>
+  <p>Here are some endpoints for the Frostgrave API</p>
+  <h2>/api/reference(/:type)</h2>
+  <p>
+    Returns all reference data for the game. You can add a query parameter to
+    filter by type or add to the endpoint as a route parameter
+  </p>
+  <ul>
+    <% for (let i=0; i < referenceTypes.length; i++) { %>
+    <li><%= referenceTypes[i] %></li>
+    <% } %>
+  </ul>
+  <h2>/api/warbands</h2>
+  <p>
+    Returns all warband data for the game. You can add a query parameter to
+    filter by type or add to the endpoint as a route parameter
+  </p>
+  <ul>
+    <% for (let i=0; i < warbandTypes.length; i++) { %>
+    <li><%= warbandTypes[i] %></li>
+    <% } %>
+  </ul>
+  <h2>/api/warbands/wizards</h2>
+  <ul>
+    <li>GET all created wizards</li>
+    <li>POST Create New Wizard (Use form on 'Create New Wizard')</li>
+  </ul>
+  <h2>/api/warbands/wizards/:id</h2>
+  <ul>
+    <li>GET individual wizards by unique wizard_id</li>
+    <li>
+      PUT you will need to pass in the entire edited JSON wizard object with the
+      wizard_id (copy/paste from the GET)
+    </li>
+    <li>DELETE you will need to pass in the wizard_id to be deleted</li>
+  </ul>
+  <h2>/api/warbands/apprentices</h2>
+  <ul>
+    <li>GET all apprentices created</li>
+    <li>POST Create New Apprentice (requires req.wizard_id, name)</li>
+  </ul>
+  <h2>/api/warbands/apprentices/:id</h2>
+  <ul>
+    <li>GET individual apprentices by unique ID of their wizard (wizard_id)</li>
+    <li>
+      PUT you will need to pass in the entire JSON apprentice object with the
+      wizard_id (copy/paste from the GET)
+    </li>
+    <li>DELETE you will need to pass in the wizard_id</li>
+  </ul>
+  <h2>/api/warbands/personnel</h2>
+  <p>Returns all hired mercenaries that are attached to a wizard_id</p>
+</div>

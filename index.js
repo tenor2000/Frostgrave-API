@@ -11,9 +11,10 @@ const users = require("./src/routes/users");
 const warbands = require("./src/routes/warbands");
 
 // Data retrieval for reference in views
-const getReferenceData = require("./src/utilityFuncs/getDataFromSource");
+const getDataFromSource = require("./src/utilityFuncs/getDataFromSource");
 const getRandomBackstory = require("./src/utilityFuncs/getRandomBackstory");
-const referenceData = getReferenceData();
+const referenceData = getDataFromSource();
+const warbandData = getDataFromSource("warbandData");
 
 // Middleware
 app.use(express.static("./src/styles"));
@@ -90,12 +91,14 @@ app.get("/create", (req, res, next) => {
 //   res.render("index", data);
 // });
 
-// app.get("/documentation", (req, res, next) => {
-//   const data = {
-//     contentEJS: "login",
-//   };
-//   res.render("index", data);
-// });
+app.get("/documentation", (req, res, next) => {
+  const data = {
+    contentEJS: "documentation",
+    referenceTypes: Object.keys(referenceData),
+    warbandTypes: Object.keys(warbandData),
+  };
+  res.render("index", data);
+});
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500);

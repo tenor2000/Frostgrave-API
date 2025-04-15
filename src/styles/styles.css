@@ -151,6 +151,19 @@ select {
   text-align: center;
 }
 
+#documentation {
+  width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  border-radius: 5px;
+
+  padding: 1rem;
+}
+
+#documentation p {
+  text-align: left;
+}
+
 .image-container {
   display: flex;
   justify-content: center;
