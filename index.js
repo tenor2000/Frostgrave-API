@@ -29,6 +29,24 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
   next();
 });
 
+app.use("/api", (req, res, next) => {
+  let apiKey = req.get("x-api-key");
+
+  // code to override null api-key for now
+  if (!apiKey) {
+    apiKey = "notanapikey";
+  }
+  //
+
+  console.log("Checking for API Key...");
+
+  if (apiKey !== "notanapikey") {
+    return res.status(403).json({ error: "Forbidden - Invalid API Key" });
+  }
+
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -79,7 +97,6 @@ app.get("/create", (req, res, next) => {
 //   res.render("index", data);
 // });
 
-// Last Resort Error handling
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({ error: err.message });

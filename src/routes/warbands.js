@@ -186,7 +186,6 @@ router
     const formData = req.body;
     // console.log(formData);
 
-    // const newRosterId = generateNewId("personnel");
     const wizardId = formData.wizardId;
 
     if (!wizardsData.find((w) => w.wizardId == wizardId)) {
