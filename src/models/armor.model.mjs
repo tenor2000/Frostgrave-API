@@ -24,4 +24,4 @@ const armorSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("grades", learnerSchema);
+export default mongoose.model("armor", armorSchema);
