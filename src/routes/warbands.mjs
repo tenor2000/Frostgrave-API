@@ -1,18 +1,21 @@
-const express = require("express");
-const router = express.Router();
-const getDataFromSource = require("../utilityFuncs/getDataFromSource");
-const {
+import express from "express";
+
+import getDataFromSource from "../utilityFuncs/getDataFromSource.mjs";
+
+import {
   newPersonnelTemplate,
   newWizardTemplate,
   newApprenticeTemplate,
-} = require("../utilityFuncs/newTemplates");
+} from "../utilityFuncs/newTemplates.mjs";
 
-const generateNewId = require("../utilityFuncs/generateNewId");
-const writeObjectToJson = require("../utilityFuncs/writeObjectToJson");
-const deleteObjectFromJson = require("../utilityFuncs/deleteObjectFromJson");
-const replaceObjectInJson = require("../utilityFuncs/replaceObjectInJson");
-const isValidMatchingObject = require("../utilityFuncs/isValidMatchingObject");
-const error = require("../utilityFuncs/error");
+import generateNewId from "../utilityFuncs/generateNewId.mjs";
+import writeObjectToJson from "../utilityFuncs/writeObjectToJson.mjs";
+import deleteObjectFromJson from "../utilityFuncs/deleteObjectFromJson.mjs";
+import replaceObjectInJson from "../utilityFuncs/replaceObjectInJson.mjs";
+import isValidMatchingObject from "../utilityFuncs/isValidMatchingObject.mjs";
+import error from "../utilityFuncs/error.mjs";
+
+const router = express.Router();
 
 // Data to be replaced by MongoDB
 const apprenticesData = require("../testData/warbandData/apprentices.json");
@@ -224,4 +227,4 @@ router
     //WIP
   });
 
-module.exports = router;
+export default router;

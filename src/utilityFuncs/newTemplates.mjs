@@ -1,4 +1,4 @@
-function newWizardTemplate(
+export function newWizardTemplate(
   name,
   ownerId,
   classId,
@@ -23,7 +23,7 @@ function newWizardTemplate(
   return wizardTemplate;
 }
 
-function newApprenticeTemplate(name, id) {
+export function newApprenticeTemplate(name, id) {
   const apprenticeTemplate = structuredClone(
     require("../testData/warbandData/apprentices.json").find(
       (a) => a.wizard_id == "_TEMPLATE_"
@@ -35,7 +35,7 @@ function newApprenticeTemplate(name, id) {
   return apprenticeTemplate;
 }
 
-function newPersonnelTemplate(name, rosterPosition, id) {
+export function newPersonnelTemplate(name, rosterPosition, id) {
   const personnelTemplate = structuredClone(
     require("../testData/warbandData/personnel.json").find(
       (p) => p.wizard_id == "_TEMPLATE_"
@@ -47,17 +47,10 @@ function newPersonnelTemplate(name, rosterPosition, id) {
   return personnelTemplate;
 }
 
-function newUserTemplate(name) {
+export function newUserTemplate(name) {
   const userTemplate = structuredClone(
     require("../testData/userData/users.json").find((u) => u.id == "_TEMPLATE_")
   );
   userTemplate.name = name;
   return userTemplate;
 }
-
-module.exports = {
-  newWizardTemplate,
-  newApprenticeTemplate,
-  newPersonnelTemplate,
-  newUserTemplate,
-};

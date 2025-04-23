@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 // This will not be necessary when implementing mongodb
 
@@ -10,4 +10,4 @@ function deleteObjectFromJson(jsonPath, id) {
   fs.writeFileSync(fullPath, JSON.stringify(updatedData, null, 2));
 }
 
-module.exports = deleteObjectFromJson;
+export default deleteObjectFromJson;

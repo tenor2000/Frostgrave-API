@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 // This will literally write to json, this will be replaced by Mongodb
 
@@ -17,4 +17,4 @@ function replaceObjectInJson(jsonPath, prevObject, newObject) {
   }
 }
 
-module.exports = replaceObjectInJson;
+export default replaceObjectInJson;

@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+import path from "path";
+import fs from "fs";
 
 function getDataFromSource(dir = "referenceData", type = "") {
   const data = {};
@@ -44,4 +44,4 @@ function getDataFromSource(dir = "referenceData", type = "") {
   return data;
 }
 
-module.exports = getDataFromSource;
+export default getDataFromSource;

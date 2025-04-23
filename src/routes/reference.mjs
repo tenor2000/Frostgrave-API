@@ -1,7 +1,8 @@
-const express = require("express");
+import express from "express";
+import error from "../utilityFuncs/error.mjs";
+import getDataFromSource from "../utilityFuncs/getDataFromSource.mjs";
+
 const router = express.Router();
-const error = require("../utilityFuncs/error");
-const getDataFromSource = require("../utilityFuncs/getDataFromSource");
 
 // api/reference/
 
@@ -21,4 +22,4 @@ router.route("/:type").get(async (req, res, next) => {
   referenceData ? res.json(referenceData) : next(error(404, "No Data Found"));
 });
 
-module.exports = router;
+export default router;

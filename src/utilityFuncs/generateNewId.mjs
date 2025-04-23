@@ -1,12 +1,18 @@
-const { randomBytes } = require("crypto");
+import { randomBytes } from "crypto";
 
 //Data to check
+import wizard from "../testData/warbandData/wizards.json";
+import scenario from "../testData/warbandData/scenarios.json";
+import campaign from "../testData/warbandData/campaigns.json";
+import apprentice from "../testData/warbandData/apprentices.json";
+import roster from "../testData/warbandData/personnel.json";
+
 const dataSets = {
-  wizard: require("../testData/warbandData/wizards.json"),
-  scenario: require("../testData/warbandData/scenarios.json"),
-  campaign: require("../testData/warbandData/campaigns.json"),
-  apprentice: require("../testData/warbandData/apprentices.json"),
-  roster: require("../testData/warbandData/personnel.json"),
+  wizard,
+  scenario,
+  campaign,
+  apprentice,
+  roster,
 };
 
 function generateNewId(type) {
@@ -48,4 +54,4 @@ function validateIdString(type, id) {
   return !dataset ? false : !dataset[id];
 }
 
-module.exports = generateNewId;
+export default generateNewId;

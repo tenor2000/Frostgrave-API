@@ -9,4 +9,4 @@ function isValidMatchingObject(inputObj, matchObject) {
   return matchKeys.every((key) => inputKeys.includes(key));
 }
 
-module.exports = isValidMatchingObject;
+export default isValidMatchingObject;

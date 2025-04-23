@@ -1,18 +1,18 @@
-const express = require("express");
-const path = require("path");
-const error = require("./src/utilityFuncs/error");
-const ejs = require("ejs");
+import express from "express";
+import path from "path";
+import error from "./src/utilityFuncs/error.mjs";
+import ejs from "ejs";
 
 const app = express();
 const PORT = 3000;
 
-const reference = require("./src/routes/reference");
-const users = require("./src/routes/users");
-const warbands = require("./src/routes/warbands");
+import reference from "./src/routes/reference.mjs";
+import users from "./src/routes/users.mjs";
+import warbands from "./src/routes/warbands.mjs";
 
 // Data retrieval for reference in views
-const getDataFromSource = require("./src/utilityFuncs/getDataFromSource");
-const getRandomBackstory = require("./src/utilityFuncs/getRandomBackstory");
+import getDataFromSource from "./src/utilityFuncs/getDataFromSource.mjs";
+import getRandomBackstory from "./src/utilityFuncs/getRandomBackstory.mjs";
 const referenceData = getDataFromSource();
 const warbandData = getDataFromSource("warbandData");
 

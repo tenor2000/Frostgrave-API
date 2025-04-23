@@ -10,4 +10,4 @@ function getRandomBackstory() {
   return backstories[Math.floor(Math.random() * backstories.length)];
 }
 
-module.exports = getRandomBackstory;
+export default getRandomBackstory;

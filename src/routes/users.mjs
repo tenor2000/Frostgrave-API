@@ -1,7 +1,8 @@
-const express = require("express");
+import express from "express";
+import error from "../utilityFuncs/error.mjs";
+import getDataFromSource from "../utilityFuncs/getDataFromSource.mjs";
+
 const router = express.Router();
-const error = require("../utilityFuncs/error");
-const getDataFromSource = require("../utilityFuncs/getDataFromSource");
 
 // api/users/
 
@@ -25,4 +26,4 @@ router
     // console.log(formData);
   });
 
-module.exports = router;
+export default router;
