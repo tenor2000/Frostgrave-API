@@ -1,10 +1,19 @@
 import express from "express";
-import path from "path";
 import error from "./src/utilityFuncs/error.mjs";
 import ejs from "ejs";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 const PORT = 3000;
+
+// mongoose connection
+const connectDir = "frostgraveDB";
+mongoose.connect(process.env.ATLAS_URI + connectDir);
+mongoose.connection.once("open", () => {
+  console.log("connected to mongoDB");
+});
 
 import reference from "./src/routes/reference.mjs";
 import users from "./src/routes/users.mjs";
@@ -19,6 +28,8 @@ const warbandData = getDataFromSource("warbandData");
 // Middleware
 app.use(express.static("./src/styles"));
 app.use(express.static("./public"));
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.use((req, res, next) => {
   const time = new Date();

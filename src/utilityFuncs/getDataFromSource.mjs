@@ -1,9 +1,13 @@
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
 
 function getDataFromSource(dir = "referenceData", type = "") {
   const data = {};
   // REPLACE WITH CALL TO MONGODB
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
   const directoryPath = path.join(__dirname, "../testData/", dir);
   console.log("Fetching Data");
 

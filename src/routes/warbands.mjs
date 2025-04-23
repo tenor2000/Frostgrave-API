@@ -18,9 +18,33 @@ import error from "../utilityFuncs/error.mjs";
 const router = express.Router();
 
 // Data to be replaced by MongoDB
-const apprenticesData = require("../testData/warbandData/apprentices.json");
-const wizardsData = require("../testData/warbandData/wizards.json");
-const personnelData = require("../testData/warbandData/personnel.json");
+import path from "path";
+import fs from "fs/promises";
+import { fileURLToPath } from "url";
+
+// Recreate __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Read JSON files dynamically
+const apprenticesData = JSON.parse(
+  await fs.readFile(
+    path.join(__dirname, "../testData/warbandData/apprentices.json"),
+    "utf-8"
+  )
+);
+const wizardsData = JSON.parse(
+  await fs.readFile(
+    path.join(__dirname, "../testData/warbandData/wizards.json"),
+    "utf-8"
+  )
+);
+const personnelData = JSON.parse(
+  await fs.readFile(
+    path.join(__dirname, "../testData/warbandData/personnel.json"),
+    "utf-8"
+  )
+);
 
 // api/warbands/
 
