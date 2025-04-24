@@ -1,6 +1,7 @@
 const apprenticeSchema = new mongoose.Schema(
   {
     wizard_id: {
+      // This points to owner, owner can only have 1 apprentice
       type: String,
       required: true,
       unique: true,
@@ -11,7 +12,7 @@ const apprenticeSchema = new mongoose.Schema(
     },
     class: {
       type: String,
-      required: true,
+      default: "apprentice",
     },
     status: {
       type: Number,
@@ -22,6 +23,7 @@ const apprenticeSchema = new mongoose.Schema(
     armor: {
       type: Number,
       required: true,
+      default: 10,
     },
     itemSlots: {
       slot1: {
@@ -75,5 +77,4 @@ const apprenticeSchema = new mongoose.Schema(
   { timestamps: { createdAt: "created", updatedAt: "last_modified" } }
 );
 
-// Create and export the model
 export default mongoose.model("Apprentice", apprenticeSchema);
