@@ -8,6 +8,10 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
+// Data retrieval for reference in views
+import getDataFromSource from "./src/utilityFuncs/getDataFromSource.mjs";
+import getRandomBackstory from "./src/utilityFuncs/getRandomBackstory.mjs";
+
 // mongoose connection
 const connectDir = "frostgraveDB";
 mongoose.connect(process.env.ATLAS_URI + connectDir);
@@ -18,12 +22,6 @@ mongoose.connection.once("open", () => {
 import reference from "./src/routes/reference.mjs";
 import users from "./src/routes/users.mjs";
 import warbands from "./src/routes/warbands.mjs";
-
-// Data retrieval for reference in views
-import getDataFromSource from "./src/utilityFuncs/getDataFromSource.mjs";
-import getRandomBackstory from "./src/utilityFuncs/getRandomBackstory.mjs";
-const referenceData = getDataFromSource();
-const warbandData = getDataFromSource("warbandData");
 
 // Middleware
 app.use(express.static("./src/styles"));
@@ -81,6 +79,9 @@ app.get("/", (req, res, next) => {
 });
 
 app.get("/create", (req, res, next) => {
+  const referenceData = getDataFromSource("reference");
+  //const warbandData = getDataFromSource("warbandData");
+
   if (!referenceData) {
     return next(error(404, "No Data Found"));
   }
