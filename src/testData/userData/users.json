@@ -1,5 +1,5 @@
-{
-  "1": {
+[
+  {
     "fname": "Frodo",
     "lname": "Baggins",
     "username": "FroFro",
@@ -9,7 +9,7 @@
     "lastLogin": "2022-01-01",
     "role": "admin"
   },
-  "2": {
+  {
     "fname": "Samwise",
     "lname": "Gamgee",
     "password": "notToBeStoredHere",
@@ -19,7 +19,7 @@
     "lastLogin": "2022-01-01",
     "role": "user"
   },
-  "3": {
+  {
     "fname": "Pippin",
     "lname": "Took",
     "username": "PippinTook",
@@ -29,7 +29,7 @@
     "lastLogin": "2022-01-01",
     "role": "user"
   },
-  "4": {
+  {
     "fname": "Merry",
     "lname": "Brandybuck",
     "username": "MerryBrandybuck",
@@ -39,7 +39,7 @@
     "lastLogin": "2022-01-01",
     "role": "user"
   },
-  "5": {
+  {
     "fname": "Bilbo",
     "lname": "Baggins",
     "username": "BilboBaggins",
@@ -49,4 +49,4 @@
     "lastLogin": "2022-01-01",
     "role": "user"
   }
-}
+]
