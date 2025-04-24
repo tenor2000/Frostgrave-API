@@ -17,7 +17,8 @@ const personnelSchema = new mongoose.Schema(
     status: {
       type: Number,
       required: true,
-      enum: [0, 1, 2], // 0 = Dead, 1 = Active, 2 = Badly Wounded, 7 = Hired, 8 = For Hire, 9 = Vacant
+      enum: [0, 1, 2, 7, 8, 9], // 0 = Dead, 1 = Active, 2 = Badly Wounded, 7 = Hired, 8 = For Hire, 9 = Vacant
+      default: 8,
     },
     classId: {
       type: Number,
@@ -32,7 +33,7 @@ const personnelSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: { createdAt: "created", updatedAt: "last_modified" } }
 );
 
 const Personnel = mongoose.model("Personnel", personnelSchema);
