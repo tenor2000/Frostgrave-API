@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 const apprenticeSchema = new mongoose.Schema(
   {
     wizard_id: {
