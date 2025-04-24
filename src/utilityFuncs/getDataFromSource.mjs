@@ -2,50 +2,34 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 
-function getDataFromSource(dir = "referenceData", type = "") {
-  const data = {};
-  // REPLACE WITH CALL TO MONGODB
+async function getDataFromSource(modelDirectory, type = "") {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
 
-  const directoryPath = path.join(__dirname, "../testData/", dir);
-  console.log("Fetching Data");
+  try {
+    const modelsPath = path.join(__dirname, `../models/${modelDirectory}/`);
+    let data = {};
 
-  if (type) {
-    const filePath = path.join(directoryPath, `${type}.json`);
-    try {
-      const fileContent = fs.readFileSync(filePath, "utf-8").trim();
-      const data = JSON.parse(fileContent);
-      return data;
-    } catch (err) {
-      throw new Error(`Error reading ${filePath}: ${err.message}`);
-    }
-  } else {
-    const files = fs.readdirSync(directoryPath);
-
-    for (const filename of files) {
-      if (filename.endsWith(".json")) {
-        const dataname = path.basename(filename, ".json");
-        const filePath = path.join(directoryPath, filename);
-
-        try {
-          const fileContent = fs.readFileSync(filePath, "utf-8").trim();
-
-          if (!fileContent) {
-            console.log(`Skipping empty file: ${filePath}`);
-            continue;
-          }
-
-          const jsonData = JSON.parse(fileContent);
-          data[dataname] = jsonData;
-        } catch (err) {
-          throw new Error(`Error reading ${filePath}: ${err.message}`);
-        }
+    if (type) {
+      const filename = type + "_data";
+      const filePath = path.join(modelsPath, `${type}.model.mjs`);
+      const modelModule = await import(filePath);
+      const Model = modelModule.default;
+      const modelData = await Model.find();
+      data[filename] = modelData;
+    } else {
+      for (const file of fs.readdirSync(modelsPath)) {
+        const filename = path.basename(file, ".model.mjs") + "_data";
+        const filePath = path.join(modelsPath, file);
+        const modelModule = await import(filePath);
+        const Model = modelModule.default;
+        data[filename] = await Model.find();
       }
     }
+    return data;
+  } catch (err) {
+    console.error(err);
   }
-
-  return data;
 }
 
 export default getDataFromSource;
