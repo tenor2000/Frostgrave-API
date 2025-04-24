@@ -8,4 +8,4 @@ const baseResourceSchema = new mongoose.Schema({
   source: { type: String, required: true },
 });
 
-export default mongoose.model("BaseUpgrade", kennelSchema);
+export default mongoose.model("BaseUpgrade", baseResourceSchema);

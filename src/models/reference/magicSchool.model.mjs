@@ -9,4 +9,4 @@ const magicSchoolSchema = new mongoose.Schema({
   opposed: [{ type: Number, required: true }],
 });
 
-export default mongoose.model("MagicSchool", wizardSchema);
+export default mongoose.model("MagicSchool", magicSchoolSchema);
