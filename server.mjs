@@ -6,11 +6,14 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Data retrieval for reference in views
-import getDataFromSource from "./src/utilityFuncs/getDataFromSource.mjs";
+import getModelsFromDirectory from "./src/utilityFuncs/getModelsFromDirectory.mjs";
 import getRandomBackstory from "./src/utilityFuncs/getRandomBackstory.mjs";
+
+const referenceModels = await getModelsFromDirectory("reference");
+const warbandModels = await getModelsFromDirectory("warband");
 
 // mongoose connection
 const connectDir = "frostgraveDB";
@@ -78,18 +81,15 @@ app.get("/", (req, res, next) => {
   res.render("index", data);
 });
 
-app.get("/create", (req, res, next) => {
-  const referenceData = getDataFromSource("reference");
-  //const warbandData = getDataFromSource("warbandData");
-
-  if (!referenceData) {
+app.get("/create", async (req, res, next) => {
+  if (!referenceModels) {
     return next(error(404, "No Data Found"));
   }
 
   const data = {
     contentEJS: "create",
-    spells: referenceData.spells,
-    classes: referenceData.schoolsOfMagic,
+    spells: await referenceModels.spell.find(),
+    classes: await referenceModels.magicSchool.find(),
     backstory: getRandomBackstory(),
   };
 
@@ -106,8 +106,8 @@ app.get("/create", (req, res, next) => {
 app.get("/documentation", (req, res, next) => {
   const data = {
     contentEJS: "documentation",
-    referenceTypes: Object.keys(referenceData),
-    warbandTypes: Object.keys(warbandData),
+    referenceTypes: Object.keys(referenceModels),
+    warbandTypes: Object.keys(warbandModels),
   };
   res.render("index", data);
 });
@@ -130,5 +130,5 @@ app.use((req, res, next) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+  console.log(`Server is listening on port: ${PORT}`);
 });
