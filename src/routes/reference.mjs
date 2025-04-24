@@ -11,6 +11,15 @@ import MagicSchoolModel from "../models/reference/magicSchool.model.mjs";
 import SpellModel from "../models/reference/spell.model.mjs";
 import SoldierModel from "../models/reference/soldier.model.mjs";
 
+const modelMap = {
+  armor: ArmorModel,
+  weapon: WeaponModel,
+  creature: CreatureModel,
+  magicSchool: MagicSchoolModel,
+  spell: SpellModel,
+  soldier: SoldierModel,
+};
+
 // api/reference/
 
 router.route("/").get(async (req, res, next) => {
@@ -29,8 +38,25 @@ router.route("/:type").get(async (req, res, next) => {
   referenceData ? res.json(referenceData) : next(error(404, "No Data Found"));
 });
 
-router.route("/data").post(async (req, res, next) => {
+router.route("/data/:modelType").post(async (req, res, next) => {
+  const { modelType } = req.params;
   const data = req.body;
+
+  const Model = modelMap[modelType];
+
+  if (!Model) {
+    return res
+      .status(404)
+      .json({ error: `No model found for type: ${modelType}` });
+  }
+
+  try {
+    const result = await Model.create(data);
+    res.json(result);
+  } catch (err) {
+    console.error(`Error inserting ${modelType}:`, err);
+    res.status(500).json({ error: err.message, details: err });
+  }
 });
 
 export default router;

@@ -15,6 +15,11 @@ const armorSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    moveMod: {
+      type: Number,
+      default: 0,
+      required: true,
+    },
     notes: {
       type: String,
       default: "--",

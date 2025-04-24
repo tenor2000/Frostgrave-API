@@ -4,9 +4,9 @@ const soldierSchema = new mongoose.Schema(
   {
     type: {
       type: String,
-      enum: ["standard", "specialist"],
+      enum: ["Standard", "Specialist"],
       required: true,
-      default: "standard",
+      default: "Standard",
     },
     source: {
       type: String,
@@ -17,7 +17,7 @@ const soldierSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    name: {
+    class: {
       type: String,
       required: true,
     },

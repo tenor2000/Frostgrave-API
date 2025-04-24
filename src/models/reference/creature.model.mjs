@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const creatureSchema = new mongoose.Schema(
   {
     creature_id: { type: Number, required: true, unique: true },
-    name: { type: String, required: true },
+    class: { type: String, required: true },
     type: { type: String, required: true },
     move: { type: Number, required: true },
     fight: { type: Number, required: true },
