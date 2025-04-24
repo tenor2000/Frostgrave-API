@@ -1,29 +1,48 @@
 import express from "express";
 import error from "../utilityFuncs/error.mjs";
-import getDataFromSource from "../utilityFuncs/getDataFromSource.mjs";
+import getModelsFromDirectory from "../utilityFuncs/getModelsFromDirectory.mjs";
 
 const router = express.Router();
 
 // api/users/
 
-router.route("/").get(async (req, res, next) => {
-  const searchtype = req.query.type || null;
-
-  const userData = await getDataFromSource("userData", searchtype);
-
-  userData ? res.json(userData) : next(error(404, "No Data Found"));
-});
-
 router
-  .route("/:type")
+  .route("/")
   .get(async (req, res, next) => {
-    const userData = await getDataFromSource("userData", req.params.type);
+    const searchtype = req.query.type || null;
+
+    const userModels = await getModelsFromDirectory("user", searchtype);
+
+    const Model = userModels["user"];
+
+    if (!Model) {
+      return res.status(404).json({ error: `No model found for type: user` });
+    }
+
+    const userData = await Model.find();
     userData ? res.json(userData) : next(error(404, "No Data Found"));
   })
-  .post((req, res, next) => {
-    // get form data and assign a random id
-    const formData = req.body;
-    // console.log(formData);
+  .post(async (req, res, next) => {
+    // Used for seeding
+    const modelMap = await getModelsFromDirectory("user");
+    const Model = modelMap["user"];
+
+    if (!Model) {
+      return res.status(404).json({ error: `No model found for type: user` });
+    }
+
+    try {
+      const userData = await Model.create(req.body);
+      res.status(201).json(userData);
+    } catch (err) {
+      console.error(`Error creating user:`, err);
+      res.status(500).json({ status: 500, error: err.message, details: err });
+    }
   });
+
+router.route("/:type").get(async (req, res, next) => {
+  const userData = await getDataFromSource("user", req.params.type);
+  userData ? res.json(userData) : next(error(404, "No Data Found"));
+});
 
 export default router;
