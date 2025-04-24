@@ -22,42 +22,52 @@ const wizardSchema = new mongoose.Schema(
     level: {
       type: Number,
       required: true,
+      default: 0,
     },
     health: {
       type: Number,
       required: true,
+      default: 14,
     },
     currentHealth: {
+      //this may be eliminated and only handled in front end
       type: Number,
       required: true,
     },
     move: {
       type: Number,
       required: true,
+      default: 6,
     },
     fight: {
       type: Number,
       required: true,
+      default: 2,
     },
     shoot: {
       type: Number,
       required: true,
+      default: 0,
     },
     armor: {
       type: Number,
       required: true,
+      default: 10,
     },
     will: {
       type: Number,
       required: true,
+      default: 4,
     },
     cost: {
       type: Number,
       required: true,
+      default: 0,
     },
     status: {
       type: Number,
       required: true,
+      default: 1,
     },
     itemSlots: {
       type: [Number],
@@ -92,6 +102,7 @@ const wizardSchema = new mongoose.Schema(
     gold: {
       type: Number,
       required: true,
+      default: 400,
     },
     primarySpellIds: {
       type: [Number],
@@ -115,16 +126,19 @@ const wizardSchema = new mongoose.Schema(
       default: {},
     },
     soldiersLost: {
+      // may be just a simple count of soldiers status 0 in the personeel collection
       type: Number,
       default: 0,
     },
     xp: {
       type: Number,
       required: true,
+      default: 0,
     },
     xpSpent: {
       type: Number,
       required: true,
+      default: 0,
     },
     vaultItems: {
       type: [Number],
@@ -132,7 +146,7 @@ const wizardSchema = new mongoose.Schema(
     },
     base: {
       type: Number,
-      required: true,
+      default: null,
     },
     currentScenario: {
       type: String,
@@ -150,5 +164,4 @@ const wizardSchema = new mongoose.Schema(
   { timestamps: { createdAt: "created", updatedAt: "last_modified" } }
 );
 
-// Create and export the model
 export default mongoose.model("Wizard", wizardSchema);
