@@ -8,7 +8,7 @@ export function newWizardTemplate(
   backstory
 ) {
   const wizardTemplate = structuredClone(
-    require("../testData/warbandData/wizards.json").find(
+    require("../../testData/warbandData/wizards.json").find(
       (w) => w.wizard_id == "_TEMPLATE_"
     )
   );
@@ -25,7 +25,7 @@ export function newWizardTemplate(
 
 export function newApprenticeTemplate(name, id) {
   const apprenticeTemplate = structuredClone(
-    require("../testData/warbandData/apprentices.json").find(
+    require("../../testData/warbandData/apprentices.json").find(
       (a) => a.wizard_id == "_TEMPLATE_"
     )
   );
@@ -37,7 +37,7 @@ export function newApprenticeTemplate(name, id) {
 
 export function newPersonnelTemplate(name, rosterPosition, id) {
   const personnelTemplate = structuredClone(
-    require("../testData/warbandData/personnel.json").find(
+    require("../../testData/warbandData/personnel.json").find(
       (p) => p.wizard_id == "_TEMPLATE_"
     )
   );
@@ -49,7 +49,9 @@ export function newPersonnelTemplate(name, rosterPosition, id) {
 
 export function newUserTemplate(name) {
   const userTemplate = structuredClone(
-    require("../testData/userData/users.json").find((u) => u.id == "_TEMPLATE_")
+    require("../../testData/userData/users.json").find(
+      (u) => u.id == "_TEMPLATE_"
+    )
   );
   userTemplate.name = name;
   return userTemplate;
