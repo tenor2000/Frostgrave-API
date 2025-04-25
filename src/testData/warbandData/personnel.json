@@ -1,155 +1,176 @@
 [
   {
-    "wizard_id": "Be93523XM",
+    "wizard_id": "680aa65cb7232c85534d3f6b",
     "rosterPosition": 1,
     "name": "Julius",
     "status": 1,
-    "classId": 1,
-    "itemSlots": [0],
+    "soldier_id": 1,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "Be93523XM",
+    "wizard_id": "680aa65cb7232c85534d3f6b",
     "rosterPosition": 2,
     "name": "Adam",
     "status": 0,
-    "classId": 1,
+    "soldier_id": 1,
     "itemSlots": [0],
     "rosterState": 1
   },
   {
-    "wizard_id": "Be93523XM",
+    "wizard_id": "680aa65cb7232c85534d3f6b",
     "rosterPosition": 3,
     "name": "Roger",
     "status": 1,
-    "classId": 2,
-    "itemSlots": [0],
+    "soldier_id": 2,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "Be93523XM",
+    "wizard_id": "680aa65cb7232c85534d3f6b",
     "rosterPosition": 4,
     "name": "Todd",
     "status": 2,
-    "classId": 2,
-    "itemSlots": [0],
+    "soldier_id": 2,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "Be93523XM",
+    "wizard_id": "680aa65cb7232c85534d3f6b",
     "rosterPosition": 5,
     "name": "Jeff",
     "status": 1,
-    "classId": 4,
-    "itemSlots": [0],
+    "soldier_id": 4,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "Be93523XM",
+    "wizard_id": "680aa65cb7232c85534d3f6b",
     "rosterPosition": 6,
     "name": "Hank",
     "status": 1,
-    "classId": 7,
-    "itemSlots": [0],
+    "soldier_id": 7,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "Be93523XM",
+    "wizard_id": "680aa65cb7232c85534d3f6b",
     "rosterPosition": 7,
     "name": "George",
     "status": 1,
-    "classId": 5,
-    "itemSlots": [0],
+    "soldier_id": 5,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "Be93523XM",
+    "wizard_id": "680aa65cb7232c85534d3f6b",
     "rosterPosition": 8,
     "name": "Clyde",
     "status": 1,
-    "classId": 6,
-    "itemSlots": [0],
+    "soldier_id": 6,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "adgdfhge",
+    "wizard_id": "680aa65cb7232c85534d3f6d",
     "rosterPosition": 1,
     "name": "Fred",
     "status": 1,
-    "classId": 1,
-    "itemSlots": [101],
+    "soldier_id": 1,
+    "itemSlots": {
+      "slot1": 101
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "adgdfhge",
+    "wizard_id": "680aa65cb7232c85534d3f6d",
     "rosterPosition": 2,
     "name": "Sally",
     "status": 0,
-    "classId": 1,
-    "itemSlots": [0],
+    "soldier_id": 1,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "adgdfhge",
+    "wizard_id": "680aa65cb7232c85534d3f6d",
     "rosterPosition": 3,
     "name": "Jimmy",
     "status": 1,
-    "classId": 2,
-    "itemSlots": [0],
+    "soldier_id": 2,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "adgdfhge",
+    "wizard_id": "680aa65cb7232c85534d3f6d",
     "rosterPosition": 4,
     "name": "Ned",
     "status": 2,
-    "classId": 2,
-    "itemSlots": [0],
+    "soldier_id": 2,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "adgdfhge",
+    "wizard_id": "680aa65cb7232c85534d3f6d",
     "rosterPosition": 5,
     "name": "Sue",
     "status": 1,
-    "classId": 3,
-    "itemSlots": [0],
+    "soldier_id": 3,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "adgdfhge",
+    "wizard_id": "680aa65cb7232c85534d3f6d",
     "rosterPosition": 6,
     "name": "Bill",
     "status": 1,
-    "classId": 4,
-    "itemSlots": [0],
+    "soldier_id": 4,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "adgdfhge",
+    "wizard_id": "680aa65cb7232c85534d3f6d",
     "rosterPosition": 7,
     "name": "Joe",
     "status": 1,
-    "classId": 7,
-    "itemSlots": [0],
+    "soldier_id": 7,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   },
   {
-    "wizard_id": "adgdfhge",
+    "wizard_id": "680aa65cb7232c85534d3f6d",
     "rosterPosition": 8,
     "name": "Jack",
     "status": 1,
-    "classId": 6,
-    "itemSlots": [0],
-    "rosterState": 1
-  },
-  {
-    "wizard_id": "_TEMPLATE_",
-    "rosterPosition": 0,
-    "name": "",
-    "status": 1,
-    "classId": 0,
-    "itemSlots": [0],
+    "soldier_id": 6,
+    "itemSlots": {
+      "slot1": 0
+    },
     "rosterState": 1
   }
 ]

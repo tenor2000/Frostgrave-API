@@ -1,9 +1,8 @@
 [
   {
-    "wizard_id": "CR9GoS59M",
-    "ownerId": 2,
+    "owner_id": 2,
     "name": "Dave",
-    "classId": 3,
+    "class_id": 3,
     "level": 6,
     "health": 14,
     "currentHealth": 14,
@@ -14,13 +13,7 @@
     "will": 4,
     "cost": 0,
     "status": 1,
-    "itemSlots": [
-      105,
-      0,
-      0,
-      0,
-      0
-    ],
+    "itemSlots": [105, 0, 0, 0, 0],
     "statMods": {
       "move": 0,
       "fight": 0,
@@ -30,20 +23,9 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [
-      301,
-      302,
-      303
-    ],
-    "alignedSpellIds": [
-      1001,
-      601,
-      201
-    ],
-    "neutralSpellIds": [
-      501,
-      901
-    ],
+    "primarySpellIds": [301, 302, 303],
+    "alignedSpellIds": [1001, 601, 201],
+    "neutralSpellIds": [501, 901],
     "opposedSpellIds": [],
     "spellModifiers": {
       "301": -1
@@ -58,10 +40,9 @@
     "backstory": null
   },
   {
-    "wizard_id": "CR9GoS59M",
-    "ownerId": 2,
+    "owner_id": 2,
     "name": "Dave",
-    "classId": 3,
+    "class_id": 3,
     "level": 4,
     "health": 14,
     "currentHealth": 14,
@@ -72,13 +53,7 @@
     "will": 4,
     "cost": 0,
     "status": 1,
-    "itemSlots": [
-      105,
-      0,
-      0,
-      0,
-      0
-    ],
+    "itemSlots": [105, 0, 0, 0, 0],
     "statMods": {
       "move": 0,
       "fight": 0,
@@ -88,20 +63,9 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [
-      301,
-      302,
-      303
-    ],
-    "alignedSpellIds": [
-      1001,
-      601,
-      201
-    ],
-    "neutralSpellIds": [
-      501,
-      901
-    ],
+    "primarySpellIds": [301, 302, 303],
+    "alignedSpellIds": [1001, 601, 201],
+    "neutralSpellIds": [501, 901],
     "opposedSpellIds": [],
     "spellModifiers": {
       "301": -1
@@ -116,10 +80,9 @@
     "backstory": null
   },
   {
-    "wizard_id": "NJ4Go52QS",
-    "ownerId": 3,
+    "owner_id": 3,
     "name": "Homer",
-    "classId": 10,
+    "class_id": 10,
     "level": 0,
     "health": 14,
     "currentHealth": 14,
@@ -146,20 +109,9 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [
-      1001,
-      1002,
-      1003
-    ],
-    "alignedSpellIds": [
-      301,
-      501,
-      802
-    ],
-    "neutralSpellIds": [
-      101,
-      201
-    ],
+    "primarySpellIds": [1001, 1002, 1003],
+    "alignedSpellIds": [301, 501, 802],
+    "neutralSpellIds": [101, 201],
     "opposedSpellIds": [],
     "spellModifiers": {},
     "soldiersLost": 0,
@@ -170,106 +122,5 @@
     "currentScenario": null,
     "careerHistory": [],
     "backstory": null
-  },
-  {
-    "wizard_id": "_TEMPLATE_",
-    "ownerId": "",
-    "name": "",
-    "classId": 0,
-    "level": 0,
-    "health": 14,
-    "currentHealth": 14,
-    "move": 6,
-    "fight": 2,
-    "shoot": 0,
-    "armor": 10,
-    "will": 4,
-    "cost": 0,
-    "status": 1,
-    "itemSlots": {
-      "slot1": 0,
-      "slot2": 0,
-      "slot3": 0,
-      "slot4": 0,
-      "slot5": 0
-    },
-    "statMods": {
-      "move": 0,
-      "fight": 0,
-      "shoot": 0,
-      "armor": 0,
-      "will": 0,
-      "health": 0
-    },
-    "gold": 400,
-    "primarySpellIds": [],
-    "alignedSpellIds": [],
-    "neutralSpellIds": [],
-    "opposedSpellIds": [],
-    "spellModifiers": {},
-    "soldiersLost": 0,
-    "xp": 0,
-    "xpSpent": 0,
-    "vaultItems": [],
-    "base": null,
-    "currentScenario": null,
-    "careerHistory": [],
-    "backstory": null
-  },
-  {
-    "wizard_id": "Miwse16g",
-    "ownerId": 5,
-    "name": "Timmy",
-    "classId": 0,
-    "level": 0,
-    "health": 14,
-    "currentHealth": 14,
-    "move": 6,
-    "fight": 2,
-    "shoot": 0,
-    "armor": 10,
-    "will": 4,
-    "cost": 0,
-    "status": 1,
-    "itemSlots": {
-      "slot1": 0,
-      "slot2": 0,
-      "slot3": 0,
-      "slot4": 0,
-      "slot5": 0
-    },
-    "statMods": {
-      "move": 0,
-      "fight": 0,
-      "shoot": 0,
-      "armor": 0,
-      "will": 0,
-      "health": 0
-    },
-    "gold": 400,
-    "primarySpellIds": [
-      106,
-      202,
-      203
-    ],
-    "alignedSpellIds": [
-      205,
-      204,
-      203
-    ],
-    "neutralSpellIds": [
-      108,
-      202
-    ],
-    "opposedSpellIds": [],
-    "spellModifiers": {},
-    "soldiersLost": 0,
-    "xp": 0,
-    "xpSpent": 0,
-    "vaultItems": [],
-    "base": null,
-    "currentScenario": null,
-    "careerHistory": [],
-    "backstory": "After discovering an ancient artifact, you were drawn ...\r\n    "
   }
 ]
