@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.route("/data").get(async (req, res, next) => {
   const searchtype = req.query.type || null;
-  // Retrieve reference data
 
   try {
     const models = await getModelsFromDirectory("reference", searchtype);
@@ -56,7 +55,7 @@ router
 
     try {
       const result = await Model.create(data);
-      res.json(result);
+      res.status(201).json(result);
     } catch (err) {
       console.error(`Error inserting ${type}:`, err);
       res.status(500).json({ error: err.message, details: err });
