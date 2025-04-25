@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 const wizardSchema = new mongoose.Schema(
   {
     // wizards will be identified by their mongo id
-    owner_id: {
+    user_id: {
       type: Number,
+      ref: "User",
       required: true,
     },
     name: {
@@ -160,7 +161,24 @@ const wizardSchema = new mongoose.Schema(
       default: null,
     },
   },
-  { timestamps: { createdAt: "created", updatedAt: "last_modified" } }
+  {
+    timestamps: { createdAt: "created", updatedAt: "last_modified" },
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
+
+// Virtuals for relationships when importing specific whole warband data
+wizardSchema.virtual("apprentices", {
+  ref: "Apprentice",
+  localField: "_id",
+  foreignField: "wizard_id",
+});
+
+wizardSchema.virtual("followers", {
+  ref: "Follower",
+  localField: "_id",
+  foreignField: "wizard_id",
+});
 
 export default mongoose.model("Wizard", wizardSchema);
