@@ -1,6 +1,6 @@
 import express from "express";
 
-import getDataFromSource from "../utilityFuncs/getDataFromSource.mjs";
+import getModelsFromDirectory from "../utilityFuncs/getModelsFromDirectory.mjs";
 
 import {
   newPersonnelTemplate,
@@ -18,80 +18,124 @@ import error from "../utilityFuncs/error.mjs";
 const router = express.Router();
 
 // Data to be replaced by MongoDB
-import path from "path";
-import fs from "fs/promises";
-import { fileURLToPath } from "url";
+// import path from "path";
+// import fs from "fs/promises";
+// import { fileURLToPath } from "url";
 
-// Recreate __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// // Recreate __dirname
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
-// Read JSON files dynamically
-const apprenticesData = JSON.parse(
-  await fs.readFile(
-    path.join(__dirname, "../testData/warbandData/apprentices.json"),
-    "utf-8"
-  )
-);
-const wizardsData = JSON.parse(
-  await fs.readFile(
-    path.join(__dirname, "../testData/warbandData/wizards.json"),
-    "utf-8"
-  )
-);
-const personnelData = JSON.parse(
-  await fs.readFile(
-    path.join(__dirname, "../testData/warbandData/personnel.json"),
-    "utf-8"
-  )
-);
+// // Read JSON files dynamically
+// const apprenticesData = JSON.parse(
+//   await fs.readFile(
+//     path.join(__dirname, "../testData/warbandData/apprentices.json"),
+//     "utf-8"
+//   )
+// );
+// const wizardsData = JSON.parse(
+//   await fs.readFile(
+//     path.join(__dirname, "../testData/warbandData/wizards.json"),
+//     "utf-8"
+//   )
+// );
+// const personnelData = JSON.parse(
+//   await fs.readFile(
+//     path.join(__dirname, "../testData/warbandData/personnel.json"),
+//     "utf-8"
+//   )
+// );
 
 // api/warbands/
 
 router.route("/").get(async (req, res, next) => {
-  const searchtype = req.query.type || null;
-  const warbandData = await getDataFromSource("warbandData", searchtype);
-  warbandData ? res.json(warbandData) : next(error(404, "No Data Found"));
+  const queryType = req.query.type || null;
+  try {
+    const warbandModels = await getModelsFromDirectory("warband", queryType);
+    console.log(warbandModels);
+    let warbandData = {};
+    for (const [key, value] of Object.entries(warbandModels)) {
+      warbandData[key + "_data"] = await value.find();
+    }
+    warbandData ? res.json(warbandData) : next(error(404, "No Data Found"));
+  } catch (err) {
+    console.error(`Error retrieving data:`, err);
+    res.status(500).json({ status: 500, error: err.message, details: err });
+  }
 });
 
 router
-  .route("/apprentices")
+  .route("/:type")
   .get(async (req, res, next) => {
-    const warbandData = await getDataFromSource("warbandData", "apprentices");
-    warbandData ? res.json(warbandData) : next(error(404, "No Data Found"));
+    const queryId = req.query.id || null;
+    const type = req.params.type.endsWith("s")
+      ? req.params.type.slice(0, -1)
+      : req.params.type;
+
+    try {
+      const models = await getModelsFromDirectory("warband", type);
+      const Model = models[type];
+      let data;
+
+      if (queryId) {
+        data =
+          type === "wizard"
+            ? await Model.findById(queryId) // return a single wizard object
+            : await Model.find({ wizard_id: queryId }); // returns array of objects
+      } else {
+        data = await Model.find();
+      }
+
+      data ? res.json(data) : next(error(404, "No Data Found"));
+    } catch (err) {
+      console.error(`Error retrieving ${type}:`, err);
+      res.status(500).json({ status: 500, error: err.message, details: err });
+    }
   })
-  .post((req, res, next) => {
-    // get form data and assign a object to wizardId
+  .post(async (req, res, next) => {
+    const type = req.params.type.endsWith("s")
+      ? req.params.type.slice(0, -1)
+      : req.params.type;
+    const models = await getModelsFromDirectory("warband");
+    const Model = models[type];
     const formData = req.body;
-    console.log(formData);
 
-    const wizard_id = formData.wizard_id;
-    console.log(wizardsData);
-
-    if (!wizardsData.find((w) => w.wizard_id == wizard_id)) {
-      return next(error(404, "Wizard not found"));
+    if (!Model) {
+      return res
+        .status(404)
+        .json({ error: `No model found for type: ${req.params.type}` });
     }
 
-    const apprenticeObject = newApprenticeTemplate(formData.name);
-    apprenticeObject.wizard_id = wizard_id;
-
-    writeObjectToJson(
-      "../testData/warbandData/apprentices.json",
-      apprenticeObject
-    );
-    res.status(201).json(apprenticeObject);
+    try {
+      const result = await Model.create(formData);
+      res.status(201).json(result);
+    } catch (err) {
+      console.error(`Error inserting ${type}:`, err);
+      res.status(500).json({ error: err.message, details: err });
+    }
   });
 
 router
-  .route("/apprentices/:id")
-  .get((req, res, next) => {
-    const wizard_id = req.params.id;
+  .route("/:type/:id")
+  .get(async (req, res, next) => {
+    const id = req.params.id;
+    const type = req.params.type.endsWith("s")
+      ? req.params.type.slice(0, -1)
+      : req.params.type;
 
-    const apprentice = apprenticesData.find((a) => a.wizard_id == wizard_id);
+    try {
+      const models = await getModelsFromDirectory("warband", type);
+      const Model = models[type];
+      let data =
+        type === "wizard"
+          ? await Model.findById(id) // returns a single wizard object
+          : await Model.find({ wizard_id: id }); // returns array of objects
 
-    apprentice
-      ? res.json(apprentice)
-      : next(error(404, "No Data Found with that ID"));
+      data ? res.json(data) : next(error(404, "No Data Found"));
+    } catch (err) {
+      console.error(`Error retrieving ${type}:`, err);
+      res.status(500).json({ status: 500, error: err.message, details: err });
+    }
   })
   .put((req, res, next) => {
     // formData should be an entire apprentice object, when changes are made
@@ -129,126 +173,6 @@ router
     } else {
       next(error(404, "Apprentice not found"));
     }
-  });
-
-router
-  .route("/wizards")
-  .get(async (req, res, next) => {
-    const ownerId = req.query.ownerId || null;
-    if (ownerId) {
-      res.json(Object.values(wizardsData).filter((w) => w.ownerId == ownerId));
-    }
-    res.json(wizardsData);
-  })
-  .post((req, res, next) => {
-    // get form data and assign a random id
-    const formData = req.body;
-    console.log(formData);
-
-    const newWizardId = generateNewId("wizard");
-
-    const wizardObject = newWizardTemplate(
-      formData.name,
-      formData.ownerId,
-      formData.classId,
-      formData.primarySpellIds,
-      formData.alignedSpellIds,
-      formData.neutralSpellIds,
-      formData.backstory
-    );
-
-    wizardObject.wizard_id = newWizardId;
-    writeObjectToJson("../testData/warbandData/wizards.json", wizardObject);
-    res.status(201).json(wizardObject);
-  });
-
-router
-  .route("/wizards/:id")
-  .get((req, res, next) => {
-    const wizard_id = req.params.id;
-
-    const wizardObject = wizardsData.find((w) => w.wizard_id == wizard_id);
-
-    wizardObject ? res.json(wizardObject) : next(error(404, "No Data Found"));
-  })
-  .put((req, res, next) => {
-    // formData should be an entire wizard object, when changes are made
-    const formData = req.body;
-
-    const wizardObject = wizardsData.find(
-      (w) => w.wizard_id == req.body.wizard_id
-    );
-
-    if (wizardObject && isValidMatchingObject(wizardObject, formData)) {
-      replaceObjectInJson(
-        "../testData/warbandData/wizards.json",
-        wizardObject,
-        formData
-      );
-      res.status(201).json(formData);
-    } else {
-      next(error(400, "Invalid Data"));
-    }
-  })
-  .delete((req, res, next) => {
-    const wizard_id = req.params.id;
-
-    const wizardObject = wizardsData.find((w) => w.wizard_id == wizard_id);
-
-    if (wizardObject) {
-      deleteObjectFromJson("../testData/warbandData/wizards.json", wizard_id);
-      res.status(201).json(wizardObject);
-    } else {
-      next(error(404, "Wizard not found"));
-    }
-  });
-
-router
-  .route("/personnel")
-  .get(async (req, res, next) => {
-    const warbandData = await getDataFromSource("warbandData", "personnel");
-    warbandData ? res.json(warbandData) : next(error(404, "No Data Found"));
-  })
-  .post((req, res, next) => {
-    // get form data and assign a random id
-    const formData = req.body;
-    // console.log(formData);
-
-    const wizardId = formData.wizardId;
-
-    if (!wizardsData.find((w) => w.wizardId == wizardId)) {
-      next(error(404, "Wizard not found"));
-    }
-
-    const personnelObject = newPersonnelTemplate(formData.name, wizardId);
-
-    writeKeyValueToJson(
-      "../testData/warbandData/apprentices.json",
-      newApprenticeId,
-      apprenticeObject
-    );
-    writeKeyValueToJson(
-      "../testData/warbandData/wizards.json",
-      wizardId,
-      wizardsData[wizardId]
-    );
-    res.status(201).json(apprenticeObject);
-  });
-
-router
-  .route("/personnel/:id")
-  .get((req, res, next) => {
-    const wizardId = req.params.id;
-
-    const personnel = personnelData.filter((p) => p.wizardId == wizardId);
-
-    personnel ? res.json(personnel) : next(error(404, "No Data Found"));
-  })
-  .put((req, res, next) => {
-    //WIP
-  })
-  .delete((req, res, next) => {
-    //WIP
   });
 
 export default router;
