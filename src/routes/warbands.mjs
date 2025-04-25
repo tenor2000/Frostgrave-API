@@ -17,42 +17,12 @@ import error from "../utilityFuncs/error.mjs";
 
 const router = express.Router();
 
-// Data to be replaced by MongoDB
-// import path from "path";
-// import fs from "fs/promises";
-// import { fileURLToPath } from "url";
-
-// // Recreate __dirname
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-
-// // Read JSON files dynamically
-// const apprenticesData = JSON.parse(
-//   await fs.readFile(
-//     path.join(__dirname, "../testData/warbandData/apprentices.json"),
-//     "utf-8"
-//   )
-// );
-// const wizardsData = JSON.parse(
-//   await fs.readFile(
-//     path.join(__dirname, "../testData/warbandData/wizards.json"),
-//     "utf-8"
-//   )
-// );
-// const personnelData = JSON.parse(
-//   await fs.readFile(
-//     path.join(__dirname, "../testData/warbandData/personnel.json"),
-//     "utf-8"
-//   )
-// );
-
 // api/warbands/
 
 router.route("/").get(async (req, res, next) => {
   const queryType = req.query.type || null;
   try {
     const warbandModels = await getModelsFromDirectory("warband", queryType);
-    console.log(warbandModels);
     let warbandData = {};
     for (const [key, value] of Object.entries(warbandModels)) {
       warbandData[key + "_data"] = await value.find();
@@ -64,10 +34,49 @@ router.route("/").get(async (req, res, next) => {
   }
 });
 
+router.route("/warband/").get(async (req, res, next) => {
+  // Get all warband info in one object by wizard
+  const id = req.params._id || null;
+
+  if (!id) {
+    return res.status(400).json({ error: "No id provided" });
+  }
+
+  try {
+    const warbandModels = await getModelsFromDirectory("warband", "wizard");
+    const Model = warbandModels["wizard"];
+    let data = await Model.findById(id)
+      .populate("apprentices")
+      .populate("followers");
+
+    data ? res.json(data) : next(error(404, "No Data Found"));
+  } catch (err) {
+    console.error(`Error retrieving data:`, err);
+    res.status(500).json({ status: 500, error: err.message, details: err });
+  }
+});
+
+router.route("/warband/:_id").get(async (req, res, next) => {
+  // Get all warband info in one object by wizard
+  const id = req.params._id || null;
+  try {
+    const warbandModels = await getModelsFromDirectory("warband", "wizard");
+    const Model = warbandModels["wizard"];
+    let data = await Model.findById(id)
+      .populate("apprentices")
+      .populate("followers");
+
+    data ? res.json(data) : next(error(404, "No Data Found"));
+  } catch (err) {
+    console.error(`Error retrieving data:`, err);
+    res.status(500).json({ status: 500, error: err.message, details: err });
+  }
+});
+
 router
   .route("/:type")
   .get(async (req, res, next) => {
-    const queryId = req.query.id || null;
+    const queryId = req.query._id || null;
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;
@@ -116,9 +125,9 @@ router
   });
 
 router
-  .route("/:type/:id")
+  .route("/:type/:_id")
   .get(async (req, res, next) => {
-    const id = req.params.id;
+    const id = req.params._id;
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;
@@ -137,27 +146,40 @@ router
       res.status(500).json({ status: 500, error: err.message, details: err });
     }
   })
-  .put((req, res, next) => {
-    // formData should be an entire apprentice object, when changes are made
+  .put(async (req, res, next) => {
+    // ALL Changes are by the document's _id and NOT wizard_id
+    const type = req.params.type.endsWith("s")
+      ? req.params.type.slice(0, -1)
+      : req.params.type;
+    const models = await getModelsFromDirectory("warband");
+    const Model = models[type];
     const formData = req.body;
 
-    const apprenticeObject = apprenticesData.find(
-      (a) => a.wizard_id == req.params.id
-    );
+    if (!Model) {
+      return res
+        .status(404)
+        .json({ error: `No model found for type: ${req.params.type}` });
+    }
 
-    if (apprenticeObject && isValidMatchingObject(formData, apprenticeObject)) {
-      apprenticeObject.wizard_id = req.params.id;
-      replaceObjectInJson(
-        "../testData/warbandData/apprentices.json",
-        apprenticeObject,
-        formData
-      );
-      res.status(201).json(formData);
-    } else {
-      next(error(400, "Invalid Data"));
+    try {
+      const changes = await Model.findByIdAndUpdate(req.params._id, formData, {
+        new: true,
+        runValidators: true,
+      });
+
+      if (!changes) {
+        return res.status(404).json({ error: "Document not found" });
+      }
+
+      console.log("Updated:", changes);
+      res.status(200).json(changes); // Status 200 is more appropriate for successful updates
+    } catch (err) {
+      console.error(`Error updating ${type}:`, err);
+      res.status(500).json({ error: err.message, details: err });
     }
   })
   .delete((req, res, next) => {
+    // ALL DELETES are by the document's '_id' and NOT 'wizard_id'
     const wizard_id = req.params.id;
 
     const apprenticeObject = apprenticesData.find(
