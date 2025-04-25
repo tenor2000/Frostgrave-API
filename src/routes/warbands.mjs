@@ -1,18 +1,5 @@
 import express from "express";
-
 import getModelsFromDirectory from "../utilityFuncs/getModelsFromDirectory.mjs";
-
-import {
-  newPersonnelTemplate,
-  newWizardTemplate,
-  newApprenticeTemplate,
-} from "../utilityFuncs/newTemplates.mjs";
-
-import generateNewId from "../utilityFuncs/generateNewId.mjs";
-import writeObjectToJson from "../utilityFuncs/writeObjectToJson.mjs";
-import deleteObjectFromJson from "../utilityFuncs/deleteObjectFromJson.mjs";
-import replaceObjectInJson from "../utilityFuncs/replaceObjectInJson.mjs";
-import isValidMatchingObject from "../utilityFuncs/isValidMatchingObject.mjs";
 import error from "../utilityFuncs/error.mjs";
 
 const router = express.Router();
@@ -117,6 +104,7 @@ router
 
     try {
       const result = await Model.create(formData);
+      console.log(`Status 201: Creation Successful`);
       res.status(201).json(result);
     } catch (err) {
       console.error(`Error inserting ${type}:`, err);
@@ -162,38 +150,52 @@ router
     }
 
     try {
-      const changes = await Model.findByIdAndUpdate(req.params._id, formData, {
-        new: true,
-        runValidators: true,
-      });
+      const changedDoc = await Model.findByIdAndUpdate(
+        req.params._id,
+        formData,
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
 
-      if (!changes) {
+      if (!changedDoc) {
         return res.status(404).json({ error: "Document not found" });
       }
 
-      console.log("Updated:", changes);
-      res.status(200).json(changes); // Status 200 is more appropriate for successful updates
+      console.log(`Status 200: Update Successful - ID: ${req.params._id}`);
+      res.status(200).json(changedDoc);
     } catch (err) {
       console.error(`Error updating ${type}:`, err);
       res.status(500).json({ error: err.message, details: err });
     }
   })
-  .delete((req, res, next) => {
+  .delete(async (req, res, next) => {
     // ALL DELETES are by the document's '_id' and NOT 'wizard_id'
-    const wizard_id = req.params.id;
+    const type = req.params.type.endsWith("s")
+      ? req.params.type.slice(0, -1)
+      : req.params.type;
+    const models = await getModelsFromDirectory("warband");
+    const Model = models[type];
 
-    const apprenticeObject = apprenticesData.find(
-      (a) => a.wizard_id == wizard_id
-    );
+    if (!Model) {
+      return res
+        .status(404)
+        .json({ error: `No model found for type: ${req.params.type}` });
+    }
 
-    if (apprenticeObject) {
-      deleteObjectFromJson(
-        "../testData/warbandData/apprentices.json",
-        wizard_id
-      );
-      res.status(201).json(apprenticeObject);
-    } else {
-      next(error(404, "Apprentice not found"));
+    try {
+      const delectedDoc = await Model.findByIdAndDelete(req.params._id);
+
+      if (!delectedDoc) {
+        return res.status(404).json({ error: "Document not found" });
+      }
+
+      console.log(`Status 204: Deletion Successful - ID: ${req.params._id}`);
+      res.status(204);
+    } catch (err) {
+      console.error(`Error updating ${type}:`, err);
+      res.status(500).json({ error: err.message, details: err });
     }
   });
 
