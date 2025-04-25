@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const personnelSchema = new mongoose.Schema(
+const followerSchema = new mongoose.Schema(
   {
     wizard_id: {
       type: String,
@@ -39,4 +39,4 @@ const personnelSchema = new mongoose.Schema(
   { timestamps: { createdAt: "created", updatedAt: "last_modified" } }
 );
 
-export default mongoose.model("Personnel", personnelSchema);
+export default mongoose.model("Follower", personnelSchema);
