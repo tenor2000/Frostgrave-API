@@ -40,6 +40,12 @@ const followerSchema = new mongoose.Schema(
   { timestamps: { createdAt: "created", updatedAt: "last_modified" } }
 );
 
+followerSchema.virtual("soldier", {
+  ref: "Soldier",
+  localField: "soldier_id",
+  foreignField: "soldier_id",
+});
+
 // This is a composite key, ensures that only 1 follower can be in each roster position per wizard
 followerSchema.index({ wizard_id: 1, rosterPosition: 1 }, { unique: true });
 

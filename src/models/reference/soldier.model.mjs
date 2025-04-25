@@ -15,6 +15,7 @@ const soldierSchema = new mongoose.Schema(
     },
     soldier_id: {
       type: Number,
+      ref: "Follower",
       required: true,
     },
     class: {
