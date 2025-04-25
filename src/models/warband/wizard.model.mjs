@@ -2,12 +2,8 @@ import mongoose from "mongoose";
 
 const wizardSchema = new mongoose.Schema(
   {
-    wizard_id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    ownerId: {
+    // wizards will be identified by their mongo id
+    owner_id: {
       type: Number,
       required: true,
     },
@@ -15,7 +11,7 @@ const wizardSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    classId: {
+    wizard_class_id: {
       type: Number,
       required: true,
     },
@@ -70,8 +66,11 @@ const wizardSchema = new mongoose.Schema(
       default: 1,
     },
     itemSlots: {
-      type: [Number],
-      default: [0, 0, 0, 0, 0],
+      slot1: { type: Number, default: 0 },
+      slot2: { type: Number, default: 0 },
+      slot3: { type: Number, default: 0 },
+      slot4: { type: Number, default: 0 },
+      slot5: { type: Number, default: 0 },
     },
     statMods: {
       move: {

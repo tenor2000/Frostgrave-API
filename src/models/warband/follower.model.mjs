@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const followerSchema = new mongoose.Schema(
   {
     wizard_id: {
+      // This points to wizard owner
       type: String,
       required: true,
     },
@@ -21,13 +22,13 @@ const followerSchema = new mongoose.Schema(
       enum: [0, 1, 2, 7, 8, 9], // 0 = Dead, 1 = Active, 2 = Badly Wounded, 7 = Hired, 8 = For Hire, 9 = Vacant
       default: 8,
     },
-    class_id: {
+    soldier_id: {
+      // This points to soldier stats in soldier collection
       type: Number,
       required: true,
     },
     itemSlots: {
-      type: [Number],
-      default: [0],
+      slot1: { type: Number, default: 0 },
     },
     rosterState: {
       type: Number,
@@ -39,4 +40,7 @@ const followerSchema = new mongoose.Schema(
   { timestamps: { createdAt: "created", updatedAt: "last_modified" } }
 );
 
-export default mongoose.model("Follower", personnelSchema);
+// This is a composite key, ensures that only 1 follower can be in each roster position per wizard
+followerSchema.index({ wizard_id: 1, rosterPosition: 1 }, { unique: true });
+
+export default mongoose.model("Follower", followerSchema);
