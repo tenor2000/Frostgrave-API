@@ -172,6 +172,13 @@ router
   })
   .delete(async (req, res, next) => {
     // ALL DELETES are by the document's '_id' and NOT 'wizard_id'
+
+    // This is example document and cannot be deleted
+    const protected_id = "680aa65cb7232c85534d3f6b";
+    if (req.params._id === protected_id) {
+      return res.status(403).json({ error: "Forbidden" });
+    }
+
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;
