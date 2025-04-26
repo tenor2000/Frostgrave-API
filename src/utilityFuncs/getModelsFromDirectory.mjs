@@ -3,6 +3,7 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 
 async function getModelsFromDirectory(modelDirectory, type = "") {
+  // if type is provided, return a single model, else return object of models
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
 
@@ -16,14 +17,14 @@ async function getModelsFromDirectory(modelDirectory, type = "") {
       const filePath = path.join(modelsPath, `${type}.model.mjs`);
       const modelModule = await import(filePath);
       const Model = modelModule.default;
-      data[filename] = Model;
+      data = Model; // return a single model
     } else {
       for (const file of files) {
         const filename = path.basename(file, ".model.mjs");
         const filePath = path.join(modelsPath, file);
         const modelModule = await import(filePath);
         const Model = modelModule.default;
-        data[filename] = Model;
+        data[filename] = Model; // object of models
       }
     }
     return data;
