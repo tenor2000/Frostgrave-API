@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
+import seedData from "./src/utilityFuncs/seedData.mjs";
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -110,6 +112,14 @@ app.get("/documentation", (req, res, next) => {
     warbandTypes: Object.keys(warbandModels),
   };
   res.render("index", data);
+});
+
+app.get("/seedData", (req, res, next) => {
+  // for demonstration purposes only
+  seedData("reference");
+  seedData("warband");
+  seedData("users");
+  res.redirect("/");
 });
 
 app.use((err, req, res, next) => {
