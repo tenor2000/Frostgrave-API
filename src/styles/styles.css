@@ -5,6 +5,8 @@
   --light-color: #f4f4f4;
   --danger-color: red;
   --success-color: green;
+  --link-color: cyan;
+  --hover-color: #1591ea;
 }
 
 html,
@@ -64,12 +66,12 @@ footer {
 }
 
 li a {
-  color: var(--primary-color);
+  color: var(--link-color);
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
 li a:hover {
-  color: lightblue;
+  color: var(--hover-color);
 }
 
 main {
@@ -152,7 +154,7 @@ select {
 }
 
 #documentation {
-  width: 800px;
+  width: 900px;
   margin: 0 auto;
   text-align: left;
   border-radius: 5px;

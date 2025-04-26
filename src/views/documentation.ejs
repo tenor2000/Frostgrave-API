@@ -1,54 +1,123 @@
 <div id="documentation">
   <h1>Documentation</h1>
   <p>Here are some endpoints for the Frostgrave API</p>
-  <h2>/api/reference(/:type)</h2>
+  <h2>GET /api/reference/data(/:type)</h2>
   <p>
-    Returns all reference data for the game. You can add a query parameter to
-    filter by type or add to the endpoint as a route parameter
+    <strong>Returns:</strong> a JSON object containing reference data for the
+    game. You can add a query parameter to filter by 'type' or add to the
+    endpoint as a route parameter.
   </p>
   <ul>
     <% for (let i=0; i < referenceTypes.length; i++) { %>
-    <li><%= referenceTypes[i] %></li>
+    <li>
+      <a href="/api/reference/data/<%= referenceTypes[i] %>" target="_blank"
+        ><%= referenceTypes[i] %></a
+      >
+    </li>
     <% } %>
   </ul>
-  <h2>/api/warbands</h2>
+  <h2>GET /api/warbands(/:type)</h2>
   <p>
-    Returns all warband data for the game. You can add a query parameter to
-    filter by type or add to the endpoint as a route parameter
+    <strong>Returns:</strong> an Array of JSON objects containing all warband
+    data for the game. You can add a query parameter to filter by 'type' or add
+    to the endpoint as a route parameter.
   </p>
   <ul>
     <% for (let i=0; i < warbandTypes.length; i++) { %>
-    <li><%= warbandTypes[i] %></li>
+    <li>
+      <a href="/api/warbands/<%= warbandTypes[i] %>" target="_blank"
+        ><%= warbandTypes[i] %></a
+      >
+    </li>
     <% } %>
   </ul>
-  <h2>/api/warbands/wizards</h2>
+  <h2>GET /api/warbands/warband/:id</h2>
   <ul>
-    <li>GET all created wizards</li>
+    <li>
+      <strong>Returns:</strong> a JSON Object containing the wizard data with
+      apprentice, and follower data, by wizard id (<a
+        href="/api/warbands/warband/680aa65cb7232c85534d3f6b"
+        target="_blank"
+        >example</a
+      >)
+    </li>
+  </ul>
+  <h2>GET, POST /api/warbands/wizards</h2>
+  <ul>
+    <li>
+      GET all wizards in the database (<a
+        href="/api/warbands/wizards"
+        target="_blank"
+        >example</a
+      >)
+    </li>
     <li>POST Create New Wizard (Use form on 'Create New Wizard')</li>
   </ul>
-  <h2>/api/warbands/wizards/:id</h2>
+  <h2>GET, PUT, DELETE /api/warbands/wizards/:id</h2>
   <ul>
-    <li>GET individual wizards by unique wizard_id</li>
     <li>
-      PUT you will need to pass in the entire edited JSON wizard object with the
-      wizard_id (copy/paste from the GET)
+      GET individual wizards by id (<a
+        href="/api/warbands/wizards/680aa65cb7232c85534d3f6b"
+        target="_blank"
+        >example</a
+      >)
+    </li>
+    <li>
+      PUT pass in the entire edited JSON wizard object with the id in the
+      endpoint (copy/paste from the GET)
     </li>
     <li>DELETE you will need to pass in the wizard_id to be deleted</li>
   </ul>
-  <h2>/api/warbands/apprentices</h2>
+  <h2>GET, POST /api/warbands/apprentices</h2>
   <ul>
-    <li>GET all apprentices created</li>
+    <li>
+      GET all apprentices in the database (<a
+        href="/api/warbands/apprentices"
+        target="_blank"
+        >example</a
+      >)
+    </li>
     <li>POST Create New Apprentice (requires req.wizard_id, name)</li>
   </ul>
-  <h2>/api/warbands/apprentices/:id</h2>
+  <h2>GET, PUT, DELETE /api/warbands/apprentices/:id</h2>
   <ul>
-    <li>GET individual apprentices by unique ID of their wizard (wizard_id)</li>
+    <li>
+      GET individual apprentices by ID of their wizard (<a
+        href="/api/warbands/apprentices/680aa65cb7232c85534d3f6b"
+        target="_blank"
+        >example</a
+      >)
+    </li>
     <li>
       PUT you will need to pass in the entire JSON apprentice object with the
       wizard_id (copy/paste from the GET)
     </li>
     <li>DELETE you will need to pass in the wizard_id</li>
   </ul>
-  <h2>/api/warbands/personnel</h2>
-  <p>Returns all hired mercenaries that are attached to a wizard_id</p>
+  <h2>GET, POST /api/warbands/followers/</h2>
+  <ul>
+    <li>
+      GET all followers in the database (<a
+        href="/api/warbands/followers"
+        target="_blank"
+        >example</a
+      >)
+    </li>
+    <li>POST Create new Follower (requires wizard id, name)</li>
+  </ul>
+  <h2>GET, PUT, DELETE /api/warbands/followers/:id</h2>
+  <ul>
+    <li>
+      GET individual followers by id of their wizard (<a
+        href="/api/warbands/followers/680aa65cb7232c85534d3f6b"
+        target="_blank"
+        >example</a
+      >)
+    </li>
+    <li>
+      PUT you will need to pass in the entire JSON apprentice object with the
+      wizard_id (copy/paste from the GET)
+    </li>
+    <li>DELETE you will need to pass in the wizard_id</li>
+  </ul>
 </div>
