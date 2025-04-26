@@ -1,10 +1,10 @@
-# SBA318
+# SBA318 and SBA319
 
 This is the start of an express server that will be used in my capstone project. It is a data server for a miniature wargame called [Frostgrave 2nd Edition](https://boardgamegeek.com/boardgame/317519/frostgrave-second-edition). Players put together a small band of hapless mercenaries, lead by a wizard and his/her unlucky apprentice as they explore the ruins of an ancient frozen city.
 
 ## Description
 
-There are currently 3 categories of data each with multiple sub tables. Reference data is read only data and give reference rules for the game an cannot be modified. There is also a user database that has only get methds for now. Lastly there is the warband database that contains wizard, apprentice and personnel data that can be modified and deleted.
+There are currently 3 categories of data each with multiple sub tables. Reference data is read only data and give reference rules for the game an cannot be modified. There is also a user database that has only get methds for now. Lastly there is the warband database that contains wizard, apprentice and follower data that can be created, modified, and deleted.
 
 I've also create a view to see a POST request in order to make a new wizard. More endpoints will be documented inside. For now the data is stored in JSON files, POST methods will write to JSON.
 
