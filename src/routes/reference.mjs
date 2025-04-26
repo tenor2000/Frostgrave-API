@@ -6,13 +6,17 @@ const router = express.Router();
 // api/reference/
 
 router.route("/data").get(async (req, res, next) => {
-  const searchtype = req.query.type || null;
-
+  const type = req.query.type || null;
+  let referenceData = {};
   try {
-    const models = await getModelsFromDirectory("reference", searchtype);
-    let referenceData = {};
-    for (const [key, value] of Object.entries(models)) {
-      referenceData[key + "_data"] = await value.find();
+    if (type) {
+      const Model = await getModelsFromDirectory("reference", type);
+      referenceData = await Model.find();
+    } else {
+      const models = await getModelsFromDirectory("reference");
+      for (const [key, value] of Object.entries(models)) {
+        referenceData[key + "_data"] = await value.find();
+      }
     }
     referenceData ? res.json(referenceData) : next(error(404, "No Data Found"));
   } catch (err) {
@@ -24,12 +28,10 @@ router.route("/data").get(async (req, res, next) => {
 router
   .route("/data/:type")
   .get(async (req, res, next) => {
+    const type = req.params.type;
     try {
-      const models = await getModelsFromDirectory("reference", req.params.type);
-      let referenceData = {};
-      referenceData[req.params.type + "_data"] = await models[
-        req.params.type
-      ].find();
+      const Model = await getModelsFromDirectory("reference", type);
+      let referenceData = await Model.find();
 
       referenceData
         ? res.json(referenceData)
@@ -40,12 +42,9 @@ router
     }
   })
   .post(async (req, res, next) => {
-    // Used for seeding
-    const modelMap = await getModelsFromDirectory("reference");
     const type = req.params.type;
     const data = req.body;
-
-    const Model = modelMap[type];
+    const Model = await getModelsFromDirectory("reference", type);
 
     if (!Model) {
       return res
