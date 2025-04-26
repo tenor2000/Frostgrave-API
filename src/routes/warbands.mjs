@@ -7,12 +7,17 @@ const router = express.Router();
 // api/warbands/
 
 router.route("/").get(async (req, res, next) => {
-  const queryType = req.query.type || null;
+  const type = req.query.type || null;
+  let warbandData = {};
   try {
-    const warbandModels = await getModelsFromDirectory("warband", queryType);
-    let warbandData = {};
-    for (const [key, value] of Object.entries(warbandModels)) {
-      warbandData[key + "_data"] = await value.find();
+    if (type) {
+      const Model = await getModelsFromDirectory("warband", type);
+      warbandData = await Model.find();
+    } else {
+      const warbandModels = await getModelsFromDirectory("warband");
+      for (const [key, value] of Object.entries(warbandModels)) {
+        warbandData[key + "_data"] = await value.find();
+      }
     }
     warbandData ? res.json(warbandData) : next(error(404, "No Data Found"));
   } catch (err) {
@@ -21,39 +26,37 @@ router.route("/").get(async (req, res, next) => {
   }
 });
 
-router.route("/warband/").get(async (req, res, next) => {
+router.route("/warband").get(async (req, res, next) => {
   // Get all warband info in one object by wizard
-  const id = req.params._id || null;
+  const id = req.query.id || null;
 
   if (!id) {
     return res.status(400).json({ error: "No id provided" });
   }
 
   try {
-    const warbandModels = await getModelsFromDirectory("warband", "wizard");
-    const Model = warbandModels["wizard"];
-    let data = await Model.findById(id)
+    const Model = await getModelsFromDirectory("warband", "wizard");
+    let warbandData = await Model.findById(id)
       .populate("apprentices")
       .populate("followers");
 
-    data ? res.json(data) : next(error(404, "No Data Found"));
+    warbandData ? res.json(warbandData) : next(error(404, "No Data Found"));
   } catch (err) {
     console.error(`Error retrieving data:`, err);
     res.status(500).json({ status: 500, error: err.message, details: err });
   }
 });
 
-router.route("/warband/:_id").get(async (req, res, next) => {
+router.route("/warband/:id").get(async (req, res, next) => {
   // Get all warband info in one object by wizard
-  const id = req.params._id || null;
+  const id = req.params.id || null;
   try {
-    const warbandModels = await getModelsFromDirectory("warband", "wizard");
-    const Model = warbandModels["wizard"];
-    let data = await Model.findById(id)
+    const Model = await getModelsFromDirectory("warband", "wizard");
+    let warbandData = await Model.findById(id)
       .populate("apprentices")
       .populate("followers");
 
-    data ? res.json(data) : next(error(404, "No Data Found"));
+    warbandData ? res.json(warbandData) : next(error(404, "No Data Found"));
   } catch (err) {
     console.error(`Error retrieving data:`, err);
     res.status(500).json({ status: 500, error: err.message, details: err });
@@ -63,21 +66,20 @@ router.route("/warband/:_id").get(async (req, res, next) => {
 router
   .route("/:type")
   .get(async (req, res, next) => {
-    const queryId = req.query._id || null;
+    const queryId = req.query.id || null;
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;
 
     try {
-      const models = await getModelsFromDirectory("warband", type);
-      const Model = models[type];
+      const Model = await getModelsFromDirectory("warband", type);
       let data;
 
       if (queryId) {
         data =
           type === "wizard"
             ? await Model.findById(queryId) // return a single wizard object
-            : await Model.find({ wizard_id: queryId }); // returns array of objects
+            : await Model.find({ wizard_id: queryId }); // returns array of non wizard objects
       } else {
         data = await Model.find();
       }
@@ -113,16 +115,15 @@ router
   });
 
 router
-  .route("/:type/:_id")
+  .route("/:type/:id")
   .get(async (req, res, next) => {
-    const id = req.params._id;
+    const id = req.params.id;
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;
 
     try {
-      const models = await getModelsFromDirectory("warband", type);
-      const Model = models[type];
+      const Model = await getModelsFromDirectory("warband", type);
       let data =
         type === "wizard"
           ? await Model.findById(id) // returns a single wizard object
@@ -135,12 +136,11 @@ router
     }
   })
   .put(async (req, res, next) => {
-    // ALL Changes are by the document's _id and NOT wizard_id
+    // ALL Changes are by the document's own '_id' and NOT wizard_id
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;
-    const models = await getModelsFromDirectory("warband");
-    const Model = models[type];
+    const Model = await getModelsFromDirectory("warband", type);
     const formData = req.body;
 
     if (!Model) {
@@ -151,7 +151,7 @@ router
 
     try {
       const changedDoc = await Model.findByIdAndUpdate(
-        req.params._id,
+        req.params.id,
         formData,
         {
           new: true,
@@ -172,13 +172,6 @@ router
   })
   .delete(async (req, res, next) => {
     // ALL DELETES are by the document's '_id' and NOT 'wizard_id'
-
-    // This is example document and cannot be deleted
-    const protected_id = "680aa65cb7232c85534d3f6b";
-    if (req.params._id === protected_id) {
-      return res.status(403).json({ error: "Forbidden" });
-    }
-
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;

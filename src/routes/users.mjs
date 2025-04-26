@@ -40,8 +40,8 @@ router
     }
   });
 
-router.route("/:type").get(async (req, res, next) => {
-  const userData = await getDataFromSource("user", req.params.type);
+router.route("/:_id").get(async (req, res, next) => {
+  const models = await getModelsFromDirectory("user", req.params.type);
   userData ? res.json(userData) : next(error(404, "No Data Found"));
 });
 
