@@ -12,25 +12,31 @@ export async function seedData(modelType) {
   const folderPath = path.join(__dirname, `../seed_data/${modelType}Data`);
   const files = await fs.readdir(folderPath);
 
-  for (let file of files) {
-    const filePath = path.join(folderPath, file);
-    const fileContents = await fs.readFile(filePath, "utf-8");
-    const parsedData = JSON.parse(fileContents);
+  try {
+    for (let file of files) {
+      const filePath = path.join(folderPath, file);
+      const fileContents = await fs.readFile(filePath, "utf-8");
+      const parsedData = JSON.parse(fileContents);
 
-    let modelName = file.replace(".json", "");
-    // remove plural to fit the model naming convention, although there are flaws to this
-    modelName.endsWith("s") ? (modelName = modelName.slice(0, -1)) : modelName;
+      let modelName = file.replace(".json", "");
+      // remove plural to fit the model naming convention, although there are flaws to this
+      modelName.endsWith("s")
+        ? (modelName = modelName.slice(0, -1))
+        : modelName;
 
-    const Model = models[modelName];
-    if (!Model) {
-      console.error(`No model found for ${modelName}`);
-      continue;
+      const Model = models[modelName];
+      if (!Model) {
+        console.error(`No model found for ${modelName}`);
+        continue;
+      }
+      // Wipe clean before reseeding
+      await Model.deleteMany({});
+      await Model.create(parsedData);
+
+      console.log(`Seeded ${modelName} collection successfully.`);
     }
-    // Wipe clean before reseeding
-    await Model.deleteMany({});
-    await Model.create(parsedData);
-
-    console.log(`Seeded ${modelName} collection successfully.`);
+  } catch (err) {
+    console.error(err);
   }
 }
 
@@ -45,7 +51,7 @@ export async function setDataRelations() {
     const newWizardId = wizards[i]._id;
     apprentices[i].wizard_id = newWizardId;
     await apprentices[i].save();
-    await models.followers.updateMany(
+    await models.follower.updateMany(
       { wizard_id: `_TEMP${i}` },
       { $set: { wizard_id: newWizardId } }
     );
