@@ -24,8 +24,7 @@ router
   })
   .post(async (req, res, next) => {
     // Used for seeding
-    const modelMap = await getModelsFromDirectory("user");
-    const Model = modelMap["user"];
+    const Model = await getModelsFromDirectory("user", "user");
 
     if (!Model) {
       return res.status(404).json({ error: `No model found for type: user` });
@@ -40,9 +39,49 @@ router
     }
   });
 
-router.route("/:_id").get(async (req, res, next) => {
-  const models = await getModelsFromDirectory("user", req.params.type);
-  userData ? res.json(userData) : next(error(404, "No Data Found"));
-});
+router
+  .route("/:id")
+  .get(async (req, res, next) => {
+    const Model = await getModelsFromDirectory("user", "user");
+
+    if (!Model) {
+      return res.status(404).json({ error: `No model found for type: user` });
+    }
+
+    const userData = await Model.findById(req.params.id);
+    userData ? res.json(userData) : next(error(404, "No Data Found"));
+  })
+  .put(async (req, res, next) => {
+    const Model = await getModelsFromDirectory("user", "user");
+
+    if (!Model) {
+      return res.status(404).json({ error: `No model found for type: user` });
+    }
+
+    try {
+      const userData = await Model.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+      });
+      res.status(200).json(userData);
+    } catch (err) {
+      console.error(`Error updating user:`, err);
+      res.status(500).json({ status: 500, error: err.message, details: err });
+    }
+  })
+  .delete(async (req, res, next) => {
+    const Model = await getModelsFromDirectory("user", "user");
+
+    if (!Model) {
+      return res.status(404).json({ error: `No model found for type: user` });
+    }
+
+    try {
+      const userData = await Model.findByIdAndDelete(req.params.id);
+      res.status(204).json(userData);
+    } catch (err) {
+      console.error(`Error deleting user:`, err);
+      res.status(500).json({ status: 500, error: err.message, details: err });
+    }
+  });
 
 export default router;
