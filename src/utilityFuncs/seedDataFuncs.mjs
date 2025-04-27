@@ -3,15 +3,13 @@ import path from "path";
 import getModelsFromDirectory from "./getModelsFromDirectory.mjs";
 import { fileURLToPath } from "url";
 
-const dataPath = "../seed_data";
-
-async function seedData(modelType) {
+export async function seedData(modelType) {
   const models = await getModelsFromDirectory(modelType);
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
 
-  const folderPath = path.join(__dirname, dataPath, `${modelType}Data`);
+  const folderPath = path.join(__dirname, `../seed_data/${modelType}Data`);
   const files = await fs.readdir(folderPath);
 
   for (let file of files) {
@@ -20,6 +18,7 @@ async function seedData(modelType) {
     const parsedData = JSON.parse(fileContents);
 
     let modelName = file.replace(".json", "");
+    // remove plural to fit the model naming convention, although there are flaws to this
     modelName.endsWith("s") ? (modelName = modelName.slice(0, -1)) : modelName;
 
     const Model = models[modelName];
@@ -27,14 +26,28 @@ async function seedData(modelType) {
       console.error(`No model found for ${modelName}`);
       continue;
     }
-
-    // Wipe existing
+    // Wipe clean before reseeding
     await Model.deleteMany({});
-    // Insert all new
     await Model.create(parsedData);
 
-    console.log(`Seeded ${modelName} successfully.`);
+    console.log(`Seeded ${modelName} collection successfully.`);
   }
 }
 
-export default seedData;
+export async function setDataRelations() {
+  // Sets the relational ids correctly for reseeded data
+  const models = await getModelsFromDirectory("warband");
+
+  const wizards = await models.wizard.find();
+  const apprentices = await models.apprentice.find();
+
+  for (let i = 0; i < wizards.length; i++) {
+    const newWizardId = wizards[i]._id;
+    apprentices[i].wizard_id = newWizardId;
+    await apprentices[i].save();
+    await models.followers.updateMany(
+      { wizard_id: `_TEMP${i}` },
+      { $set: { wizard_id: newWizardId } }
+    );
+  }
+}
