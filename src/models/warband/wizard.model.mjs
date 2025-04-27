@@ -30,6 +30,7 @@ const wizardSchema = new mongoose.Schema(
       //this may be eliminated and only handled in front end
       type: Number,
       required: true,
+      default: 14,
     },
     move: {
       type: Number,
@@ -67,11 +68,23 @@ const wizardSchema = new mongoose.Schema(
       default: 1,
     },
     itemSlots: {
-      slot1: { type: Number, default: 0 },
-      slot2: { type: Number, default: 0 },
-      slot3: { type: Number, default: 0 },
-      slot4: { type: Number, default: 0 },
-      slot5: { type: Number, default: 0 },
+      type: new mongoose.Schema(
+        {
+          slot1: { type: Number, default: 0 },
+          slot2: { type: Number, default: 0 },
+          slot3: { type: Number, default: 0 },
+          slot4: { type: Number, default: 0 },
+          slot5: { type: Number, default: 0 },
+        },
+        { _id: false }
+      ),
+      default: () => ({
+        slot1: 0,
+        slot2: 0,
+        slot3: 0,
+        slot4: 0,
+        slot5: 0,
+      }),
     },
     statMods: {
       move: {
