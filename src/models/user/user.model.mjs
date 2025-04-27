@@ -42,6 +42,13 @@ const userSchema = new mongoose.Schema(
   { timestamps: { createdAt: "created", updatedAt: "last_modified" } }
 );
 
+// Virtuals for relationships when importing specific whole warband data
+userSchema.virtual("wizards", {
+  ref: "Wizard",
+  localField: "_id",
+  foreignField: "user_id",
+});
+
 const User = mongoose.model("User", userSchema);
 
 export default User;
