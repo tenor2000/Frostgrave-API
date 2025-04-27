@@ -114,6 +114,27 @@ router
     }
   });
 
+router.route("/wizards/:id/:type").get(async (req, res, next) => {
+  const id = req.params.id;
+  let type = req.params.type;
+  type.endsWith("s") ? (type = type.slice(0, -1)) : type;
+  const Model = await getModelsFromDirectory("warband", type);
+
+  if (!Model) {
+    return res
+      .status(404)
+      .json({ error: `No model found for type: ${req.params.type}` });
+  }
+
+  try {
+    const data = await Model.find({ wizard_id: id });
+    data ? res.json(data) : next(error(404, "No Data Found"));
+  } catch (err) {
+    console.error(`Error retrieving data:`, err);
+    res.status(500).json({ status: 500, error: err.message, details: err });
+  }
+});
+
 router
   .route("/:type/:id")
   .get(async (req, res, next) => {
@@ -124,10 +145,7 @@ router
 
     try {
       const Model = await getModelsFromDirectory("warband", type);
-      let data =
-        type === "wizard"
-          ? await Model.findById(id) // returns a single wizard object
-          : await Model.find({ wizard_id: id }); // returns array of objects
+      let data = await Model.findById(id);
 
       data ? res.json(data) : next(error(404, "No Data Found"));
     } catch (err) {
@@ -136,7 +154,6 @@ router
     }
   })
   .put(async (req, res, next) => {
-    // ALL Changes are by the document's own '_id' and NOT wizard_id
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;
@@ -171,7 +188,6 @@ router
     }
   })
   .delete(async (req, res, next) => {
-    // ALL DELETES are by the document's '_id' and NOT 'wizard_id'
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;
