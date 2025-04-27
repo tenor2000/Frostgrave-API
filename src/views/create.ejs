@@ -6,15 +6,17 @@
   </p>
   <form action="/api/warbands/wizards" method="POST">
     <!-- this would be connected to user sessions but for now is temporary -->
-    <input type="hidden" name="ownerId" value="5" />
+    <input type="hidden" name="user_id" value="<%= exampleUserID %>" />
     <!-- End of temporary code -->
     <label for="name">Name</label>
     <input type="text" id="name" name="name" />
-    <label for="class">Class</label>
-    <select name="class" required>
+    <label for="wizard_class_id">Class</label>
+    <select name="wizard_class_id" required>
       <option value="0" disabled selected>--</option>
       <% for (let i = 1; i < classes.length; i++) { %>
-      <option value="<%= classes[i].id %>"><%= classes[i].name %></option>
+      <option value="<%= classes[i].school_id %>">
+        <%= classes[i].name %>
+      </option>
       <% } %>
     </select>
     <label for="primarySpellIds">Primary School Spells</label>
@@ -22,19 +24,19 @@
       <select name="primarySpellIds" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%= spells[i].spell_id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="primarySpellIds" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%= spells[i].spell_id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="primarySpellIds" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%= spells[i].spell_id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
     </div>
@@ -43,19 +45,19 @@
       <select name="alignedSpellIds" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%= spells[i].spell_id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="alignedSpellIds" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%= spells[i].spell_id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="alignedSpellIds" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%= spells[i].spell_id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
     </div>
@@ -64,13 +66,13 @@
       <select name="neutralSpellIds" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%= spells[i].spell_id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
       <select name="neutralSpellIds" required>
         <option value="0" disabled selected>--</option>
         <% for (let i = 1; i < spells.length; i++) { %>
-        <option value="<%= spells[i].id %>"><%= spells[i].name %></option>
+        <option value="<%= spells[i].spell_id %>"><%= spells[i].name %></option>
         <% } %>
       </select>
     </div>

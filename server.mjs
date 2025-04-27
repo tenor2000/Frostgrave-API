@@ -90,9 +90,12 @@ app.get("/create", async (req, res, next) => {
   if (!referenceModels) {
     return next(error(404, "No Data Found"));
   }
+  const userModel = await getModelsFromDirectory("user", "user");
+  const exampleUser = await userModel.findOne();
 
   const data = {
     contentEJS: "create",
+    exampleUserID: exampleUser._id || null,
     spells: await referenceModels.spell.find(),
     classes: await referenceModels.magicSchool.find(),
     backstory: getRandomBackstory(),
