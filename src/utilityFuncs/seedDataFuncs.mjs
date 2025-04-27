@@ -43,17 +43,25 @@ export async function seedData(modelType) {
 export async function setDataRelations() {
   // Sets the relational ids correctly for reseeded data
   const models = await getModelsFromDirectory("warband");
+  const userModel = await getModelsFromDirectory("user", "user");
+  try {
+    const wizards = await models.wizard.find();
+    const apprentices = await models.apprentice.find();
+    const users = await userModel.find();
 
-  const wizards = await models.wizard.find();
-  const apprentices = await models.apprentice.find();
+    for (let i = 0; i < wizards.length; i++) {
+      wizards[i].user_id = users[i]._id;
+      apprentices[i].wizard_id = wizards[i]._id;
+      await wizards[i].save();
+      await apprentices[i].save();
+      await models.follower.updateMany(
+        { wizard_id: `_TEMP${i}` },
+        { $set: { wizard_id: wizards[i]._id } }
+      );
+    }
 
-  for (let i = 0; i < wizards.length; i++) {
-    const newWizardId = wizards[i]._id;
-    apprentices[i].wizard_id = newWizardId;
-    await apprentices[i].save();
-    await models.follower.updateMany(
-      { wizard_id: `_TEMP${i}` },
-      { $set: { wizard_id: newWizardId } }
-    );
+    console.log("Data relations set successfully.");
+  } catch (err) {
+    console.error(err);
   }
 }

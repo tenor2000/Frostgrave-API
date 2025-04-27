@@ -1,6 +1,6 @@
 [
   {
-    "user_id": 2,
+    "user_id": "TEMPBe93523XM",
     "name": "Dave",
     "wizard_class_id": 3,
     "level": 6,
@@ -40,7 +40,7 @@
     "backstory": null
   },
   {
-    "user_id": 3,
+    "user_id": "TEMPBe93523XM",
     "name": "Jim",
     "wizard_class_id": 8,
     "level": 4,
@@ -80,7 +80,7 @@
     "backstory": null
   },
   {
-    "user_id": 3,
+    "user_id": "TEMPBe93523XM",
     "name": "Susan",
     "wizard_class_id": 10,
     "level": 0,

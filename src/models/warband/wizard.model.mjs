@@ -4,7 +4,7 @@ const wizardSchema = new mongoose.Schema(
   {
     // wizards will be identified by their mongo id
     user_id: {
-      type: Number,
+      type: String,
       ref: "User",
       required: true,
     },
