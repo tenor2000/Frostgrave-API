@@ -108,16 +108,27 @@ app.get("/create", async (req, res, next) => {
 //   res.render("index", data);
 // });
 
-app.get("/documentation", (req, res, next) => {
+app.get("/documentation", async (req, res, next) => {
+  const warbandModels = await getModelsFromDirectory("warband");
+  const userModel = await getModelsFromDirectory("user", "user");
+  const exampleWizard = await warbandModels.wizard.findOne();
+  const exampleUser = await userModel.findOne();
+  const exampleFollower = await warbandModels.follower.findOne();
+  const exampleApprentice = await warbandModels.apprentice.findOne();
+
   const data = {
     contentEJS: "documentation",
     referenceTypes: Object.keys(referenceModels),
     warbandTypes: Object.keys(warbandModels),
+    exampleWizardID: exampleWizard._id || null,
+    exampleFollowerID: exampleFollower._id || null,
+    exampleApprenticeID: exampleApprentice._id || null,
+    exampleUserID: exampleUser._id || null,
   };
   res.render("index", data);
 });
 
-app.get("/_seedDataNow_", async (req, res, next) => {
+app.post("/_seedDataNow_", async (req, res, next) => {
   // for demonstration purposes only
   try {
     await Promise.all([
