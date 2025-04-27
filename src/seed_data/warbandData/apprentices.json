@@ -1,7 +1,7 @@
 [
   {
-    "wizard_id": "Be93523XM",
-    "name": "Jimmy",
+    "wizard_id": "TEMPBe93523XM",
+    "name": "Dennis",
     "class": "Apprentice",
     "status": 1,
     "armor": 10,
@@ -22,8 +22,30 @@
     }
   },
   {
-    "wizard_id": "CR9GoS59M",
+    "wizard_id": "TEMPCR9GoS59M",
     "name": "Terry",
+    "class": "Apprentice",
+    "status": 1,
+    "armor": 10,
+    "cost": 100,
+    "itemSlots": {
+      "slot1": 0,
+      "slot2": 0,
+      "slot3": 0,
+      "slot4": 0
+    },
+    "statMods": {
+      "move": 0,
+      "fight": 0,
+      "shoot": 0,
+      "armor": 0,
+      "will": 0,
+      "health": 0
+    }
+  },
+  {
+    "wizard_id": "TEMPCR9GoS58M",
+    "name": "Bucky",
     "class": "Apprentice",
     "status": 1,
     "armor": 10,

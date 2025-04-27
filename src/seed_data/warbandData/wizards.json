@@ -1,8 +1,8 @@
 [
   {
-    "owner_id": 2,
+    "user_id": 2,
     "name": "Dave",
-    "class_id": 3,
+    "wizard_class_id": 3,
     "level": 6,
     "health": 14,
     "currentHealth": 14,
@@ -40,9 +40,9 @@
     "backstory": null
   },
   {
-    "owner_id": 2,
-    "name": "Dave",
-    "class_id": 3,
+    "user_id": 3,
+    "name": "Jim",
+    "wizard_class_id": 8,
     "level": 4,
     "health": 14,
     "currentHealth": 14,
@@ -53,7 +53,7 @@
     "will": 4,
     "cost": 0,
     "status": 1,
-    "itemSlots": [105, 0, 0, 0, 0],
+    "itemSlots": [103, 0, 0, 0, 0],
     "statMods": {
       "move": 0,
       "fight": 0,
@@ -63,12 +63,12 @@
       "health": 0
     },
     "gold": 400,
-    "primarySpellIds": [301, 302, 303],
+    "primarySpellIds": [801, 802, 803],
     "alignedSpellIds": [1001, 601, 201],
     "neutralSpellIds": [501, 901],
     "opposedSpellIds": [],
     "spellModifiers": {
-      "301": -1
+      "801": -1
     },
     "soldiersLost": 0,
     "xp": 400,
@@ -80,9 +80,9 @@
     "backstory": null
   },
   {
-    "owner_id": 3,
-    "name": "Homer",
-    "class_id": 10,
+    "user_id": 3,
+    "name": "Susan",
+    "wizard_class_id": 10,
     "level": 0,
     "health": 14,
     "currentHealth": 14,
