@@ -6,23 +6,35 @@ This is the start of an express server that will be used in my capstone project.
 
 There are currently 3 categories of data each with multiple sub tables. Reference data is read only data and give reference rules for the game an cannot be modified. There is also a user database that has only get methds for now. Lastly there is the warband database that contains wizard, apprentice and follower data that can be created, modified, and deleted.
 
-I've also create a view to see a POST request in order to make a new wizard. More endpoints will be documented inside. For now the data is stored in JSON files, POST methods will write to JSON.
+I've also create a view to see a POST request in order to make a new wizard. More endpoints will be documented inside. Data is stored in MongoDB using mongoose.
+
+## Things I learned doing this project
+
+- How to handle connections and route to mongoDB
+- Handling routes using express
+- Creating views using EJS
+- Creating Schema and Models via mongoose
+- Writing documentation for API endpoints
 
 ## Getting Started
 
 ### Dependencies
 
+- Dotenv v16.5.0
 - Express v5.1.0
 - nodemon v3.1.9
 - EJS v3.1.10
+- Mongoose v8.13.2
 
 ### Installing
 
 ```
 $ npm init
+$ npm install dotenv
 $ npm install express
 $ npm install nodemon
 $ npm install ejs
+$ npm install mongoose
 ```
 
 ### Executing program
@@ -33,7 +45,8 @@ $ npm install ejs
 $ npm run dev
 ```
 
--This will run on [localhost:3000](http://localhost:3000/)
+- This will run default on [localhost:5050](http://localhost:5050/)
+- There is a [documentation page](http://localhost:5050/documentation) with plenty of information on how to use this API
 
 ## Authors
 
@@ -43,11 +56,18 @@ Gregory Jung - [Portfolio](https://tenor2000.github.io/react-portfolio/)
 
 ## Version History
 
+- v0.2 data storage now connected to mongodb:
+
+  - use of mongoose for connections
+  - data restructured
+  - seed data enabled to reset to default if need be
+  - more comprehensive documentation
+
 - v0.1 basic endpoints are working for:
   - api/reference
   - api/warbands/wizards
   - api/warbands/apprentices
-  - api/warbands/personnel
+  - api/warbands/followers
   - api/users
 
 ## Acknowledgments
@@ -100,11 +120,13 @@ Include query parameters for data filtering, where appropriate. At least one dat
 
 - SBA318/src/routes/reference.js
 - SBA318/src/routes/warbands.js
+- SBA318/src/routes/users.js
 
 Utilize route parameters, where appropriate.
 
 - SBA318/src/routes/reference.js
 - SBA318/src/routes/warbands.js
+- SBA318/src/routes/users.js
 
 Use simple CSS to style the rendered views.
 
