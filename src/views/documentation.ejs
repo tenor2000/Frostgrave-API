@@ -1,10 +1,14 @@
 <div id="documentation">
   <h1>Documentation</h1>
-  <h2>/_seedDataNow_ -- (POST)</h2>
+  <h2>Loading the Sample Data...</h2>
   <p>
-    READ CAREFULLY: This link will clear and (re)initialize the sample database
-    with the original reference, warband, and user data.
+    READ CAREFULLY: This button will clear and (re)initialize the sample
+    database with the original reference, warband, and user data from JSON
+    files.
   </p>
+  <form action="/_seedDataNow_" method="POST">
+    <button id="seed-btn" type="submit">Seed Data</button>
+  </form>
   <h1>Reference Data Endpoints</h1>
   <h2>/api/reference/data(/:type) -- (GET)</h2>
   <p>
