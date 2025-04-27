@@ -5,7 +5,10 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
-import seedData from "./src/utilityFuncs/seedData.mjs";
+import {
+  seedData,
+  setDataRelations,
+} from "./src/utilityFuncs/seedDataFuncs.mjs";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -114,12 +117,22 @@ app.get("/documentation", (req, res, next) => {
   res.render("index", data);
 });
 
-app.get("/seedData", (req, res, next) => {
+app.get("/_seedDataNow_", async (req, res, next) => {
   // for demonstration purposes only
-  seedData("reference");
-  seedData("warband");
-  seedData("users");
-  res.redirect("/");
+  try {
+    await Promise.all([
+      seedData("reference"),
+      seedData("warband"),
+      seedData("user"),
+    ]);
+
+    await setDataRelations();
+
+    res.json({ status: 200, message: "Data Seeded Successfully" });
+  } catch (err) {
+    console.error(`Error seeding data:`, err);
+    res.status(500).json({ status: 500, error: err.message, details: err });
+  }
 });
 
 app.use((err, req, res, next) => {
@@ -133,7 +146,7 @@ app.use((req, res, next) => {
     title: "404 Error",
     imgSrc: "https://media.tenor.com/fRwU2Z3GKtgAAAAM/busy-working.gif",
     content:
-      "You have found a page that does not exist or is under construction. Please try again later.",
+      "You have found a page that does not exist or is under construction.<br>Please try again later.",
   };
   res.status(404).render("index", data);
 });
