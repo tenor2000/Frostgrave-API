@@ -13,7 +13,13 @@
     "will": 4,
     "cost": 0,
     "status": 1,
-    "itemSlots": [105, 0, 0, 0, 0],
+    "itemSlots": {
+      "slot1": 103,
+      "slot2": 104,
+      "slot3": 0,
+      "slot4": 0,
+      "slot5": 0
+    },
     "statMods": {
       "move": 0,
       "fight": 0,
@@ -53,7 +59,13 @@
     "will": 4,
     "cost": 0,
     "status": 1,
-    "itemSlots": [103, 0, 0, 0, 0],
+    "itemSlots": {
+      "slot1": 102,
+      "slot2": 104,
+      "slot3": 0,
+      "slot4": 0,
+      "slot5": 0
+    },
     "statMods": {
       "move": 0,
       "fight": 0,
