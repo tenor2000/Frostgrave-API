@@ -28,7 +28,9 @@ router.route("/data").get(async (req, res, next) => {
 router
   .route("/data/:type")
   .get(async (req, res, next) => {
-    const type = req.params.type;
+    const type = req.params.type.endsWith("s")
+      ? req.params.type.slice(0, -1)
+      : req.params.type;
     try {
       const Model = await getModelsFromDirectory("reference", type);
       let referenceData = await Model.find();
