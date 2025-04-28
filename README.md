@@ -39,6 +39,17 @@ $ npm install mongoose
 
 ### Executing program
 
+- you will need a .env file with the following
+
+```
+// .env in the root
+
+ATLAS_URI="your.mongo.db.connection.string"
+
+PORT=5050 // or whatever your desired port number
+
+```
+
 - I've set up a script in the package.json to be able to run nodemon
 
 ```
