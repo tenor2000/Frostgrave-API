@@ -21,6 +21,7 @@ body {
     var(--background-color),
     var(--dark-color)
   );
+  background-attachment: fixed;
   color: var(--primary-color);
   font-family: sans-serif;
   padding: 0;
