@@ -1,7 +1,7 @@
 [
   {
-    "fname": "Frodo",
-    "lname": "Baggins",
+    "firstname": "Frodo",
+    "lastname": "Baggins",
     "username": "FroFro",
     "password": "notToBeStoredHere",
     "email": "fbaggins@theshire.com",
@@ -10,8 +10,8 @@
     "role": "admin"
   },
   {
-    "fname": "Samwise",
-    "lname": "Gamgee",
+    "firstname": "Samwise",
+    "lastname": "Gamgee",
     "password": "notToBeStoredHere",
     "username": "SammyG",
     "email": "samwise@gamgee.com",
@@ -20,8 +20,8 @@
     "role": "user"
   },
   {
-    "fname": "Pippin",
-    "lname": "Took",
+    "firstname": "Pippin",
+    "lastname": "Took",
     "username": "PippinTook",
     "password": "notToBeStoredHere",
     "email": "pippin@took.com",
@@ -30,8 +30,8 @@
     "role": "user"
   },
   {
-    "fname": "Merry",
-    "lname": "Brandybuck",
+    "firstname": "Merry",
+    "lastname": "Brandybuck",
     "username": "MerryBrandybuck",
     "password": "notToBeStoredHere",
     "email": "merry@brandybuck.com",
@@ -40,8 +40,8 @@
     "role": "user"
   },
   {
-    "fname": "Bilbo",
-    "lname": "Baggins",
+    "firstname": "Bilbo",
+    "lastname": "Baggins",
     "username": "BilboBaggins",
     "password": "notToBeStoredHere",
     "email": "bilbobaggins@theshire.com",
