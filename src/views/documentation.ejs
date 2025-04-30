@@ -32,11 +32,11 @@
 
   <h1>Warband Data Endpoints</h1>
 
-  <h2>/api/warbands/warband/:id -- (GET)</h2>
+  <h2>/api/warbands/warband/:wizard_id -- (GET)</h2>
   <ul>
     <li>
       GET <strong>Returns:</strong> a JSON Object containing the wizard data
-      with apprentice, and follower data, id = wizard._id (<a
+      with apprentice, and follower data (<a
         href="/api/warbands/warband/<%= exampleWizardID %>"
         target="_blank"
         >example</a
@@ -91,7 +91,7 @@
   <ul>
     <li>
       GET <strong>Returns:</strong> an Array of JSON Objects containing all of
-      type belonging to a wizard
+      type belonging to a wizard._id
     </li>
     <li>
       type = apprentices (<a
@@ -119,13 +119,17 @@
         >example</a
       >)
     </li>
-    <li>POST Creates a new Apprentice (requires {wizard_id, name})</li>
+    <li>
+      POST Creates a new Apprentice (requires {wizard_id: String(ObjectId),
+      name: String})
+    </li>
   </ul>
   <h2>/api/warbands/apprentices/:apprentice._id -- (GET, PUT, DELETE)</h2>
   <ul>
     <li>
-      GET <strong>Returns:</strong> an Array of JSON Objects containing
-      apprentices belonging to a wizard (<a
+      GET <strong>Returns:</strong> a JSON Object containing the apprentice
+      information with the given _id (<a
+        (<a
         href="/api/warbands/apprentices/<%= exampleApprenticeID %>"
         target="_blank"
         >example</a
@@ -148,13 +152,16 @@
         >example</a
       >)
     </li>
-    <li>POST Creates new Follower (requires {wizard_id, name, soldier_id})</li>
+    <li>
+      POST Creates a new follower (requires {wizard_id: String(ObjectId), name:
+      String, soldier_id: Number})
+    </li>
   </ul>
   <h2>/api/warbands/followers/:follower._id -- (GET, PUT, DELETE)</h2>
   <ul>
     <li>
-      GET <strong>Returns:</strong> an Array of JSON Objects containing
-      followers belonging to a wizard (<a
+      GET <strong>Returns:</strong> a JSON Object containing the follower
+      information with the given _id (<a
         href="/api/warbands/followers/<%= exampleFollowerID %>"
         target="_blank"
         >example</a
@@ -177,18 +184,15 @@
       >)
     </li>
     <li>
-      POST Creates a new user (requires {firstname, lastname, username,email,
-      password})
+      POST Creates a new user (requires {firstname: String, lastname: String,
+      username: String ,email: String, password: String})
     </li>
   </ul>
   <h2>/api/users/:user._id -- (GET, PUT, DELETE)</h2>
   <ul>
     <li>
-      GET <strong>Returns:</strong> an Array of JSON objects of all users (<a
-        href="/api/users/<%= exampleUserID %>"
-        target="_blank"
-        >example</a
-      >)
+      GET <strong>Returns:</strong> a JSON object of a single user with the _id
+      (<a href="/api/users/<%= exampleUserID %>" target="_blank">example</a>)
     </li>
     <li>
       PUT replaces the original user object with the edited JSON user object
