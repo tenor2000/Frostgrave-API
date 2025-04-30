@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import { fileURLToPath } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
 
 async function getModelsFromDirectory(modelDirectory, type = "") {
   // if type is provided, return a single model, else return object of models
@@ -15,14 +15,24 @@ async function getModelsFromDirectory(modelDirectory, type = "") {
     if (type) {
       const filename = type;
       const filePath = path.join(modelsPath, `${type}.model.mjs`);
-      const modelModule = await import(filePath);
+      // Error here due to windows pathing using '\' instead of '/'. Import() doesn't like '\' that Windows uses.
+      // const modelModule = await import(filePath);
+
+      // Fixed by adding 'pathToFileURL' in the import() which converts it to an import() friendly url format.
+      const modelModule = await import(pathToFileURL(filePath).href);
+
       const Model = modelModule.default;
       data = Model; // return a single model
     } else {
       for (const file of files) {
         const filename = path.basename(file, ".model.mjs");
         const filePath = path.join(modelsPath, file);
-        const modelModule = await import(filePath);
+        // Error here due to windows pathing using '\' instead of '/'. Import() doesn't like '\' that Windows uses.
+        // const modelModule = await import(filePath);
+
+        // Fixed by adding 'pathToFileURL' in the import() which converts it to an import() friendly url format.
+        const modelModule = await import(pathToFileURL(filePath).href);
+
         const Model = modelModule.default;
         data[filename] = Model; // object of models
       }
