@@ -20,9 +20,7 @@ export async function seedData(modelType) {
 
       let modelName = file.replace(".json", "");
       // remove plural to fit the model naming convention, although there are flaws to this
-      modelName.endsWith("s")
-        ? (modelName = modelName.slice(0, -1))
-        : modelName;
+      modelName = modelName.endsWith("s") ? modelName.slice(0, -1) : modelName;
 
       const Model = models[modelName];
       if (!Model) {
