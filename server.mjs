@@ -1,6 +1,7 @@
 import express from "express";
 import error from "./src/utilityFuncs/error.mjs";
 import ejs from "ejs";
+import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
@@ -21,11 +22,15 @@ const referenceModels = await getModelsFromDirectory("reference");
 const warbandModels = await getModelsFromDirectory("warband");
 
 // mongoose connection
-const connectDir = "frostgraveDB";
-mongoose.connect(process.env.ATLAS_URI + connectDir);
-mongoose.connection.once("open", () => {
-  console.log("connected to mongoDB");
-});
+const connectDir = process.env.PROD_DATABASE;
+try {
+  mongoose.connect(process.env.ATLAS_URI + connectDir);
+  mongoose.connection.once("open", () => {
+    console.log("Successfully connected to mongoDB");
+  });
+} catch (err) {
+  console.error("Error connecting to mongoDB:", err);
+}
 
 import reference from "./src/routes/reference.mjs";
 import users from "./src/routes/users.mjs";
@@ -36,6 +41,9 @@ app.use(express.static("./src/styles"));
 app.use(express.static("./public"));
 app.use(express.json());
 app.use(express.urlencoded());
+
+// CORS
+app.use(cors());
 
 app.use((req, res, next) => {
   const time = new Date();
@@ -103,6 +111,13 @@ app.get("/create", async (req, res, next) => {
 
   res.render("index", data);
 });
+
+// app.get("/version", (req, res, next) => {
+//   const data = {
+//     contentEJS: "version",
+//   };
+//   res.render("index", data);
+// });
 
 // app.get("/contact", (req, res, next) => {
 //   const data = {
