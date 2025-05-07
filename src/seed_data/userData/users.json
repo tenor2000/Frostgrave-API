@@ -5,9 +5,17 @@
     "username": "FroFro",
     "password": "notToBeStoredHere",
     "email": "fbaggins@theshire.com",
-    "dateJoined": "2022-01-01",
     "lastLogin": "2022-01-01",
-    "role": "admin"
+    "role": "admin",
+    "profile": {
+      "bio": "I am a hobbit",
+      "location": "The Shire",
+      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
+    },
+    "auth": {
+      "salt": "",
+      "hash": ""
+    }
   },
   {
     "firstname": "Samwise",
@@ -15,9 +23,17 @@
     "password": "notToBeStoredHere",
     "username": "SammyG",
     "email": "samwise@gamgee.com",
-    "dateJoined": "2022-01-01",
     "lastLogin": "2022-01-01",
-    "role": "user"
+    "role": "user",
+    "profile": {
+      "bio": "I am a hobbit",
+      "location": "The Shire",
+      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
+    },
+    "auth": {
+      "salt": "",
+      "hash": ""
+    }
   },
   {
     "firstname": "Pippin",
@@ -25,9 +41,17 @@
     "username": "PippinTook",
     "password": "notToBeStoredHere",
     "email": "pippin@took.com",
-    "dateJoined": "2022-01-01",
     "lastLogin": "2022-01-01",
-    "role": "user"
+    "role": "user",
+    "profile": {
+      "bio": "I am a hobbit",
+      "location": "The Shire",
+      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
+    },
+    "auth": {
+      "salt": "",
+      "hash": ""
+    }
   },
   {
     "firstname": "Merry",
@@ -35,9 +59,17 @@
     "username": "MerryBrandybuck",
     "password": "notToBeStoredHere",
     "email": "merry@brandybuck.com",
-    "dateJoined": "2022-01-01",
     "lastLogin": "2022-01-01",
-    "role": "user"
+    "role": "user",
+    "profile": {
+      "bio": "I am a hobbit",
+      "location": "The Shire",
+      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
+    },
+    "auth": {
+      "salt": "",
+      "hash": ""
+    }
   },
   {
     "firstname": "Bilbo",
@@ -45,8 +77,16 @@
     "username": "BilboBaggins",
     "password": "notToBeStoredHere",
     "email": "bilbobaggins@theshire.com",
-    "dateJoined": "2022-01-01",
     "lastLogin": "2022-01-01",
-    "role": "user"
+    "role": "user",
+    "profile": {
+      "bio": "I am a hobbit",
+      "location": "The Shire",
+      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
+    },
+    "auth": {
+      "salt": "",
+      "hash": ""
+    }
   }
 ]

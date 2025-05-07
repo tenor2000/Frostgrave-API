@@ -25,10 +25,6 @@ const userSchema = new mongoose.Schema(
       unique: true,
       match: [/\S+@\S+\.\S+/, "is invalid"],
     },
-    dateJoined: {
-      type: Date,
-      default: Date.now,
-    },
     lastLogin: {
       type: Date,
       default: Date.now,
@@ -37,6 +33,24 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["admin", "user", "moderator"],
       default: "user",
+    },
+    profile: {
+      bio: {
+        type: String,
+        default: "",
+      },
+      location: {
+        type: String,
+        default: "",
+      },
+      avatar: {
+        type: String,
+        default: "",
+      },
+    },
+    auth: {
+      salt: { type: String, required: true },
+      hash: { type: String, required: true }, // encrypted password,
     },
   },
   {
