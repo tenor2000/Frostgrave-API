@@ -1,13 +1,5 @@
 [
   {
-    "school_id": 0,
-    "name": "All",
-    "aligned": [0],
-    "neutral": [0],
-    "opposed": [0],
-    "description": "All schools"
-  },
-  {
     "school_id": 1,
     "name": "Chronomancer",
     "nicknames": ["Timerider", "Chronomage", "Timekeeper"],
