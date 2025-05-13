@@ -23,34 +23,15 @@ const referenceModels = await getModelsFromDirectory("reference");
 const warbandModels = await getModelsFromDirectory("warband");
 
 // mongoose connection
-// const connectDir = process.env.PROD_DATABASE;
-// try {
-//   mongoose.connect(process.env.ATLAS_URI + connectDir);
-//   mongoose.connection.once("open", () => {
-//     console.log("Successfully connected to mongoDB");
-//   });
-// } catch (err) {
-//   console.error("Error connecting to mongoDB:", err);
-// }
-
-// new
-const fullURI = process.env.ATLAS_URI + process.env.PROD_DATABASE;
-mongoose
-  .connect(fullURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("✅ MongoDB connected");
-    app.listen(PORT, () => {
-      console.log(`✅ Server running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("❌ Failed to connect to MongoDB:", err.message);
+const connectDir = process.env.PROD_DATABASE;
+try {
+  mongoose.connect(process.env.ATLAS_URI + connectDir);
+  mongoose.connection.once("open", () => {
+    console.log("Successfully connected to mongoDB");
   });
-
-// end
+} catch (err) {
+  console.error("Error connecting to mongoDB:", err);
+}
 
 import reference from "./src/routes/reference.mjs";
 import users from "./src/routes/users.mjs";
