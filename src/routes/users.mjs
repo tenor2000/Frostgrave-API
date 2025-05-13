@@ -5,6 +5,7 @@ import getModelsFromDirectory from "../utilityFuncs/getModelsFromDirectory.mjs";
 const router = express.Router();
 
 // api/users/
+// These routes are protected by authentication
 
 router
   .route("/")
@@ -38,6 +39,16 @@ router
       res.status(500).json({ status: 500, error: err.message, details: err });
     }
   });
+
+router.route("/profile").get(async (req, res) => {
+  const userId = req.user._id;
+  const userModel = await getModelsFromDirectory("user", "user");
+
+  const userData = await userModel.findById(userId).select("-hashword");
+  userData
+    ? res.json(userData)
+    : res.status(404).json({ error: "No Data Found" });
+});
 
 router
   .route("/:id")
