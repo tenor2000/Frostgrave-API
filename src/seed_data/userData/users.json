@@ -1,92 +1,16 @@
 [
   {
-    "firstname": "Frodo",
-    "lastname": "Baggins",
-    "username": "FroFro",
-    "password": "notToBeStoredHere",
-    "email": "fbaggins@theshire.com",
+    "firstname": "Gregory",
+    "lastname": "Jung",
+    "username": "tenor2000",
+    "hashword": "$2b$10$K8HL20awXZ3iBgrInklRJObhs2kn3sSFG.QO5m98QM8n2aUl/MLFC",
+    "email": "tenor2000@gmail.com",
     "lastLogin": "2022-01-01",
     "role": "admin",
     "profile": {
       "bio": "I am a hobbit",
       "location": "The Shire",
       "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
-    },
-    "auth": {
-      "salt": "anfuys",
-      "hash": "password-that-is-hashed"
-    }
-  },
-  {
-    "firstname": "Samwise",
-    "lastname": "Gamgee",
-    "password": "notToBeStoredHere",
-    "username": "SammyG",
-    "email": "samwise@gamgee.com",
-    "lastLogin": "2022-01-01",
-    "role": "user",
-    "profile": {
-      "bio": "I am a hobbit",
-      "location": "The Shire",
-      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
-    },
-    "auth": {
-      "salt": "anfuys",
-      "hash": "password-that-is-hashed"
-    }
-  },
-  {
-    "firstname": "Pippin",
-    "lastname": "Took",
-    "username": "PippinTook",
-    "password": "notToBeStoredHere",
-    "email": "pippin@took.com",
-    "lastLogin": "2022-01-01",
-    "role": "user",
-    "profile": {
-      "bio": "I am a hobbit",
-      "location": "The Shire",
-      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
-    },
-    "auth": {
-      "salt": "anfuys",
-      "hash": "password-that-is-hashed"
-    }
-  },
-  {
-    "firstname": "Merry",
-    "lastname": "Brandybuck",
-    "username": "MerryBrandybuck",
-    "password": "notToBeStoredHere",
-    "email": "merry@brandybuck.com",
-    "lastLogin": "2022-01-01",
-    "role": "user",
-    "profile": {
-      "bio": "I am a hobbit",
-      "location": "The Shire",
-      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
-    },
-    "auth": {
-      "salt": "anfuys",
-      "hash": "password-that-is-hashed"
-    }
-  },
-  {
-    "firstname": "Bilbo",
-    "lastname": "Baggins",
-    "username": "BilboBaggins",
-    "password": "notToBeStoredHere",
-    "email": "bilbobaggins@theshire.com",
-    "lastLogin": "2022-01-01",
-    "role": "user",
-    "profile": {
-      "bio": "I am a hobbit",
-      "location": "The Shire",
-      "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
-    },
-    "auth": {
-      "salt": "anfuys",
-      "hash": "password-that-is-hashed"
     }
   }
 ]
