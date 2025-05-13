@@ -10,6 +10,7 @@ import {
   seedData,
   setDataRelations,
 } from "./src/utilityFuncs/seedDataFuncs.mjs";
+import authenticateToken from "./src/utilityFuncs/authenticateToken.mjs";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,6 +36,7 @@ try {
 import reference from "./src/routes/reference.mjs";
 import users from "./src/routes/users.mjs";
 import warbands from "./src/routes/warbands.mjs";
+import auth from "./src/routes/auth.mjs";
 
 // Middleware
 app.use(express.static("./src/styles"));
@@ -55,24 +57,6 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
   next();
 });
 
-app.use("/api", (req, res, next) => {
-  let apiKey = req.get("x-api-key");
-
-  // code to override null api-key for now
-  if (!apiKey) {
-    apiKey = "notanapikey";
-  }
-  //
-
-  console.log("Checking for API Key...");
-
-  if (apiKey !== "notanapikey") {
-    return res.status(403).json({ error: "Forbidden - Invalid API Key" });
-  }
-
-  next();
-});
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -84,7 +68,8 @@ app.set("view engine", "ejs");
 
 app.use("/api/reference", reference);
 app.use("/api/warbands", warbands);
-app.use("/api/users", users);
+app.use("/api/users", authenticateToken, users);
+app.use("/api/auth", auth);
 
 // Routes
 app.get("/", (req, res, next) => {
@@ -111,13 +96,6 @@ app.get("/create", async (req, res, next) => {
 
   res.render("index", data);
 });
-
-// app.get("/version", (req, res, next) => {
-//   const data = {
-//     contentEJS: "version",
-//   };
-//   res.render("index", data);
-// });
 
 // app.get("/contact", (req, res, next) => {
 //   const data = {
