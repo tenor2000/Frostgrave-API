@@ -194,4 +194,7 @@ wizardSchema.virtual("followers", {
   foreignField: "wizard_id",
 });
 
+// Allow wizards to have unique names per user_id
+wizardSchema.index({ user_id: 1, name: 1 }, { unique: true });
+
 export default mongoose.model("Wizard", wizardSchema);
