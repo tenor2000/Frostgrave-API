@@ -11,8 +11,8 @@ const spellSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    school: {
-      type: String,
+    school_id: {
+      type: Number,
       required: true,
     },
     base_cast: {
