@@ -26,6 +26,24 @@ router.route("/").get(async (req, res, next) => {
   }
 });
 
+// Get all wizards with attached apprentice and followers belonging to User
+router.route("/user/:user_id").get(async (req, res, next) => {
+  try {
+    const wizardModel = await getModelsFromDirectory("warband", "wizard");
+    const wizardsArray = await wizardModel
+      .find({ user_id: req.params.user_id })
+      .populate("apprentices")
+      .populate("followers");
+
+    wizardsArray.length > 0
+      ? res.json(wizardsArray)
+      : next(error(404, "No Data Found"));
+  } catch (err) {
+    console.error(`Error retrieving data:`, err);
+    res.status(500).json({ status: 500, error: err.message, details: err });
+  }
+});
+
 router.route("/warband").get(async (req, res, next) => {
   // Get all warband info in one object by wizard
   const id = req.query.id || null;
