@@ -1,6 +1,9 @@
 import express from "express";
 import error from "../utilityFuncs/error.mjs";
 import getModelsFromDirectory from "../utilityFuncs/getModelsFromDirectory.mjs";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const router = express.Router();
 
@@ -40,14 +43,24 @@ router
     }
   });
 
-router.route("/profile").get(async (req, res) => {
-  const userId = req.user._id;
+router.route("/me").get(async (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) return res.status(401).json({ error: "No token provided" });
+
   const userModel = await getModelsFromDirectory("user", "user");
 
-  const userData = await userModel.findById(userId).select("-hashword");
-  userData
-    ? res.json(userData)
-    : res.status(404).json({ error: "No Data Found" });
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    const user = await userModel.findById(decoded._id).select("-hashword");
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(401).json({ error: "Invalid token" });
+  }
 });
 
 router
