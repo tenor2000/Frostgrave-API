@@ -206,6 +206,7 @@ router
     }
   })
   .delete(async (req, res, next) => {
+    const id = req.params.id;
     const type = req.params.type.endsWith("s")
       ? req.params.type.slice(0, -1)
       : req.params.type;
@@ -219,13 +220,14 @@ router
     }
 
     try {
-      const delectedDoc = await Model.findByIdAndDelete(req.params._id);
+      const deletedDoc = await Model.findByIdAndDelete(id);
 
-      if (!delectedDoc) {
+      if (!deletedDoc) {
+        console.log(`Status 404: Deletion Failed - ID: ${id}`);
         return res.status(404).json({ error: "Document not found" });
       }
 
-      console.log(`Status 204: Deletion Successful - ID: ${req.params._id}`);
+      console.log(`Status 204: Deletion Successful - ID: ${id}`);
       res.status(204);
     } catch (err) {
       console.error(`Error updating ${type}:`, err);
