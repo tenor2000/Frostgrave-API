@@ -47,6 +47,7 @@ const apprenticeSchema = new mongoose.Schema(
     },
     cost: {
       type: Number,
+      default: 100,
       required: true,
     },
     statMods: {
