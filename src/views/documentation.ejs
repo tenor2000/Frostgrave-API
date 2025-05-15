@@ -44,6 +44,15 @@
     </li>
   </ul>
 
+  <h2>/api/warbands/user/:user_id -- (GET)</h2>
+  <ul>
+    <li>
+      GET <strong>Returns:</strong> an Array of JSON Objects containing the
+      wizard data with apprentice, and follower data embedded within. Like the
+      previous endpoint, but multiple wizards are returned.
+    </li>
+  </ul>
+
   <h2>/api/warbands(/:type) -- (GET)</h2>
   <p>
     <strong>Returns:</strong> an Array of JSON objects containing all warband
@@ -187,6 +196,10 @@
       POST Creates a new user (requires {firstname: String, lastname: String,
       username: String ,email: String, password: String})
     </li>
+    <li>
+      NOTE:
+      <span style="color: red">This endpoint requires authentication</span>
+    </li>
   </ul>
   <h2>/api/users/:user._id -- (GET, PUT, DELETE)</h2>
   <ul>
@@ -198,5 +211,9 @@
       PUT replaces the original user object with the edited JSON user object
     </li>
     <li>DELETE removes the user from the database</li>
+    <li>
+      NOTE:
+      <span style="color: red">This endpoint requires authentication</span>
+    </li>
   </ul>
 </div>
